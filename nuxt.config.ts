@@ -32,6 +32,10 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'Trasporti Rondi',
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+      ],
       meta: [
         {
           name: 'description',
