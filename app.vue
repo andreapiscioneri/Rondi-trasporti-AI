@@ -5,7 +5,7 @@ watch(
   () => route.fullPath,
   () => {
     if (import.meta.client) {
-      window.scrollTo({ top: 0, behavior: 'instant' })
+      window.scrollTo({ top: 0, behavior: 'auto' })
     }
   },
 )

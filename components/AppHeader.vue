@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Menu, Moon, Sun, X } from 'lucide-vue-next'
-import logoRondi from '~/src/assets/trasporti_rondi_logo.png'
+import logoRondi from '~/assets/images/trasporti_rondi_logo.png'
 
 const RED = '#E5322D'
 

@@ -4,22 +4,18 @@ import { translations, type Lang } from '~/shared/translations'
 const langState = ref<Lang>('it')
 
 export const useLang = () => {
+  const { locale } = useI18n()
   const lang = langState
 
-  if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('rondi-lang') as Lang | null
-    if (saved && (saved === 'it' || saved === 'en') && lang.value !== saved) {
-      lang.value = saved
-    }
+  if (locale.value === 'it' || locale.value === 'en') {
+    lang.value = locale.value as Lang
   }
 
   const t = computed(() => translations[lang.value])
 
   const setLang = (next: Lang) => {
     lang.value = next
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('rondi-lang', next)
-    }
+    locale.value = next
   }
 
   const toggleLang = () => setLang(lang.value === 'it' ? 'en' : 'it')

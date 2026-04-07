@@ -11,8 +11,5 @@
 
   Run `npm run build` to build the Nuxt app for production.
 
-  Legacy Vite commands are still available during migration:
-
-  - `npm run dev:vite`
-  - `npm run build:vite`
+  Run `npm run preview` to preview the production build locally.
   

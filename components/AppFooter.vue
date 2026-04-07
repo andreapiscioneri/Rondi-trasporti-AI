@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import logoRondi from '~/src/assets/trasporti_rondi_logo.png'
+import logoRondi from '~/assets/images/trasporti_rondi_logo.png'
 
 const RED = '#E5322D'
 
