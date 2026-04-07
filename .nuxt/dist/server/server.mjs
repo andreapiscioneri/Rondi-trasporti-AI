@@ -1,0 +1,1 @@
+export { default } from "file:///Users/andreapiscioneri/Repo/Rondi%20trasporti%20AI/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
