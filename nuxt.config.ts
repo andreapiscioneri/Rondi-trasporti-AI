@@ -1,5 +1,4 @@
 import tailwindcss from '@tailwindcss/vite'
-import { translations } from './shared/translations'
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -22,12 +21,7 @@ export default defineNuxtConfig({
       { code: 'it', name: 'Italiano' },
       { code: 'en', name: 'English' },
     ],
-    vueI18n: {
-      legacy: false,
-      locale: 'it',
-      fallbackLocale: 'it',
-      messages: translations,
-    },
+    vueI18n: './i18n.config.ts',
   },
   colorMode: {
     preference: 'light',

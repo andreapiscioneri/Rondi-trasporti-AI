@@ -1,26 +1,108 @@
 <script setup lang="ts">
+import { ArrowRight, BarChart3, Leaf, ShieldCheck, Zap } from 'lucide-vue-next'
+
+const RED = '#E5322D'
+const sectionIcons = [Zap, Leaf, BarChart3]
 const { t } = useLang()
+const pg = computed(() => t.value.sostenibilitaPage)
+
+const SECTION_IMAGES = [
+  'https://images.unsplash.com/photo-1655300256620-680cb0f1cec3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900',
+  'https://images.unsplash.com/photo-1638636206910-49cdd0af6d3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900',
+  'https://images.unsplash.com/photo-1768323555231-5497afb0b6ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900',
+]
 </script>
 
 <template>
-  <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-10 bg-white dark:bg-[#0A0A0A]">
-    <div class="max-w-[1000px] mx-auto">
-      <span class="block mb-4 text-[#E5322D]" style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase">
-        {{ t.sostenibilitaPage.hero.tag }}
-      </span>
-      <h1 class="text-[#111111] dark:text-white mb-4" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.1">
-        {{ t.sostenibilitaPage.hero.title }}
-      </h1>
-      <p class="text-[#666666] dark:text-[#999999] mb-10" style="font-size: 1.05rem; line-height: 1.7">
-        {{ t.sostenibilitaPage.hero.subtitle }}
-      </p>
-      <div class="space-y-8">
-        <article v-for="section in t.sostenibilitaPage.sections" :key="section.title" class="p-6 border border-black/10 dark:border-white/10">
-          <p class="text-[#E5322D] mb-2" style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase">{{ section.tag }}</p>
-          <h2 class="text-xl font-bold mb-3 dark:text-white">{{ section.title }}</h2>
-          <p class="text-[#666666] dark:text-[#999999] leading-7">{{ section.desc }}</p>
-        </article>
+  <div>
+    <section class="relative overflow-hidden bg-[#0A0A0A] dark:bg-[#050505]" style="min-height:480px">
+      <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1655300256620-680cb0f1cec3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920" alt="" class="w-full h-full object-cover opacity-25">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/70 to-transparent" />
       </div>
-    </div>
-  </section>
+      <div class="absolute left-0 top-0 bottom-0 w-1" :style="{ background: RED }" />
+      <div class="relative z-10 flex flex-col justify-end py-24 lg:py-36 px-6 sm:px-10 lg:px-16">
+        <div class="max-w-[1440px] mx-auto w-full">
+          <AnimateOnScroll variant="fadeRight">
+            <span class="block mb-4" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#E5322D">{{ pg.hero.tag }}</span>
+            <h1 class="text-white mb-4 max-w-2xl" style="font-size:clamp(2.5rem,5vw,4rem);font-weight:900;line-height:1.05;letter-spacing:-0.02em">{{ pg.hero.title }}</h1>
+            <p class="text-white/60 max-w-lg" style="font-size:clamp(1rem,1.5vw,1.125rem);line-height:1.65">{{ pg.hero.subtitle }}</p>
+          </AnimateOnScroll>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12 px-4 sm:px-6 lg:px-10" :style="{ background: RED }">
+      <div class="max-w-[1440px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <AnimateOnScroll v-for="(stat, i) in pg.envStats" :key="stat.label" variant="scaleIn" :delay="i * 0.08">
+          <div class="flex flex-col items-center text-center gap-1">
+            <span class="text-white tabular-nums" style="font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:900;line-height:1">{{ stat.value }}</span>
+            <span class="text-white/75" style="font-size:0.6875rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase">{{ stat.label }}</span>
+          </div>
+        </AnimateOnScroll>
+      </div>
+    </section>
+
+    <section
+      v-for="(section, i) in pg.sections"
+      :key="section.title"
+      :class="`py-20 lg:py-28 px-4 sm:px-6 lg:px-10 ${i % 2 === 0 ? 'bg-white dark:bg-[#0A0A0A]' : 'bg-[#F5F5F5] dark:bg-[#111111]'}`"
+    >
+      <div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <AnimateOnScroll :variant="i % 2 === 0 ? 'fadeLeft' : 'fadeRight'" :class="i % 2 === 1 ? 'lg:order-2' : ''">
+          <div class="relative overflow-hidden group">
+            <div style="aspect-ratio:4/3" class="overflow-hidden">
+              <img :src="SECTION_IMAGES[i]" :alt="section.tag" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            </div>
+            <div class="absolute -top-4 -right-4 w-16 h-16 hidden lg:flex items-center justify-center" :style="{ background: RED }">
+              <component :is="sectionIcons[i]" :size="28" class="text-white" />
+            </div>
+          </div>
+        </AnimateOnScroll>
+
+        <AnimateOnScroll :variant="i % 2 === 0 ? 'fadeRight' : 'fadeLeft'" :delay="0.08" :class="i % 2 === 1 ? 'lg:order-1' : ''">
+          <span class="inline-flex items-center gap-2 mb-4" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#E5322D">
+            <component :is="sectionIcons[i]" :size="14" /> {{ section.tag }}
+          </span>
+          <h2 class="text-[#111111] dark:text-white mb-6" style="font-size:clamp(1.75rem,3vw,2.5rem);font-weight:900;line-height:1.1">{{ section.title }}</h2>
+          <p class="text-[#666666] dark:text-[#999999]" style="font-size:clamp(1rem,1.2vw,1.0625rem);line-height:1.8">{{ section.desc }}</p>
+        </AnimateOnScroll>
+      </div>
+    </section>
+
+    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-10 bg-[#0A0A0A] dark:bg-[#050505]">
+      <div class="max-w-[1440px] mx-auto">
+        <AnimateOnScroll variant="fadeUp" class="text-center mb-14">
+          <span class="block mb-3 text-white/30" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase">{{ pg.certs.title }}</span>
+          <h2 class="text-white max-w-2xl mx-auto" style="font-size:clamp(2rem,3.5vw,2.5rem);font-weight:900;line-height:1.2">{{ pg.certs.subtitle }}</h2>
+          <div class="mt-4 mx-auto w-12 h-0.5" :style="{ background: RED }" />
+        </AnimateOnScroll>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <AnimateOnScroll v-for="(cert, i) in pg.certs.items" :key="cert.code" variant="scaleIn" :delay="i * 0.07">
+            <div class="border border-white/10 p-6 flex flex-col gap-4 hover:border-[#E5322D]/40 transition-colors h-full">
+              <div class="flex items-start justify-between gap-4">
+                <span class="px-2 py-1 text-white" :style="{ background: RED, fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.05em' }">{{ cert.code }}</span>
+                <ShieldCheck :size="20" class="text-white/20 flex-shrink-0 mt-1" />
+              </div>
+              <h3 class="text-white" style="font-size:0.9375rem;font-weight:700">{{ cert.name }}</h3>
+              <p class="text-white/50" style="font-size:0.8125rem;line-height:1.6">{{ cert.desc }}</p>
+            </div>
+          </AnimateOnScroll>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 px-4 sm:px-6 lg:px-10 bg-white dark:bg-[#0A0A0A] border-t border-black/10 dark:border-white/10">
+      <AnimateOnScroll variant="fadeUp" class="max-w-[1440px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div>
+          <h2 class="text-[#111111] dark:text-white mb-2" style="font-size:clamp(1.75rem,3vw,2.25rem);font-weight:900">{{ t.ctaBanner.title }}</h2>
+          <p class="text-[#666666] dark:text-[#999999]" style="font-size:1rem">{{ t.ctaBanner.subtitle }}</p>
+        </div>
+        <NuxtLink to="/contatti" class="flex-shrink-0 inline-flex items-center gap-2 px-8 py-4 text-white hover:opacity-90 transition-opacity" :style="{ background: RED, fontSize: '0.875rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }">
+          {{ t.ctaBanner.cta }} <ArrowRight :size="16" />
+        </NuxtLink>
+      </AnimateOnScroll>
+    </section>
+  </div>
 </template>
