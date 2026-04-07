@@ -17,16 +17,16 @@ const SECTION_IMAGES = [
   <div>
     <section class="relative overflow-hidden bg-[#0A0A0A] dark:bg-[#050505]" style="min-height:480px">
       <div class="absolute inset-0">
-        <img src="https://images.unsplash.com/photo-1655300256620-680cb0f1cec3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920" alt="" class="w-full h-full object-cover opacity-25">
-        <div class="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/70 to-transparent" />
+        <img src="https://images.unsplash.com/photo-1655300256620-680cb0f1cec3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920" alt="" class="w-full h-full object-cover opacity-25 scale-105">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/72 to-transparent" />
       </div>
       <div class="absolute left-0 top-0 bottom-0 w-1" :style="{ background: RED }" />
       <div class="relative z-10 flex flex-col justify-end py-24 lg:py-36 px-6 sm:px-10 lg:px-16">
         <div class="max-w-[1440px] mx-auto w-full">
           <AnimateOnScroll variant="fadeRight">
             <span class="block mb-4" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#E5322D">{{ pg.hero.tag }}</span>
-            <h1 class="text-white mb-4 max-w-2xl" style="font-size:clamp(2.5rem,5vw,4rem);font-weight:900;line-height:1.05;letter-spacing:-0.02em">{{ pg.hero.title }}</h1>
-            <p class="text-white/60 max-w-lg" style="font-size:clamp(1rem,1.5vw,1.125rem);line-height:1.65">{{ pg.hero.subtitle }}</p>
+            <h1 class="text-white mb-4 max-w-2xl headline-balance" style="font-size:clamp(2.5rem,5vw,4.2rem);font-weight:800;line-height:1.04;letter-spacing:-0.03em">{{ pg.hero.title }}</h1>
+            <p class="text-white/62 max-w-lg" style="font-size:clamp(1rem,1.5vw,1.125rem);line-height:1.72">{{ pg.hero.subtitle }}</p>
           </AnimateOnScroll>
         </div>
       </div>
@@ -51,21 +51,21 @@ const SECTION_IMAGES = [
       <div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <AnimateOnScroll :variant="i % 2 === 0 ? 'fadeLeft' : 'fadeRight'" :class="i % 2 === 1 ? 'lg:order-2' : ''">
           <div class="relative overflow-hidden group">
-            <div style="aspect-ratio:4/3" class="overflow-hidden">
+            <div class="overflow-hidden rounded-[2rem] shadow-[0_28px_70px_rgba(0,0,0,0.14)]" style="aspect-ratio:4/3">
               <img :src="SECTION_IMAGES[i]" :alt="section.tag" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
             </div>
-            <div class="absolute -top-4 -right-4 w-16 h-16 hidden lg:flex items-center justify-center" :style="{ background: RED }">
+            <div class="absolute -top-4 -right-4 w-16 h-16 hidden lg:flex items-center justify-center rounded-full shadow-lg" :style="{ background: RED }">
               <component :is="sectionIcons[i]" :size="28" class="text-white" />
             </div>
           </div>
         </AnimateOnScroll>
 
         <AnimateOnScroll :variant="i % 2 === 0 ? 'fadeRight' : 'fadeLeft'" :delay="0.08" :class="i % 2 === 1 ? 'lg:order-1' : ''">
-          <span class="inline-flex items-center gap-2 mb-4" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#E5322D">
+          <span class="inline-flex items-center gap-2 mb-4" style="font-size:0.75rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#E5322D">
             <component :is="sectionIcons[i]" :size="14" /> {{ section.tag }}
           </span>
-          <h2 class="text-[#111111] dark:text-white mb-6" style="font-size:clamp(1.75rem,3vw,2.5rem);font-weight:900;line-height:1.1">{{ section.title }}</h2>
-          <p class="text-[#666666] dark:text-[#999999]" style="font-size:clamp(1rem,1.2vw,1.0625rem);line-height:1.8">{{ section.desc }}</p>
+          <h2 class="text-[#111111] dark:text-white mb-6 headline-balance" style="font-size:clamp(1.75rem,3vw,2.65rem);font-weight:800;line-height:1.08">{{ section.title }}</h2>
+          <p class="text-[#666666] dark:text-[#999999]" style="font-size:clamp(1rem,1.2vw,1.0625rem);line-height:1.82">{{ section.desc }}</p>
         </AnimateOnScroll>
       </div>
     </section>
@@ -74,19 +74,19 @@ const SECTION_IMAGES = [
       <div class="max-w-[1440px] mx-auto">
         <AnimateOnScroll variant="fadeUp" class="text-center mb-14">
           <span class="block mb-3 text-white/30" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase">{{ pg.certs.title }}</span>
-          <h2 class="text-white max-w-2xl mx-auto" style="font-size:clamp(2rem,3.5vw,2.5rem);font-weight:900;line-height:1.2">{{ pg.certs.subtitle }}</h2>
+          <h2 class="text-white max-w-2xl mx-auto headline-balance" style="font-size:clamp(2rem,3.5vw,2.65rem);font-weight:800;line-height:1.08">{{ pg.certs.subtitle }}</h2>
           <div class="mt-4 mx-auto w-12 h-0.5" :style="{ background: RED }" />
         </AnimateOnScroll>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <AnimateOnScroll v-for="(cert, i) in pg.certs.items" :key="cert.code" variant="scaleIn" :delay="i * 0.07">
-            <div class="border border-white/10 p-6 flex flex-col gap-4 hover:border-[#E5322D]/40 transition-colors h-full">
+            <div class="hover-lift rounded-[1.5rem] border border-white/10 p-6 flex flex-col gap-4 hover:border-[#E5322D]/40 transition-colors h-full bg-white/3 backdrop-blur-sm">
               <div class="flex items-start justify-between gap-4">
-                <span class="px-2 py-1 text-white" :style="{ background: RED, fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.05em' }">{{ cert.code }}</span>
+                <span class="px-2 py-1 rounded-full text-white" :style="{ background: RED, fontSize: '0.75rem', fontWeight: 900, letterSpacing: '0.05em' }">{{ cert.code }}</span>
                 <ShieldCheck :size="20" class="text-white/20 flex-shrink-0 mt-1" />
               </div>
-              <h3 class="text-white" style="font-size:0.9375rem;font-weight:700">{{ cert.name }}</h3>
-              <p class="text-white/50" style="font-size:0.8125rem;line-height:1.6">{{ cert.desc }}</p>
+              <h3 class="text-white" style="font-size:0.95rem;font-weight:700">{{ cert.name }}</h3>
+              <p class="text-white/50" style="font-size:0.82rem;line-height:1.68">{{ cert.desc }}</p>
             </div>
           </AnimateOnScroll>
         </div>
@@ -96,10 +96,10 @@ const SECTION_IMAGES = [
     <section class="py-20 px-4 sm:px-6 lg:px-10 bg-white dark:bg-[#0A0A0A] border-t border-black/10 dark:border-white/10">
       <AnimateOnScroll variant="fadeUp" class="max-w-[1440px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
         <div>
-          <h2 class="text-[#111111] dark:text-white mb-2" style="font-size:clamp(1.75rem,3vw,2.25rem);font-weight:900">{{ t.ctaBanner.title }}</h2>
-          <p class="text-[#666666] dark:text-[#999999]" style="font-size:1rem">{{ t.ctaBanner.subtitle }}</p>
+          <h2 class="text-[#111111] dark:text-white mb-2 headline-balance" style="font-size:clamp(1.75rem,3vw,2.35rem);font-weight:800">{{ t.ctaBanner.title }}</h2>
+          <p class="text-[#666666] dark:text-[#999999]" style="font-size:1rem;line-height:1.75">{{ t.ctaBanner.subtitle }}</p>
         </div>
-        <NuxtLink to="/contatti" class="flex-shrink-0 inline-flex items-center gap-2 px-8 py-4 text-white hover:opacity-90 transition-opacity" :style="{ background: RED, fontSize: '0.875rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }">
+        <NuxtLink to="/contatti" class="cta-premium flex-shrink-0 inline-flex items-center gap-2 px-8 py-4 text-white hover:opacity-90 transition-opacity rounded-full" :style="{ background: RED, fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }">
           {{ t.ctaBanner.cta }} <ArrowRight :size="16" />
         </NuxtLink>
       </AnimateOnScroll>
