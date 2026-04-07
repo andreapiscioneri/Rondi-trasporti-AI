@@ -15,14 +15,14 @@ const SECTION_IMAGES = [
 
 <template>
   <div>
-    <section class="relative overflow-hidden bg-[#0A0A0A] dark:bg-[#050505]" style="min-height:480px">
+    <section class="relative overflow-hidden page-section page-section--dark" style="min-height:480px">
       <div class="absolute inset-0">
         <img src="https://images.unsplash.com/photo-1655300256620-680cb0f1cec3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920" alt="" class="w-full h-full object-cover opacity-25 scale-105">
         <div class="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/72 to-transparent" />
       </div>
       <div class="absolute left-0 top-0 bottom-0 w-1" :style="{ background: RED }" />
       <div class="relative z-10 flex flex-col justify-end py-24 lg:py-36 px-6 sm:px-10 lg:px-16">
-        <div class="max-w-[1440px] mx-auto w-full">
+        <div class="section-shell w-full">
           <AnimateOnScroll variant="fadeRight">
             <span class="block mb-4" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#E5322D">{{ pg.hero.tag }}</span>
             <h1 class="text-white mb-4 max-w-2xl headline-balance" style="font-size:clamp(2.5rem,5vw,4.2rem);font-weight:800;line-height:1.04;letter-spacing:-0.03em">{{ pg.hero.title }}</h1>
@@ -33,7 +33,7 @@ const SECTION_IMAGES = [
     </section>
 
     <section class="py-12 px-4 sm:px-6 lg:px-10" :style="{ background: RED }">
-      <div class="max-w-[1440px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="section-shell grid grid-cols-2 lg:grid-cols-4 gap-6">
         <AnimateOnScroll v-for="(stat, i) in pg.envStats" :key="stat.label" variant="scaleIn" :delay="i * 0.08">
           <div class="flex flex-col items-center text-center gap-1">
             <span class="text-white tabular-nums" style="font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:900;line-height:1">{{ stat.value }}</span>
@@ -46,9 +46,9 @@ const SECTION_IMAGES = [
     <section
       v-for="(section, i) in pg.sections"
       :key="section.title"
-      :class="`py-20 lg:py-28 px-4 sm:px-6 lg:px-10 ${i % 2 === 0 ? 'bg-white dark:bg-[#0A0A0A]' : 'bg-[#F5F5F5] dark:bg-[#111111]'}`"
+      :class="`page-section ${i % 2 === 0 ? 'page-section--light' : 'page-section--soft'}`"
     >
-      <div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div class="section-shell grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <AnimateOnScroll :variant="i % 2 === 0 ? 'fadeLeft' : 'fadeRight'" :class="i % 2 === 1 ? 'lg:order-2' : ''">
           <div class="relative overflow-hidden group">
             <div class="overflow-hidden rounded-[2rem] shadow-[0_28px_70px_rgba(0,0,0,0.14)]" style="aspect-ratio:4/3">
@@ -70,8 +70,8 @@ const SECTION_IMAGES = [
       </div>
     </section>
 
-    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-10 bg-[#0A0A0A] dark:bg-[#050505]">
-      <div class="max-w-[1440px] mx-auto">
+    <section class="page-section page-section--dark">
+      <div class="section-shell">
         <AnimateOnScroll variant="fadeUp" class="text-center mb-14">
           <span class="block mb-3 text-white/30" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase">{{ pg.certs.title }}</span>
           <h2 class="text-white max-w-2xl mx-auto headline-balance" style="font-size:clamp(2rem,3.5vw,2.65rem);font-weight:800;line-height:1.08">{{ pg.certs.subtitle }}</h2>
@@ -93,8 +93,8 @@ const SECTION_IMAGES = [
       </div>
     </section>
 
-    <section class="py-20 px-4 sm:px-6 lg:px-10 bg-white dark:bg-[#0A0A0A] border-t border-black/10 dark:border-white/10">
-      <AnimateOnScroll variant="fadeUp" class="max-w-[1440px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
+    <section class="page-section page-section--light border-t border-black/10 dark:border-white/10">
+      <AnimateOnScroll variant="fadeUp" class="section-shell flex flex-col lg:flex-row items-center justify-between gap-8">
         <div>
           <h2 class="text-[#111111] dark:text-white mb-2 headline-balance" style="font-size:clamp(1.75rem,3vw,2.35rem);font-weight:800">{{ t.ctaBanner.title }}</h2>
           <p class="text-[#666666] dark:text-[#999999]" style="font-size:1rem;line-height:1.75">{{ t.ctaBanner.subtitle }}</p>

@@ -100,8 +100,8 @@ const slides = computed(() => (lang.value === 'it' ? HERO_SLIDES_IT : HERO_SLIDE
   <div>
     <HeroSlideshow :slides="slides" />
 
-    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-10 bg-white dark:bg-[#0A0A0A]">
-      <div class="max-w-[1440px] mx-auto">
+    <section class="page-section page-section--light">
+      <div class="section-shell">
         <AnimateOnScroll class="mb-12" variant="fadeUp">
           <span class="block mb-3" style="font-size:0.75rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#E5322D">{{ t.services.tag }}</span>
           <h2 class="text-[#111111] dark:text-white mb-4 max-w-2xl headline-balance" style="font-size:clamp(2rem,3.5vw,2.6rem);font-weight:800;line-height:1.08">{{ t.services.title }}</h2>
@@ -140,8 +140,8 @@ const slides = computed(() => (lang.value === 'it' ? HERO_SLIDES_IT : HERO_SLIDE
       </div>
     </section>
 
-    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-10 bg-[#F5F5F5] dark:bg-[#111111]">
-      <div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+    <section class="page-section page-section--soft">
+      <div class="section-shell grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <AnimateOnScroll variant="fadeLeft">
           <div class="relative flex gap-3">
             <div class="flex-1 overflow-hidden rounded-[2rem] shadow-[0_30px_80px_rgba(0,0,0,0.18)]" style="aspect-ratio:4/5"><img :src="SUSTAIN_IMG" alt="Green Fleet" class="w-full h-full object-cover"></div>
@@ -168,9 +168,9 @@ const slides = computed(() => (lang.value === 'it' ? HERO_SLIDES_IT : HERO_SLIDE
       </div>
     </section>
 
-    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-10 bg-[#0A0A0A] dark:bg-[#050505] relative overflow-hidden">
+    <section class="page-section page-section--dark relative overflow-hidden">
       <div class="absolute inset-0 pointer-events-none" style="background-image:repeating-linear-gradient(90deg,rgba(255,255,255,0.02) 0, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 12.5%)" />
-      <div class="max-w-[1440px] mx-auto relative z-10">
+      <div class="section-shell relative z-10">
         <AnimateOnScroll variant="fadeUp" class="text-center mb-14">
           <span class="block mb-3 text-white/30" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase">{{ t.stats.tag }}</span>
           <h2 class="text-white headline-balance" style="font-size:clamp(2rem,3.5vw,2.55rem);font-weight:800;line-height:1.08">{{ t.stats.title }}</h2>
@@ -182,12 +182,12 @@ const slides = computed(() => (lang.value === 'it' ? HERO_SLIDES_IT : HERO_SLIDE
       </div>
     </section>
 
-    <section class="relative py-24 px-4 sm:px-6 lg:px-10 overflow-hidden">
+    <section class="relative page-section overflow-hidden">
       <div class="absolute inset-0">
         <img src="https://images.unsplash.com/photo-1668532070017-1956f52f097f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920" alt="" class="w-full h-full object-cover" style="filter:brightness(0.2)">
       </div>
       <div class="absolute inset-0" style="background:linear-gradient(135deg,rgba(229,50,45,0.85) 0%, rgba(0,0,0,0.7) 100%)" />
-      <AnimateOnScroll variant="fadeUp" class="relative z-10 max-w-[1440px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
+      <AnimateOnScroll variant="fadeUp" class="relative z-10 section-shell flex flex-col lg:flex-row items-center justify-between gap-8">
         <div>
           <h2 class="text-white mb-3 headline-balance" style="font-size:clamp(1.75rem,3vw,2.55rem);font-weight:800;line-height:1.08">{{ t.ctaBanner.title }}</h2>
           <p class="text-white/72" style="font-size:clamp(1rem,1.2vw,1.0625rem);line-height:1.75">{{ t.ctaBanner.subtitle }}</p>

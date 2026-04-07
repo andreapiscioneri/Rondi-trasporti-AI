@@ -29,14 +29,14 @@ const onSubmit = (e: Event) => {
 
 <template>
   <div>
-    <section class="relative overflow-hidden" style="min-height:560px">
+    <section class="relative overflow-hidden page-section page-section--dark" style="min-height:560px">
       <div class="absolute inset-0">
         <img :src="HERO_IMG" alt="Careers" class="w-full h-full object-cover scale-105" style="filter:brightness(0.3)">
         <div class="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/90 via-[#0A0A0A]/60 to-transparent" />
       </div>
       <div class="absolute left-0 top-0 bottom-0 w-1" :style="{ background: RED }" />
       <div class="relative z-10 flex flex-col justify-end py-24 lg:py-36 px-6 sm:px-10 lg:px-16">
-        <div class="max-w-[1440px] mx-auto w-full">
+        <div class="section-shell w-full">
           <AnimateOnScroll variant="fadeUp">
             <span class="block mb-4" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#E5322D">{{ pg.hero.tag }}</span>
             <h1 class="text-white mb-4 max-w-2xl headline-balance" style="font-size:clamp(2.5rem,5vw,4.2rem);font-weight:800;line-height:1.04">{{ pg.hero.title }}</h1>
@@ -54,8 +54,8 @@ const onSubmit = (e: Event) => {
       </div>
     </section>
 
-    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-10 bg-white dark:bg-[#0A0A0A]">
-      <div class="max-w-[1440px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <section class="page-section page-section--light">
+      <div class="section-shell grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <AnimateOnScroll v-for="(perk, i) in pg.perks" :key="perk.title" variant="fadeUp" :delay="i * 0.08">
           <div class="hover-lift rounded-[1.5rem] p-6 border border-black/10 dark:border-white/10 flex flex-col gap-4 hover:border-[#E5322D]/30 transition-colors h-full group bg-white dark:bg-[#111111]">
             <div class="w-10 h-10 flex items-center justify-center rounded-full" :style="{ background: RED }"><Star :size="18" class="text-white" /></div>
@@ -66,8 +66,8 @@ const onSubmit = (e: Event) => {
       </div>
     </section>
 
-    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-10 bg-[#F5F5F5] dark:bg-[#111111]">
-      <div class="max-w-[1440px] mx-auto">
+    <section class="page-section page-section--soft">
+      <div class="section-shell">
         <AnimateOnScroll class="mb-12" variant="fadeUp">
           <span class="block mb-3" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#E5322D">{{ pg.positions.title }}</span>
           <h2 class="text-[#111111] dark:text-white headline-balance" style="font-size:clamp(2rem,3.5vw,2.55rem);font-weight:800">{{ pg.positions.title }}</h2>
@@ -93,8 +93,8 @@ const onSubmit = (e: Event) => {
       </div>
     </section>
 
-    <section class="py-16 lg:py-20 px-4 sm:px-6 lg:px-10 bg-[#FDF3F2] dark:bg-[#151010]">
-      <div class="max-w-[1440px] mx-auto">
+    <section class="page-section page-section--soft" style="background:#FDF3F2">
+      <div class="section-shell">
         <h2 class="text-[#111111] dark:text-white mb-10 headline-balance" style="font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800">Processo di selezione rapido e trasparente</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
           <div class="hover-lift relative p-6 rounded-[1.5rem] bg-white dark:bg-[#111111] border border-black/10 dark:border-white/10">
@@ -119,8 +119,8 @@ const onSubmit = (e: Event) => {
       </div>
     </section>
 
-    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-10 bg-white dark:bg-[#0A0A0A]">
-      <div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+    <section class="page-section page-section--light">
+      <div class="section-shell grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
         <AnimateOnScroll variant="fadeLeft">
           <span class="block mb-4" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#E5322D">{{ pg.form.title }}</span>
           <h2 class="text-[#111111] dark:text-white mb-4 headline-balance" style="font-size:clamp(1.75rem,3vw,2.35rem);font-weight:800">{{ pg.form.title }}</h2>

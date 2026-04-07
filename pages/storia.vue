@@ -46,8 +46,8 @@ onMounted(() => {
 
 <template>
   <div>
-    <section class="bg-white dark:bg-[#0A0A0A] py-20 lg:py-28 px-4 sm:px-6 lg:px-10 border-b border-black/10 dark:border-white/10 overflow-hidden">
-      <div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section class="page-section page-section--light border-b border-black/10 dark:border-white/10 overflow-hidden">
+      <div class="section-shell grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <AnimateOnScroll variant="fadeLeft">
           <span class="block mb-4" style="font-size:0.75rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:#E5322D">{{ pg.hero.tag }}</span>
           <h1 class="text-[#111111] dark:text-white mb-6 headline-balance" style="font-size:clamp(2.5rem,5vw,4.25rem);font-weight:800;line-height:1.04;letter-spacing:-0.03em">{{ pg.hero.title }}</h1>
@@ -64,8 +64,8 @@ onMounted(() => {
       </div>
     </section>
 
-    <section class="hidden md:block py-20 lg:py-28 bg-[#F5F5F5] dark:bg-[#111111] relative overflow-hidden">
-      <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 mb-10 flex items-center justify-between">
+    <section class="hidden md:block page-section page-section--soft relative overflow-hidden">
+      <div class="section-shell mb-10 flex items-center justify-between">
         <h2 class="text-[#111111] dark:text-white headline-balance" style="font-size:clamp(1.5rem,2.5vw,2.1rem);font-weight:800">Timeline <span class="ml-3 inline-block" :style="{ color: RED }">1998 -> 2024</span></h2>
         <div class="flex gap-2">
           <button @click="scrollBy('left')" :disabled="!canScrollLeft" class="w-10 h-10 flex items-center justify-center rounded-full border border-black/20 dark:border-white/20 disabled:opacity-30 hover:bg-black/5 dark:hover:bg-white/5 transition-colors"><ArrowLeft :size="18" /></button>
@@ -105,7 +105,7 @@ onMounted(() => {
       </div>
     </section>
 
-    <section class="md:hidden bg-[#F5F5F5] dark:bg-[#111111] py-10 px-4">
+    <section class="md:hidden page-section page-section--soft py-10">
       <h2 class="mb-8 px-2 headline-balance" :style="{ fontSize: '1.5rem', fontWeight: 800, color: RED }">Timeline</h2>
       <div class="flex flex-col gap-0">
         <div v-for="(item, i) in pg.timeline" :key="item.year" class="flex gap-4 pb-8">
@@ -123,8 +123,8 @@ onMounted(() => {
       </div>
     </section>
 
-    <section class="hidden md:block py-20 px-4 sm:px-6 lg:px-10 bg-white dark:bg-[#0A0A0A]">
-      <div class="max-w-[1440px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    <section class="hidden md:block page-section page-section--light">
+      <div class="section-shell grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <AnimateOnScroll v-for="(item, i) in pg.timeline" :key="item.year" variant="fadeUp" :delay="i * 0.06">
           <div class="hover-lift rounded-[1.5rem] border border-black/10 dark:border-white/10 flex flex-col hover:border-[#E5322D]/30 transition-colors overflow-hidden group h-full bg-white dark:bg-[#111111]">
             <div class="overflow-hidden" style="aspect-ratio:4/3"><img :src="TIMELINE_IMAGES[i]" :alt="item.year" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></div>
@@ -138,10 +138,10 @@ onMounted(() => {
       </div>
     </section>
 
-    <section class="relative py-24 px-4 sm:px-6 lg:px-10 overflow-hidden">
+    <section class="relative page-section overflow-hidden">
       <div class="absolute inset-0"><img :src="STORIA_IMG_3" alt="" class="w-full h-full object-cover" style="filter:brightness(0.15)"></div>
       <div class="absolute inset-0 bg-[#0A0A0A]/70" />
-      <AnimateOnScroll variant="fadeUp" class="relative z-10 max-w-[1440px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
+      <AnimateOnScroll variant="fadeUp" class="relative z-10 section-shell flex flex-col lg:flex-row items-center justify-between gap-8">
         <h2 class="text-white headline-balance" style="font-size:clamp(1.75rem,3vw,2.55rem);font-weight:800;line-height:1.08">{{ pg.cta }}</h2>
         <NuxtLink to="/lavora-con-noi" class="cta-premium flex-shrink-0 inline-flex items-center gap-2 px-8 py-4 text-white hover:opacity-90 transition-opacity rounded-full" :style="{ background: RED, fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }">
           {{ t.nav.lavora }} <ArrowRight :size="16" />

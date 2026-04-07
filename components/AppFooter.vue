@@ -7,11 +7,12 @@ const offices = computed(() => t.value.contattiPage.offices)
 </script>
 
 <template>
-  <footer class="text-white bg-black relative overflow-hidden" style="font-family:'DM Sans',sans-serif">
-    <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(60rem 40rem at 80% -10%, rgba(229, 50, 45, 0.22), transparent 70%)" />
+  <footer class="text-white bg-[#090909] relative overflow-hidden" style="font-family:'DM Sans',sans-serif">
+    <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(60rem 40rem at 80% -10%, rgba(229, 50, 45, 0.26), transparent 70%)" />
+    <div class="absolute inset-x-0 top-0 h-px bg-white/10" />
 
     <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 pt-16 lg:pt-20 pb-12 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
         <div class="lg:col-span-4">
           <NuxtLink to="/" class="inline-flex items-center mb-6">
             <img :src="logoRondi" alt="Trasporti Rondi" class="h-12 w-auto object-contain">
@@ -32,7 +33,7 @@ const offices = computed(() => t.value.contattiPage.offices)
           <div
             v-for="office in offices.slice(0, 2)"
             :key="office.id"
-            class="hover-lift rounded-2xl border border-white/12 bg-white/5 backdrop-blur-sm p-5"
+            class="hover-lift rounded-[1.5rem] border border-white/10 bg-white/5 backdrop-blur-sm p-5"
           >
             <h4 class="text-sm font-bold mb-3 uppercase tracking-[0.08em] text-white">{{ office.name }}</h4>
             <p class="text-white/70 text-sm leading-6 whitespace-pre-line mb-3 inline-flex items-start gap-2"><MapPin :size="14" class="mt-1 text-[#E5322D]" />{{ office.address }}</p>

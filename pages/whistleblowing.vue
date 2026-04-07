@@ -17,9 +17,9 @@ const onSubmit = (e: Event) => {
 
 <template>
   <div>
-    <section class="relative bg-[#0A0A0A] dark:bg-[#050505] py-24 lg:py-36 px-4 sm:px-6 lg:px-10 overflow-hidden">
+    <section class="relative page-section page-section--dark overflow-hidden">
       <div class="absolute left-0 top-0 bottom-0 w-1" :style="{ background: RED }" />
-      <div class="max-w-[1440px] mx-auto max-w-2xl">
+      <div class="section-shell max-w-2xl">
         <AnimateOnScroll variant="fadeUp">
           <span class="block mb-4" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#E5322D">{{ pg.hero.tag }}</span>
           <h1 class="text-white mb-4 headline-balance" style="font-size:clamp(2.5rem,5vw,4.2rem);font-weight:800;line-height:1.04">{{ pg.hero.title }}</h1>
@@ -28,8 +28,8 @@ const onSubmit = (e: Event) => {
       </div>
     </section>
 
-    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-10 bg-white dark:bg-[#0A0A0A]">
-      <div class="max-w-[1440px] mx-auto">
+    <section class="page-section page-section--light">
+      <div class="section-shell">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-16">
           <AnimateOnScroll variant="fadeLeft">
             <h2 class="mb-6 headline-balance" :style="{ fontSize: 'clamp(1.75rem,3vw,2.55rem)', fontWeight: 800, color: RED }">{{ pg.info.title }}</h2>
@@ -52,7 +52,7 @@ const onSubmit = (e: Event) => {
       </div>
     </section>
 
-    <section class="py-20 lg:py-28 px-4 sm:px-6 lg:px-10 bg-[#F5F5F5] dark:bg-[#111111]">
+    <section class="page-section page-section--soft">
       <div class="max-w-[800px] mx-auto">
         <AnimateOnScroll variant="fadeUp" class="mb-10">
           <span class="block mb-3" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#E5322D">{{ pg.form.title }}</span>

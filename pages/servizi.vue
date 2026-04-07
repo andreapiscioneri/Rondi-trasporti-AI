@@ -16,7 +16,7 @@ const SERVICE_IMAGES = [
 
 <template>
   <div>
-    <section class="relative bg-[#0A0A0A] dark:bg-[#050505] py-24 lg:py-36 px-4 sm:px-6 lg:px-10 overflow-hidden">
+    <section class="relative page-section page-section--dark overflow-hidden">
       <div class="absolute inset-0">
         <img
           src="https://images.unsplash.com/photo-1668532070017-1956f52f097f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920"
@@ -26,7 +26,7 @@ const SERVICE_IMAGES = [
         <div class="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/75 to-transparent" />
       </div>
       <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#E5322D]" />
-      <div class="max-w-[1440px] mx-auto relative z-10">
+      <div class="section-shell relative z-10">
         <span
           class="block mb-4"
           style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #E5322D"
@@ -48,8 +48,8 @@ const SERVICE_IMAGES = [
       </div>
     </section>
 
-    <div class="sticky top-[72px] z-30 bg-white/80 dark:bg-black/70 border-b border-black/10 dark:border-white/10 overflow-x-auto backdrop-blur-xl">
-      <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex gap-2 py-3 whitespace-nowrap">
+    <div class="sticky top-[82px] z-30 bg-white/80 dark:bg-black/70 border-b border-black/10 dark:border-white/10 overflow-x-auto backdrop-blur-xl">
+      <div class="section-shell px-4 sm:px-6 lg:px-10 flex gap-2 py-3 whitespace-nowrap">
         <a
           v-for="(item, i) in t.serviziPage.items"
           :key="item.id"
@@ -67,9 +67,9 @@ const SERVICE_IMAGES = [
       v-for="(item, i) in t.serviziPage.items"
       :id="item.id"
       :key="item.id"
-      :class="`py-20 lg:py-28 px-4 sm:px-6 lg:px-10 ${i % 2 === 0 ? 'bg-white dark:bg-[#0A0A0A]' : 'bg-[#F5F5F5] dark:bg-[#111111]'}`"
+      :class="`page-section ${i % 2 === 0 ? 'page-section--light' : 'page-section--soft'}`"
     >
-      <div class="max-w-[1440px] mx-auto">
+      <div class="section-shell">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div class="relative overflow-hidden group">
             <div class="overflow-hidden rounded-[2rem] shadow-[0_28px_70px_rgba(0,0,0,0.14)]" style="aspect-ratio: 4/3">
