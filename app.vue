@@ -13,8 +13,8 @@ watch(
 
 <template>
   <div
-    class="min-h-screen flex flex-col bg-white dark:bg-[#0A0A0A] text-[#333333] dark:text-white transition-colors duration-300"
-    style="font-family: 'Roboto', sans-serif"
+    class="modern-shell min-h-screen flex flex-col bg-white dark:bg-[#0A0A0A] text-[#333333] dark:text-white transition-colors duration-300"
+    style="font-family: 'DM Sans', sans-serif"
   >
     <div class="site-atmosphere" />
     <AppHeader />

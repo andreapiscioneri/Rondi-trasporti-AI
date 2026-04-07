@@ -2,11 +2,19 @@
 @import './tailwind.css';
 @import './theme.css';
 
-/* Roboto as global default */
+/* Global typography */
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+.display-title {
+  font-family: 'Manrope', sans-serif;
 }
 
 /* Hide scrollbar utility */
@@ -23,8 +31,35 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body,
+#__nuxt {
+  max-width: 100%;
+}
+
 body {
   overflow-x: hidden;
+}
+
+main section {
+  position: relative;
+}
+
+img {
+  backface-visibility: hidden;
+}
+
+input,
+select,
+textarea {
+  border-radius: 12px;
+  transition: border-color 0.24s ease, box-shadow 0.24s ease, transform 0.24s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  box-shadow: 0 0 0 3px rgba(229, 50, 45, 0.14);
 }
 
 .site-atmosphere {
@@ -39,11 +74,25 @@ body {
   animation: driftAura 18s ease-in-out infinite alternate;
 }
 
+.site-atmosphere::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 0.7px, transparent 0.7px);
+  background-size: 3px 3px;
+  opacity: 0.18;
+}
+
 .dark .site-atmosphere {
   background:
     radial-gradient(44rem 44rem at 10% 12%, rgba(229, 50, 45, 0.16), transparent 70%),
     radial-gradient(36rem 36rem at 86% 20%, rgba(229, 50, 45, 0.12), transparent 70%),
     radial-gradient(40rem 40rem at 50% 90%, rgba(255, 255, 255, 0.05), transparent 70%);
+}
+
+.dark .site-atmosphere::after {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.035) 0.7px, transparent 0.7px);
+  opacity: 0.24;
 }
 
 .glass-elevated {
@@ -70,6 +119,75 @@ body {
 .interactive-control:focus-visible {
   border-color: rgba(229, 50, 45, 0.78);
   box-shadow: 0 0 0 3px rgba(229, 50, 45, 0.16);
+}
+
+.modern-shell {
+  position: relative;
+}
+
+.modern-shell::before {
+  content: '';
+  position: fixed;
+  inset: -30% -20% auto;
+  height: 50vh;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(closest-side, rgba(229, 50, 45, 0.1), transparent 70%);
+  filter: blur(22px);
+}
+
+.dark .modern-shell::before {
+  background: radial-gradient(closest-side, rgba(229, 50, 45, 0.18), transparent 70%);
+}
+
+.surface-card {
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.68));
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.dark .surface-card {
+  background: linear-gradient(155deg, rgba(17, 17, 17, 0.86), rgba(10, 10, 10, 0.68));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.35);
+}
+
+.cta-premium {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.cta-premium::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(255, 255, 255, 0.18), transparent 50%);
+  transform: translateX(-120%);
+  transition: transform 0.55s cubic-bezier(0.2, 0.9, 0.25, 1);
+  z-index: -1;
+}
+
+.cta-premium:hover::before {
+  transform: translateX(120%);
+}
+
+.hover-lift {
+  transition: transform 0.32s cubic-bezier(0.2, 0.9, 0.25, 1), box-shadow 0.32s cubic-bezier(0.2, 0.9, 0.25, 1), border-color 0.25s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 36px rgba(0, 0, 0, 0.12);
+}
+
+.dark .hover-lift:hover {
+  box-shadow: 0 20px 36px rgba(0, 0, 0, 0.4);
+}
+
+.headline-balance {
+  text-wrap: balance;
 }
 
 @keyframes driftAura {

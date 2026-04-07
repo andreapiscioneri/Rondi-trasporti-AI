@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { Menu, Moon, Sun, X } from 'lucide-vue-next'
+import { Mail, Menu, Moon, Phone, Sun, X } from 'lucide-vue-next'
 import logoRondi from '~/assets/images/trasporti_rondi_logo.png'
-
-const RED = '#E5322D'
 
 const { theme, toggleTheme } = useTheme()
 const { lang, t, toggleLang } = useLang()
-
 const route = useRoute()
+
 const mobileOpen = ref(false)
 const scrolled = ref(false)
+const RED = '#E5322D'
 
 const navLinks = computed(() => [
   { label: t.value.nav.home, href: '/' },
@@ -20,13 +19,12 @@ const navLinks = computed(() => [
   { label: t.value.nav.contatti, href: '/contatti' },
 ])
 
-const isActive = (href: string) =>
-  href === '/' ? route.path === '/' : route.path.startsWith(href)
+const isActive = (href: string) => (href === '/' ? route.path === '/' : route.path.startsWith(href))
 
-const bgClass = computed(() =>
+const headerClass = computed(() =>
   scrolled.value
-    ? 'bg-white/95 dark:bg-[#0A0A0A]/95 backdrop-blur-md shadow-sm'
-    : 'bg-white dark:bg-[#0A0A0A]',
+    ? 'bg-white/80 dark:bg-black/72 border-black/10 dark:border-white/10 shadow-[0_22px_70px_rgba(0,0,0,0.2)] backdrop-blur-xl'
+    : 'bg-white/58 dark:bg-black/55 border-transparent backdrop-blur-md',
 )
 
 watch(
@@ -44,7 +42,7 @@ watch(mobileOpen, (open) => {
 
 onMounted(() => {
   const onScroll = () => {
-    scrolled.value = window.scrollY > 20
+    scrolled.value = window.scrollY > 18
   }
   onScroll()
   window.addEventListener('scroll', onScroll, { passive: true })
@@ -53,144 +51,112 @@ onMounted(() => {
 </script>
 
 <template>
-  <header
-    :class="`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-black/10 dark:border-white/10 ${bgClass}`"
-    style="font-family: 'Roboto', sans-serif"
-  >
-    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 h-[72px] flex items-center justify-between gap-6">
-      <NuxtLink to="/" class="flex items-center flex-shrink-0 group">
-        <img
-          :src="logoRondi"
-          alt="Trasporti Rondi"
-          class="h-10 sm:h-11 w-auto object-contain"
-        >
-      </NuxtLink>
+  <header class="fixed inset-x-0 top-0 z-50" style="font-family:'DM Sans',sans-serif">
+    <div class="hidden lg:block text-white bg-black border-b border-white/10">
+      <div class="max-w-[1440px] mx-auto px-6 xl:px-10 h-10 flex items-center justify-between text-[0.7rem] tracking-[0.12em] uppercase">
+        <div class="flex items-center gap-5">
+          <a href="tel:+390301234567" class="inline-flex items-center gap-2 text-white/75 hover:text-white transition-colors"><Phone :size="12" /> +39 030 123 4567</a>
+          <a href="mailto:info@trasportirondi.it" class="inline-flex items-center gap-2 text-white/75 hover:text-white transition-colors"><Mail :size="12" /> info@trasportirondi.it</a>
+        </div>
+        <span class="text-white/52">Trasporto Industriale e Logistica Integrata</span>
+      </div>
+    </div>
 
-      <nav class="hidden lg:flex items-center gap-1">
-        <NuxtLink
-          v-for="link in navLinks"
-          :key="link.href"
-          :to="link.href"
-          class="relative px-3 py-2 transition-colors duration-200 group"
-          :style="{
-            fontSize: '0.8125rem',
-            fontWeight: 500,
-            letterSpacing: '0.06em',
-            textTransform: 'uppercase',
-            color: isActive(link.href) ? RED : undefined,
-          }"
-        >
-          <span
+    <div :class="`transition-all duration-400 border-b ${headerClass}`">
+      <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 h-[78px] flex items-center justify-between gap-6">
+        <NuxtLink to="/" class="flex items-center gap-3">
+          <img :src="logoRondi" alt="Trasporti Rondi" class="h-11 sm:h-12 w-auto object-contain transition-transform duration-500 hover:scale-[1.02]">
+        </NuxtLink>
+
+        <nav class="hidden lg:flex items-center gap-1 rounded-full border border-black/10 dark:border-white/10 px-2 py-1 surface-card">
+          <NuxtLink
+            v-for="link in navLinks"
+            :key="link.href"
+            :to="link.href"
+            class="relative px-3 py-2 text-[0.74rem] font-semibold tracking-[0.12em] uppercase rounded-full transition-all duration-300"
             :class="isActive(link.href)
-              ? ''
-              : 'text-[#333333] dark:text-[#CCCCCC] group-hover:text-[#111111] dark:group-hover:text-white transition-colors'"
+              ? 'text-[#E5322D] bg-[#E5322D]/10 dark:bg-[#E5322D]/20'
+              : 'text-black/65 dark:text-white/78 hover:text-black dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.06]'"
           >
             {{ link.label }}
-          </span>
-          <span
-            v-if="isActive(link.href)"
-            class="absolute bottom-0 left-3 right-3 h-[2px]"
+          </NuxtLink>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <button
+            class="interactive-control hidden sm:flex items-center gap-1 px-3 py-1.5 rounded-full border border-black/15 dark:border-white/20 hover:border-black/35 dark:hover:border-white/40 text-[0.68rem] font-bold tracking-[0.1em] uppercase text-black/75 dark:text-white"
+            @click="toggleLang"
+          >
+            {{ t.nav.langSwitch }}
+          </button>
+
+          <button
+            class="interactive-control w-9 h-9 flex items-center justify-center rounded-full border border-black/15 dark:border-white/20 hover:border-black/35 dark:hover:border-white/40 text-black/70 dark:text-white"
+            aria-label="Toggle theme"
+            @click="toggleTheme"
+          >
+            <Moon v-if="theme === 'light'" :size="16" />
+            <Sun v-else :size="16" />
+          </button>
+
+          <NuxtLink
+            to="/contatti"
+            class="cta-premium hidden md:inline-flex items-center px-5 py-2.5 text-white text-[0.72rem] font-bold tracking-[0.1em] uppercase hover:opacity-95 transition-all duration-300 rounded-full"
             :style="{ background: RED }"
-          />
-        </NuxtLink>
-      </nav>
+          >
+            {{ lang === 'it' ? 'Richiedi Preventivo' : 'Request Quote' }}
+          </NuxtLink>
 
-      <div class="flex items-center gap-2">
-        <button
-          class="hidden sm:flex items-center gap-1 px-3 py-1.5 border border-black/20 dark:border-white/20 hover:border-black/40 dark:hover:border-white/40 transition-colors"
-          style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; color: #333333"
-          @click="toggleLang"
-        >
-          <span class="dark:text-white">{{ t.nav.langSwitch }}</span>
-        </button>
-
-        <button
-          class="w-9 h-9 flex items-center justify-center border border-black/20 dark:border-white/20 hover:border-black/40 dark:hover:border-white/40 transition-colors text-[#333333] dark:text-white"
-          aria-label="Toggle theme"
-          @click="toggleTheme"
-        >
-          <Moon v-if="theme === 'light'" :size="16" />
-          <Sun v-else :size="16" />
-        </button>
-
-        <NuxtLink
-          to="/contatti"
-          class="hidden md:flex items-center px-4 py-2 text-white transition-opacity hover:opacity-90"
-          style="background: #E5322D; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase"
-        >
-          {{ lang === 'it' ? 'Preventivo' : 'Get a Quote' }}
-        </NuxtLink>
-
-        <button
-          class="lg:hidden w-9 h-9 flex items-center justify-center text-[#333333] dark:text-white"
-          aria-label="Toggle menu"
-          @click="mobileOpen = !mobileOpen"
-        >
-          <X v-if="mobileOpen" :size="20" />
-          <Menu v-else :size="20" />
-        </button>
+          <button
+            class="lg:hidden w-9 h-9 flex items-center justify-center text-black dark:text-white"
+            aria-label="Toggle menu"
+            @click="mobileOpen = !mobileOpen"
+          >
+            <X v-if="mobileOpen" :size="20" />
+            <Menu v-else :size="20" />
+          </button>
+        </div>
       </div>
     </div>
 
     <div
       :class="`fixed inset-0 z-40 lg:hidden transition-opacity duration-300 ${mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`"
-      style="background: rgba(0,0,0,0.5)"
+      style="background:rgba(0,0,0,0.55)"
       @click="mobileOpen = false"
     />
 
-    <div
-      class="fixed top-0 right-0 bottom-0 z-50 w-80 max-w-full bg-white dark:bg-[#0A0A0A] lg:hidden transition-transform duration-300 flex flex-col"
-      :style="{ transform: mobileOpen ? 'translateX(0)' : 'translateX(100%)', fontFamily: '\'Roboto\', sans-serif' }"
+    <aside
+      class="fixed top-0 right-0 bottom-0 z-50 w-80 max-w-full bg-white dark:bg-black lg:hidden transition-transform duration-300 flex flex-col"
+      :style="{ transform: mobileOpen ? 'translateX(0)' : 'translateX(100%)' }"
     >
-      <div class="flex items-center justify-between px-6 h-[72px] border-b border-black/10 dark:border-white/10">
-        <img :src="logoRondi" alt="Trasporti Rondi" class="h-9 w-auto object-contain">
-        <button class="text-[#333333] dark:text-white" @click="mobileOpen = false">
-          <X :size="20" />
-        </button>
+      <div class="h-[78px] px-6 flex items-center justify-between border-b border-black/10 dark:border-white/10">
+        <img :src="logoRondi" alt="Trasporti Rondi" class="h-10 w-auto">
+        <button class="text-black dark:text-white" @click="mobileOpen = false"><X :size="20" /></button>
       </div>
-      <nav class="flex-1 overflow-y-auto py-6 px-6 flex flex-col gap-1">
+
+      <nav class="flex-1 overflow-y-auto p-6 flex flex-col gap-1">
         <NuxtLink
           v-for="link in navLinks"
           :key="link.href"
           :to="link.href"
-          class="flex items-center py-3 border-b border-black/5 dark:border-white/5 transition-colors"
-          :style="{ fontSize: '1rem', fontWeight: isActive(link.href) ? 700 : 400, color: isActive(link.href) ? RED : undefined }"
+          class="py-3 border-b border-black/8 dark:border-white/10 text-[0.95rem]"
+          :class="isActive(link.href) ? 'font-bold text-[#E5322D]' : 'text-black/75 dark:text-white/80'"
         >
-          <span :class="isActive(link.href) ? '' : 'text-[#333333] dark:text-[#CCCCCC]'">
-            {{ link.label }}
-          </span>
+          {{ link.label }}
         </NuxtLink>
         <NuxtLink
           to="/whistleblowing"
-          class="flex items-center py-3 border-b border-black/5 dark:border-white/5"
-          style="font-size: 1rem; font-weight: 400"
+          class="py-3 border-b border-black/8 dark:border-white/10 text-[0.95rem]"
+          :class="isActive('/whistleblowing') ? 'font-bold text-[#E5322D]' : 'text-black/75 dark:text-white/80'"
         >
-          <span
-            :class="isActive('/whistleblowing') ? '' : 'text-[#333333] dark:text-[#CCCCCC]'"
-            :style="{ color: isActive('/whistleblowing') ? RED : undefined }"
-          >
-            {{ t.nav.whistleblowing }}
-          </span>
+          {{ t.nav.whistleblowing }}
         </NuxtLink>
       </nav>
-      <div class="p-6 border-t border-black/10 dark:border-white/10 flex gap-3">
-        <button
-          class="flex-1 py-2 border border-black/20 dark:border-white/20 text-[#333333] dark:text-white"
-          style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em"
-          @click="toggleLang"
-        >
-          {{ t.nav.langSwitch }}
-        </button>
-        <button
-          class="flex-1 py-2 border border-black/20 dark:border-white/20 text-[#333333] dark:text-white flex items-center justify-center gap-2"
-          style="font-size: 0.75rem; font-weight: 700"
-          @click="toggleTheme"
-        >
-          <Moon v-if="theme === 'light'" :size="14" />
-          <Sun v-else :size="14" />
-          {{ theme === 'light' ? 'Dark' : 'Light' }}
-        </button>
+
+      <div class="p-6 border-t border-black/10 dark:border-white/10 grid grid-cols-2 gap-3">
+        <button class="py-2 rounded-full border border-black/20 dark:border-white/20 text-[0.72rem] font-bold tracking-[0.08em] uppercase" @click="toggleLang">{{ t.nav.langSwitch }}</button>
+        <button class="py-2 rounded-full border border-black/20 dark:border-white/20 text-[0.72rem] font-bold tracking-[0.08em] uppercase" @click="toggleTheme">{{ theme === 'light' ? 'Dark' : 'Light' }}</button>
       </div>
-    </div>
+    </aside>
   </header>
 </template>
