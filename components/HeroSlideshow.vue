@@ -213,7 +213,7 @@ onBeforeUnmount(() => {
     <div class="absolute left-0 top-0 w-[3px] h-full bg-[#E5322D]" />
 
     <!-- ── Main copy ── -->
-    <div class="absolute inset-0 flex flex-col justify-end p-5 pb-20 sm:p-10 sm:pb-28 lg:p-16 lg:pb-32">
+    <div class="absolute inset-0 flex flex-col justify-end p-5 pb-36 sm:p-10 sm:pb-28 lg:p-16 lg:pb-32">
       <div class="max-w-[1440px] mx-auto w-full">
 
         <!-- Tag -->
@@ -279,7 +279,7 @@ onBeforeUnmount(() => {
     </div>
 
     <!-- ── Bottom controls ── -->
-    <div class="absolute bottom-0 left-0 right-0 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between px-5 sm:px-10 lg:px-16 pb-5 sm:pb-8">
+    <div class="absolute bottom-0 left-0 right-0 flex flex-col items-center gap-6 sm:gap-4 sm:flex-row sm:items-end sm:justify-between px-5 sm:px-10 lg:px-16 pb-5 sm:pb-8">
 
       <!-- Progress bars (one per slide) -->
       <div class="flex items-center gap-2">
