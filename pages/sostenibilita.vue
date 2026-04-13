@@ -22,18 +22,21 @@ const SECTION_IMAGES = [
 
 <template>
   <div>
-    <section class="relative overflow-hidden page-section page-section--dark" style="min-height:480px">
+    <section class="relative w-full overflow-hidden bg-black" style="min-height:92svh; height:92svh; max-height:960px">
       <div class="absolute inset-0">
         <img src="https://images.pexels.com/photos/29206500/pexels-photo-29206500.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=2200" alt="" class="w-full h-full object-cover opacity-25 scale-105">
         <div class="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/72 to-transparent" />
       </div>
       <div class="absolute left-0 top-0 bottom-0 w-1" :style="{ background: RED }" />
-      <div class="relative z-10 flex flex-col justify-end py-24 lg:py-36 px-6 sm:px-10 lg:px-16">
-        <div class="section-shell w-full">
+      <div class="absolute inset-0 flex flex-col justify-end p-5 pb-20 sm:p-10 sm:pb-28 lg:p-16 lg:pb-32">
+        <div class="mx-auto w-full max-w-[1440px]">
           <AnimateOnScroll variant="fadeRight">
-            <span class="block mb-4" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#E5322D">{{ pg.hero.tag }}</span>
-            <h1 class="text-white mb-4 max-w-2xl headline-balance" style="font-size:clamp(2.5rem,5vw,4.2rem);font-weight:800;line-height:1.04;letter-spacing:-0.03em">{{ pg.hero.title }}</h1>
-            <p class="text-white/62 max-w-lg" style="font-size:clamp(1rem,1.5vw,1.125rem);line-height:1.72">{{ pg.hero.subtitle }}</p>
+            <span class="mb-4 sm:mb-5 inline-flex items-center gap-2 text-white/62" style="font-size:0.7rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase">
+              <span class="h-px w-6 sm:w-7 bg-[#E5322D]" />
+              {{ pg.hero.tag }}
+            </span>
+            <h1 class="text-white mb-4 sm:mb-5 max-w-4xl headline-balance" style="font-size:clamp(2.5rem,5vw,4.2rem);font-weight:800;line-height:1.04;letter-spacing:-0.03em">{{ pg.hero.title }}</h1>
+            <p class="text-white/62 max-w-xl" style="font-size:clamp(1rem,1.5vw,1.125rem);line-height:1.72">{{ pg.hero.subtitle }}</p>
           </AnimateOnScroll>
         </div>
       </div>
