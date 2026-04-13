@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Mail, Menu, Phone, Plus, X } from 'lucide-vue-next'
+import { Mail, Menu, Phone, Plus, UserRound, X } from 'lucide-vue-next'
 import logoRondi from '~/assets/images/trasporti_rondi_logo.png'
 
 const { lang, t, toggleLang } = useLang()
@@ -210,16 +210,27 @@ onMounted(() => {
       </nav>
 
       <!-- Drawer footer: lang + theme -->
-      <div class="p-6 border-t border-white/10 flex items-center justify-between gap-3 flex-shrink-0">
-        <button
-          class="flex-1 py-2 border border-white/14 text-[0.72rem] font-bold tracking-[0.08em] uppercase bg-white/5 hover:bg-white/10 transition-colors rounded-sm"
-          @click="toggleLang"
+      <div class="p-6 border-t border-white/10 flex flex-col gap-3 flex-shrink-0">
+        <NuxtLink
+          :to="localePath('/account')"
+          @click="handleNavClick('/account')"
+          class="inline-flex items-center justify-center gap-2 rounded-sm border border-[#E5322D]/35 bg-white/5 px-4 py-3 text-[0.72rem] font-bold tracking-[0.08em] uppercase text-white transition-colors hover:bg-[#E5322D] hover:text-white"
         >
-          {{ t.nav.langSwitch }}
-        </button>
+          <UserRound :size="14" />
+          {{ t.nav.account }}
+        </NuxtLink>
 
-        <!-- ThemeToggle in drawer — same pill component -->
-        <UiThemeToggle variant="on-dark" />
+        <div class="flex items-center justify-between gap-3">
+          <button
+            class="flex-1 py-2 border border-white/14 text-[0.72rem] font-bold tracking-[0.08em] uppercase bg-white/5 hover:bg-white/10 transition-colors rounded-sm"
+            @click="toggleLang"
+          >
+            {{ t.nav.langSwitch }}
+          </button>
+
+          <!-- ThemeToggle in drawer — same pill component -->
+          <UiThemeToggle variant="on-dark" />
+        </div>
       </div>
     </aside>
   </header>
