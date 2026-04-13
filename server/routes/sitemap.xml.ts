@@ -11,12 +11,10 @@ const PAGES = [
   { path: '/',               priority: '1.0', freq: 'weekly'  },
   { path: '/servizi',        priority: '0.9', freq: 'monthly' },
   { path: '/trasporto-nazionale', priority: '0.86', freq: 'monthly' },
-  { path: '/trasporto-standard', priority: '0.86', freq: 'monthly' },
   { path: '/trasporto-internazionale', priority: '0.86', freq: 'monthly' },
   { path: '/trasporto-eccezionale', priority: '0.86', freq: 'monthly' },
   { path: '/gru-e-movimentazioni', priority: '0.84', freq: 'monthly' },
   { path: '/soluzioni-logistiche', priority: '0.84', freq: 'monthly' },
-  { path: '/noleggio-mezzi-gruati', priority: '0.84', freq: 'monthly' },
   { path: '/preventivo',     priority: '0.9', freq: 'monthly' },
   { path: '/sostenibilita',  priority: '0.8', freq: 'monthly' },
   { path: '/storia',         priority: '0.7', freq: 'yearly'  },
@@ -39,10 +37,17 @@ const GEO_SERVICE_PAGES = GEO_SERVICE_ROOT_PATHS.map(path => ({
   freq: 'monthly',
 }))
 
+function withLocaleVariants<T extends { path: string; priority: string; freq: string }>(entries: T[]) {
+  return entries.flatMap((entry) => {
+    const enPath = entry.path === '/' ? '/en' : `/en${entry.path}`
+    return [entry, { ...entry, path: enPath }]
+  })
+}
+
 export default defineEventHandler(() => {
   const now = new Date().toISOString().split('T')[0]
 
-  const allPages = [...PAGES, ...GEO_SERVICE_PAGES, ...LOCAL_PAGES]
+  const allPages = withLocaleVariants([...PAGES, ...GEO_SERVICE_PAGES, ...LOCAL_PAGES])
 
   const urls = allPages.map(p => `
   <url>

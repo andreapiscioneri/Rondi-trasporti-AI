@@ -87,6 +87,18 @@ const mapEmbedUrl = computed(() => {
   return `https://www.google.com/maps?q=${lat},${lng}&z=12&output=embed`
 })
 
+const geoPosition = computed(() => `${city.value!.lat};${city.value!.lng}`)
+const geoIcbm = computed(() => `${city.value!.lat}, ${city.value!.lng}`)
+
+useHead(() => ({
+  meta: [
+    { key: 'geo-region', name: 'geo.region', content: `IT-${city.value!.province}` },
+    { key: 'geo-placename', name: 'geo.placename', content: city.value!.name },
+    { key: 'geo-position', name: 'geo.position', content: geoPosition.value },
+    { key: 'geo-icbm', name: 'ICBM', content: geoIcbm.value },
+  ],
+}))
+
 const localBusinessSchema = computed(() => ({
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',

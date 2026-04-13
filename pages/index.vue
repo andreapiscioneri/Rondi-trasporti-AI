@@ -2,6 +2,7 @@
 import { ArrowRight, Building2, Factory, Globe, Maximize2, Package, Train, Truck, Wrench } from 'lucide-vue-next'
 
 const { lang, t } = useLang()
+const localePath = useLocalePath()
 
 useSeo({
   title: 'Trasporti Rondi — Logistica Industriale dal 1998',
@@ -201,7 +202,7 @@ onMounted(() => {
         </div>
 
         <AnimateOnScroll variant="fadeUp" :delay="0.2" class="mt-10 flex justify-center sm:justify-start">
-          <NuxtLink to="/servizi" class="cta-premium inline-flex items-center gap-2 px-6 py-3 border border-black/10 dark:border-white/10 text-[#111111] dark:text-white rounded-full hover:bg-[#E5322D] hover:text-white hover:border-[#E5322D] transition-all duration-300" style="font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">
+          <NuxtLink :to="localePath('/servizi')" class="cta-premium inline-flex items-center gap-2 px-6 py-3 border border-black/10 dark:border-white/10 text-[#111111] dark:text-white rounded-full hover:bg-[#E5322D] hover:text-white hover:border-[#E5322D] transition-all duration-300" style="font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">
             {{ t.services.cta }}
             <ArrowRight :size="16" />
           </NuxtLink>
@@ -259,7 +260,7 @@ onMounted(() => {
           <div class="flex flex-wrap gap-2 mb-8">
             <span v-for="cert in t.sustainability.certs" :key="cert" class="px-3 py-1.5 rounded-full border border-black/20 dark:border-white/20 text-[#333333] dark:text-[#CCCCCC]" style="font-size:0.75rem;font-weight:700">{{ cert }}</span>
           </div>
-          <NuxtLink to="/sostenibilita" class="cta-premium inline-flex items-center gap-2 px-6 py-3 text-white transition-all hover:gap-3 rounded-full" style="background:#E5322D;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">{{ t.sustainability.cta }} <ArrowRight :size="16" /></NuxtLink>
+          <NuxtLink :to="localePath('/sostenibilita')" class="cta-premium inline-flex items-center gap-2 px-6 py-3 text-white transition-all hover:gap-3 rounded-full" style="background:#E5322D;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">{{ t.sustainability.cta }} <ArrowRight :size="16" /></NuxtLink>
         </AnimateOnScroll>
       </div>
     </section>

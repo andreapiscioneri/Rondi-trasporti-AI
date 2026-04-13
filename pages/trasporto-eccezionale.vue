@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 const { t } = useLang()
+const localePath = useLocalePath()
 const copy = computed(() => t.value.serviceDetails.exceptional)
 
 const serviceFaq = [
@@ -21,22 +22,22 @@ const serviceFaq = [
 const relatedServices = computed(() => [
   {
     title: copy.value.related[0],
-    href: '/trasporto-nazionale',
+    href: localePath('/trasporto-nazionale'),
     image: 'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
   {
     title: copy.value.related[1],
-    href: '/trasporto-internazionale',
+    href: localePath('/trasporto-internazionale'),
     image: 'https://images.unsplash.com/photo-1772959785247-e0904e476455?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
   {
     title: copy.value.related[2],
-    href: '/gru-e-movimentazioni',
+    href: localePath('/gru-e-movimentazioni'),
     image: 'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
   {
     title: copy.value.related[3],
-    href: '/soluzioni-logistiche',
+    href: localePath('/soluzioni-logistiche'),
     image: 'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
 ])
@@ -67,7 +68,7 @@ useSeo({
     intro-image="https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1800"
     :tabs="copy.tabs"
     :cta-label="copy.ctaLabel"
-    cta-href="/preventivo"
+    :cta-href="localePath('/preventivo')"
     :why-title="copy.whyTitle"
     :why-text="copy.whyText"
     :checklist="copy.checklist"

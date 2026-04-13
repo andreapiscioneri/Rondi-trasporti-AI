@@ -58,6 +58,7 @@ useSeo({
   title: 'Trasporto Standard',
   description: 'Servizio di trasporto standard nazionale con rete capillare, monitoraggio continuo e pianificazione puntuale.',
   path: '/trasporto-standard',
+  noindex: true,
   jsonLd: [
     buildBreadcrumbSchema([
       { name: 'Home', href: '/' },

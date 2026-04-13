@@ -25,6 +25,7 @@ interface HeroSlide {
 }
 
 const props = defineProps<{ slides: HeroSlide[] }>()
+const localePath = useLocalePath()
 
 const RED = '#E5322D'
 const current = ref(0)
@@ -256,7 +257,7 @@ onBeforeUnmount(() => {
         <!-- CTAs -->
         <div ref="ctaRef" class="flex flex-col sm:flex-row gap-3 sm:flex-wrap" style="opacity:0">
           <NuxtLink
-            :to="currentSlide.ctaHref"
+            :to="localePath(currentSlide.ctaHref)"
             data-magnetic
             class="cta-premium inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-7 sm:py-3.5 text-white transition-all hover:gap-3 rounded-full"
             :style="{ background: RED, fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }"
@@ -267,7 +268,7 @@ onBeforeUnmount(() => {
 
           <NuxtLink
             v-if="currentSlide.ctaSecondary && currentSlide.ctaSecondaryHref"
-            :to="currentSlide.ctaSecondaryHref"
+            :to="localePath(currentSlide.ctaSecondaryHref)"
             class="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-7 sm:py-3.5 border border-white/35 text-white hover:bg-white/10 hover:border-white/65 transition-all rounded-full"
             style="font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase"
           >

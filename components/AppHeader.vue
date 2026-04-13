@@ -3,6 +3,7 @@ import { Mail, Menu, Phone, Plus, X } from 'lucide-vue-next'
 import logoRondi from '~/assets/images/trasporti_rondi_logo.png'
 
 const { lang, t, toggleLang } = useLang()
+const localePath = useLocalePath()
 const route = useRoute()
 
 const mobileOpen = ref(false)
@@ -39,13 +40,14 @@ const mobileMenuLinks = computed(() => [
 
 const isActive = (href: string) => {
   const cleanHref = href.split('#')[0] || href
-  return cleanHref === '/' ? route.path === '/' : route.path.startsWith(cleanHref)
+  const localizedHref = localePath(cleanHref)
+  return localizedHref === '/' ? route.path === '/' : route.path.startsWith(localizedHref)
 }
 
 function handleNavClick(href: string) {
   if (!import.meta.client) return
   const cleanHref = href.split('#')[0] || href
-  if (route.path === cleanHref) {
+  if (route.path === localePath(cleanHref)) {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 }
@@ -121,7 +123,7 @@ onMounted(() => {
           <NuxtLink
             v-for="link in desktopTransportLinks"
             :key="link.href"
-            :to="link.href"
+            :to="localePath(link.href)"
             @click="handleNavClick(link.href)"
             class="relative rounded-full px-4 py-2 text-[0.73rem] font-semibold tracking-[0.1em] uppercase transition-all duration-200"
             :class="isActive(link.href)
@@ -196,7 +198,7 @@ onMounted(() => {
         <NuxtLink
           v-for="link in mobileMenuLinks"
           :key="link.href"
-          :to="link.href"
+          :to="localePath(link.href)"
           @click="handleNavClick(link.href)"
           class="py-3.5 border-b border-white/8 text-[0.95rem] transition-colors duration-200"
           :class="isActive(link.href)

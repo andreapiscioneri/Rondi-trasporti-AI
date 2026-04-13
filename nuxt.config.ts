@@ -22,7 +22,7 @@ export default defineNuxtConfig({
   // ─── i18n ────────────────────────────────────────────────────────────────────
   i18n: {
     defaultLocale: 'it',
-    strategy: 'no_prefix',
+    strategy: 'prefix_except_default',
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'rondi-lang',

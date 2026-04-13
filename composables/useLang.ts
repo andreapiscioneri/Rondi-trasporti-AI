@@ -5,6 +5,7 @@ const langState = ref<Lang>('it')
 
 export const useLang = () => {
   const { locale } = useI18n()
+  const switchLocalePath = useSwitchLocalePath()
   const lang = langState
 
   if (locale.value === 'it' || locale.value === 'en') {
@@ -18,7 +19,16 @@ export const useLang = () => {
     locale.value = next
   }
 
-  const toggleLang = () => setLang(lang.value === 'it' ? 'en' : 'it')
+  const toggleLang = async () => {
+    const next = lang.value === 'it' ? 'en' : 'it'
+    const target = switchLocalePath(next)
+
+    setLang(next)
+
+    if (target) {
+      await navigateTo(target)
+    }
+  }
 
   return {
     lang,

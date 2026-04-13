@@ -22,11 +22,11 @@ export default defineNuxtPlugin(() => {
       { rel: 'dns-prefetch', href: 'https://images.unsplash.com' },
     ],
     meta: [
-      { property: 'og:url', content: canonicalUrl.value },
-      { name: 'geo.region', content: 'IT-25' },
-      { name: 'geo.placename', content: 'Brescia' },
-      { name: 'geo.position', content: '45.5416;10.2118' },
-      { name: 'ICBM', content: '45.5416, 10.2118' },
+      { key: 'og-url', property: 'og:url', content: canonicalUrl.value },
+      { key: 'geo-region', name: 'geo.region', content: 'IT-25' },
+      { key: 'geo-placename', name: 'geo.placename', content: 'Brescia' },
+      { key: 'geo-position', name: 'geo.position', content: '45.5416;10.2118' },
+      { key: 'geo-icbm', name: 'ICBM', content: '45.5416, 10.2118' },
     ],
   }))
 })

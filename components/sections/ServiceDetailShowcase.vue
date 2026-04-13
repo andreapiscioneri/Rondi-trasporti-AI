@@ -1,4 +1,19 @@
 <script setup lang="ts">
+import {
+  Boxes,
+  Compass,
+  FileCheck,
+  Gauge,
+  Globe,
+  Handshake,
+  Package,
+  Route,
+  ShieldCheck,
+  Truck,
+  Warehouse,
+  Wrench,
+} from 'lucide-vue-next'
+
 interface ServiceTab {
   label: string
   title: string
@@ -32,6 +47,34 @@ const currentTab = computed(() => props.tabs[activeTab.value] || props.tabs[0])
 const relatedGridClass = computed(() => (
   props.relatedServices.length >= 4 ? 'md:grid-cols-2 xl:grid-cols-4' : 'md:grid-cols-3'
 ))
+
+const fallbackIcons = [
+  Truck,
+  Globe,
+  Route,
+  FileCheck,
+  Warehouse,
+  Package,
+  Wrench,
+  Handshake,
+  ShieldCheck,
+  Gauge,
+  Compass,
+  Boxes,
+]
+
+function pickFallbackIcon(tab: ServiceTab, index: number) {
+  const seed = `${tab.label || ''}${tab.title || ''}`
+  const hash = seed
+    .split('')
+    .reduce((acc, ch) => acc + ch.charCodeAt(0), 0)
+
+  return fallbackIcons[(hash + index) % fallbackIcons.length]
+}
+
+function resolveTabIcon(tab: ServiceTab, index: number) {
+  return tab.icon || pickFallbackIcon(tab, index)
+}
 </script>
 
 <template>
@@ -79,7 +122,7 @@ const relatedGridClass = computed(() => (
               class="w-full max-w-[360px] sm:max-w-[420px] object-contain"
             >
             <div v-else class="h-[180px] w-[180px] sm:h-[220px] sm:w-[220px] rounded-full border border-black/20 dark:border-white/20 bg-white/40 dark:bg-white/6 flex items-center justify-center">
-              <component :is="currentTab.icon" :size="92" class="text-[#17171C] dark:text-white" />
+              <component :is="resolveTabIcon(currentTab, activeTab)" :size="92" class="text-[#17171C] dark:text-white" />
             </div>
           </div>
 

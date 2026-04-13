@@ -51,12 +51,20 @@ export interface SeoOptions {
 // ─── Main composable ──────────────────────────────────────────────────────────
 
 export function useSeo(options: SeoOptions) {
+  const route = useRoute()
+  const isEnglishRoute = (route.path || '/').startsWith('/en')
+  const ogLocale = isEnglishRoute ? 'en_US' : 'it_IT'
+  const ogLocaleAlternate = isEnglishRoute ? ['it_IT'] : ['en_US']
   const isHome    = !options.path || options.path === '/'
   const fullTitle = isHome
     ? SEO_SITE_NAME
     : `${options.title} | ${SEO_SITE_NAME}`
 
-  const canonical = `${SEO_BASE_URL}${options.path ?? ''}`
+  const routePath = route.path || '/'
+  const canonicalPath = routePath === '/en'
+    ? '/'
+    : routePath.replace(/^\/en(?=\/|$)/, '')
+  const canonical = `${SEO_BASE_URL}${routePath === '/' ? '' : routePath}`
   const ogImage   = options.image ?? OG_DEFAULT
 
   // Enforce 155-char limit on description
@@ -65,11 +73,12 @@ export function useSeo(options: SeoOptions) {
     : options.description
 
   // hreflang alternate links (IT default = canonical; EN = same URL for now)
-  // If you add /en/ prefix routes in future, update these hrefs accordingly.
+  // With locale-prefixed routes, strip/add the /en prefix as appropriate.
+  const enPath = canonicalPath === '/' ? '/en' : `/en${canonicalPath}`
   const alternateLinks = [
-    { rel: 'alternate', hreflang: 'it', href: canonical },
-    { rel: 'alternate', hreflang: 'en', href: canonical },
-    { rel: 'alternate', hreflang: 'x-default', href: canonical },
+    { rel: 'alternate', hreflang: 'it', href: `${SEO_BASE_URL}${canonicalPath === '/' ? '' : canonicalPath}` },
+    { rel: 'alternate', hreflang: 'en', href: `${SEO_BASE_URL}${enPath}` },
+    { rel: 'alternate', hreflang: 'x-default', href: `${SEO_BASE_URL}${canonicalPath === '/' ? '' : canonicalPath}` },
     { rel: 'canonical', href: canonical },
   ]
 
@@ -103,8 +112,8 @@ export function useSeo(options: SeoOptions) {
     ogType:        options.ogType ?? 'website',
     ogSiteName:    SEO_SITE_NAME,
     ogUrl:         canonical,
-    ogLocale:      'it_IT',
-    ogLocaleAlternate: ['en_US'],
+    ogLocale,
+    ogLocaleAlternate,
 
     // Twitter / X
     twitterCard:        'summary_large_image',

@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle2, Globe, Maximize2, Package, Truck, Wrench } fr
 import { buildGeoLocalPath, GEO_CITIES } from '~/shared/local-seo'
 
 const { t } = useLang()
+const localePath = useLocalePath()
 
 useSeo({
   title: 'Servizi di Trasporto e Logistica',
@@ -157,7 +158,7 @@ const pageFaqItems = [
             </div>
             <div class="flex flex-wrap gap-3">
               <NuxtLink
-                :to="serviceDetailPathByIndex(i)"
+                :to="localePath(serviceDetailPathByIndex(i))"
                 class="inline-flex items-center gap-2 px-6 py-3 border border-black/15 dark:border-white/20 text-[#111111] dark:text-white transition-all hover:border-[#E5322D]/40 hover:text-[#E5322D] rounded-full"
                 style="font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase"
               >
@@ -165,7 +166,7 @@ const pageFaqItems = [
                 <ArrowRight :size="16" />
               </NuxtLink>
               <NuxtLink
-                to="/preventivo"
+                :to="localePath('/preventivo')"
                 class="cta-premium inline-flex items-center gap-2 px-6 py-3 text-white transition-all hover:gap-3 rounded-full"
                 style="background: #E5322D; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase"
               >
@@ -178,7 +179,7 @@ const pageFaqItems = [
               <NuxtLink
                 v-for="city in GEO_CITIES"
                 :key="`${item.id}-${city.slug}`"
-                :to="geoServicePathByIndex(i, city.slug)"
+                :to="localePath(geoServicePathByIndex(i, city.slug))"
                 class="rounded-full border border-black/15 px-3 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.1em] text-[#444444] transition-colors hover:border-[#E5322D]/40 hover:text-[#E5322D] dark:border-white/20 dark:text-[#cccccc]"
               >
                 {{ item.tag }} · {{ city.name }}

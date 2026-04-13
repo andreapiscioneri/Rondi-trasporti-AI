@@ -4,6 +4,7 @@ import logoRondi from '~/assets/images/trasporti_rondi_logo.png'
 import { buildGeoLocalPath, buildGeoServiceRootPath, GEO_CITIES, GEO_PRIMARY_CITY, GEO_SERVICES } from '~/shared/local-seo'
 
 const { t, lang } = useLang()
+const localePath = useLocalePath()
 const offices = computed(() => t.value.contattiPage.offices)
 
 const primaryCity = GEO_CITIES.find(city => city.slug === GEO_PRIMARY_CITY) || GEO_CITIES[0]
@@ -87,7 +88,7 @@ const legalLinks = computed(() => {
             <h4 class="text-[0.72rem] font-bold mb-3 tracking-[0.12em] uppercase text-white/75">{{ col.title }}</h4>
             <ul class="space-y-2">
               <li v-for="link in col.links" :key="link.label">
-                <NuxtLink :to="link.href" class="text-white/62 hover:text-[#E5322D] text-sm transition-colors">{{ link.label }}</NuxtLink>
+                <NuxtLink :to="localePath(link.href)" class="text-white/62 hover:text-[#E5322D] text-sm transition-colors">{{ link.label }}</NuxtLink>
               </li>
             </ul>
           </div>
@@ -103,7 +104,7 @@ const legalLinks = computed(() => {
               <NuxtLink
                 v-for="link in geoServiceLinks"
                 :key="link.href"
-                :to="link.href"
+                :to="localePath(link.href)"
                 class="px-3 py-1.5 rounded-full border border-white/15 text-[0.72rem] text-white/70 hover:text-[#E5322D] hover:border-[#E5322D]/50 transition-colors"
               >
                 {{ link.label }}
@@ -116,7 +117,7 @@ const legalLinks = computed(() => {
               <NuxtLink
                 v-for="link in geoCityHubLinks"
                 :key="link.href"
-                :to="link.href"
+                :to="localePath(link.href)"
                 class="px-3 py-1.5 rounded-full border border-white/15 text-[0.72rem] text-white/70 hover:text-[#E5322D] hover:border-[#E5322D]/50 transition-colors"
               >
                 {{ link.label }}
@@ -139,7 +140,7 @@ const legalLinks = computed(() => {
           <NuxtLink
             v-for="item in legalLinks"
             :key="item.href"
-            :to="item.href"
+            :to="localePath(item.href)"
             class="text-white/60 transition-colors hover:text-[#E5322D]"
           >
             {{ item.label }}

@@ -10,6 +10,8 @@ interface PageHeroData {
 defineProps<{
   hero: PageHeroData
 }>()
+
+const localePath = useLocalePath()
 </script>
 
 <template>

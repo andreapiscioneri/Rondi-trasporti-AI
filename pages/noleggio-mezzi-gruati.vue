@@ -58,6 +58,7 @@ useSeo({
   title: 'Noleggio Mezzi Gruati',
   description: 'Noleggio mezzi gruati con operatori qualificati per sollevamenti e movimentazioni industriali complesse.',
   path: '/noleggio-mezzi-gruati',
+  noindex: true,
   jsonLd: [
     buildBreadcrumbSchema([
       { name: 'Home', href: '/' },
