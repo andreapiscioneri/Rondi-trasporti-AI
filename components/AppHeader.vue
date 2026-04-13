@@ -35,6 +35,7 @@ const mobileMenuLinks = computed(() => [
   { label: t.value.nav.sostenibilita, href: '/sostenibilita' },
   { label: t.value.nav.storia,        href: '/storia' },
   { label: t.value.nav.media,         href: '/media' },
+  { label: t.value.nav.account,      href: '/account' },
   { label: t.value.nav.lavora,        href: '/lavora-con-noi' },
   { label: t.value.nav.contatti,      href: '/contatti' },
 ])
