@@ -15,6 +15,16 @@ const pg = computed(() => t.value.storiaPage)
 const STORIA_IMG_1 = 'https://images.unsplash.com/photo-1614571272828-2d8289ff8fc0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600'
 const STORIA_IMG_2 = 'https://images.unsplash.com/photo-1638636206910-49cdd0af6d3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600'
 const STORIA_IMG_3 = 'https://images.unsplash.com/photo-1668532070017-1956f52f097f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200'
+const STORIA_IMG_4 = 'https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600'
+
+const STORIA_GALLERY = [
+  { src: STORIA_IMG_3, alt: '25 anni di crescita operativa' },
+  { src: STORIA_IMG_1, alt: 'Flotta storica' },
+  { src: STORIA_IMG_2, alt: 'Logistica moderna' },
+  { src: STORIA_IMG_4, alt: 'Crescita operativa' },
+]
+
+const selectedStoryImage = ref(0)
 
 const TIMELINE_IMAGES = [
   'https://images.unsplash.com/photo-1668532070017-1956f52f097f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
@@ -42,46 +52,63 @@ const heroData = computed(() => ({
     <PageHeroBanner :hero="heroData" />
 
     <section class="page-section page-section--light border-b border-black/10 dark:border-white/10 overflow-hidden">
-      <div class="section-shell grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
-        <AnimateOnScroll variant="fadeRight" class="lg:col-span-5">
-          <div class="relative overflow-hidden rounded-[2rem] border border-black/10 dark:border-white/10" style="aspect-ratio:4/5">
-            <img :src="STORIA_IMG_3" alt="Evoluzione della flotta" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/78 via-black/22 to-transparent" />
-            <div class="absolute inset-x-0 bottom-0 p-6">
-              <p class="mb-2 text-[0.68rem] font-bold uppercase tracking-[0.16em] text-white/68">Dal 1998</p>
-              <h2 class="headline-balance text-white" style="font-size:clamp(1.5rem,2.3vw,2.2rem);font-weight:800;line-height:1.08">25 anni di crescita operativa</h2>
+      <div class="section-shell grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <AnimateOnScroll variant="fadeLeft">
+          <div class="relative flex gap-3">
+            <div class="flex-1 overflow-hidden rounded-[2rem] shadow-[0_30px_80px_rgba(0,0,0,0.18)]" style="aspect-ratio:4/5">
+              <Transition
+                mode="out-in"
+                enter-active-class="transition-all duration-500 ease-out"
+                leave-active-class="transition-all duration-350 ease-in"
+                enter-from-class="opacity-0 scale-[1.02]"
+                leave-to-class="opacity-0 scale-[0.985]"
+              >
+                <img
+                  :key="STORIA_GALLERY[selectedStoryImage].src"
+                  :src="STORIA_GALLERY[selectedStoryImage].src"
+                  :alt="STORIA_GALLERY[selectedStoryImage].alt"
+                  class="w-full h-full object-cover"
+                >
+              </Transition>
             </div>
+            <div class="flex flex-col gap-3 w-28 flex-shrink-0 self-end">
+              <button
+                v-for="(thumb, index) in STORIA_GALLERY"
+                :key="thumb.src"
+                class="group overflow-hidden rounded-2xl border transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E5322D]"
+                :class="selectedStoryImage === index
+                  ? 'border-[#E5322D] ring-2 ring-[#E5322D]/35 shadow-[0_12px_24px_rgba(229,50,45,0.2)]'
+                  : 'border-black/10 dark:border-white/10 opacity-85 hover:opacity-100'"
+                style="aspect-ratio:3/2"
+                :aria-label="`Mostra immagine storia ${index + 1}`"
+                :aria-pressed="selectedStoryImage === index"
+                @click="selectedStoryImage = index"
+              >
+                <img :src="thumb.src" :alt="thumb.alt" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+              </button>
+            </div>
+            <div class="absolute -bottom-4 -left-4 w-20 h-20 hidden lg:block rounded-full" style="background:#E5322D;opacity:0.15" />
           </div>
         </AnimateOnScroll>
 
-        <div class="grid grid-cols-1 gap-4 lg:col-span-7">
-          <AnimateOnScroll variant="fadeLeft" class="rounded-[1.6rem] border border-black/10 dark:border-white/10 bg-white/70 p-6 dark:bg-[#111111]/70">
-            <p class="text-[#666666] dark:text-[#999999]" style="font-size:clamp(0.98rem,1.15vw,1.08rem);line-height:1.85">Dalle prime tratte nazionali fino alle operazioni eccezionali internazionali: immagini e tappe che raccontano l'evoluzione di Trasporti Rondi.</p>
-            <div class="mt-5 flex flex-wrap gap-2">
-              <span class="rounded-full border border-black/15 px-3 py-1 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#333333] dark:border-white/20 dark:text-[#cccccc]">Espansione Italia -> Europa</span>
-              <span class="rounded-full border border-black/15 px-3 py-1 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#333333] dark:border-white/20 dark:text-[#cccccc]">Flotta specializzata</span>
-              <span class="rounded-full border border-black/15 px-3 py-1 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-[#333333] dark:border-white/20 dark:text-[#cccccc]">Team operativo certificato</span>
-            </div>
-          </AnimateOnScroll>
-
-          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <AnimateOnScroll variant="fadeUp" :delay="0.06">
-              <div class="overflow-hidden rounded-[1.45rem] border border-black/10 dark:border-white/10" style="aspect-ratio:4/3">
-                <img :src="STORIA_IMG_1" alt="Flotta storica" class="w-full h-full object-cover">
-              </div>
-            </AnimateOnScroll>
-            <AnimateOnScroll variant="fadeUp" :delay="0.1">
-              <div class="overflow-hidden rounded-[1.45rem] border border-black/10 dark:border-white/10" style="aspect-ratio:4/3">
-                <img :src="STORIA_IMG_2" alt="Logistica moderna" class="w-full h-full object-cover">
-              </div>
-            </AnimateOnScroll>
+        <AnimateOnScroll variant="fadeRight" :delay="0.15">
+          <span class="block mb-4" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#E5322D">Dal 1998</span>
+          <h2 class="text-[#111111] dark:text-white mb-6 headline-balance" style="font-size:clamp(2rem,3.5vw,2.65rem);font-weight:800;line-height:1.08">25 anni di crescita operativa</h2>
+          <p class="text-[#555555] dark:text-[#AAAAAA] mb-4" style="font-size:0.875rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase">Una storia costruita su continuita, specializzazione e sviluppo progressivo.</p>
+          <p class="text-[#666666] dark:text-[#999999] mb-8" style="font-size:clamp(1rem,1.2vw,1.0625rem);line-height:1.8">Dalle prime tratte nazionali fino alle operazioni eccezionali internazionali: immagini e tappe che raccontano l'evoluzione di Trasporti Rondi.</p>
+          <p class="text-[#333333] dark:text-[#CCCCCC] mb-4" style="font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase">Le tappe chiave</p>
+          <div class="flex flex-wrap gap-2 mb-8">
+            <span class="px-3 py-1.5 rounded-full border border-black/20 dark:border-white/20 text-[#333333] dark:text-[#CCCCCC]" style="font-size:0.75rem;font-weight:700">Espansione Italia -> Europa</span>
+            <span class="px-3 py-1.5 rounded-full border border-black/20 dark:border-white/20 text-[#333333] dark:text-[#CCCCCC]" style="font-size:0.75rem;font-weight:700">Flotta specializzata</span>
+            <span class="px-3 py-1.5 rounded-full border border-black/20 dark:border-white/20 text-[#333333] dark:text-[#CCCCCC]" style="font-size:0.75rem;font-weight:700">Team operativo certificato</span>
           </div>
-        </div>
+          <NuxtLink to="#timeline" class="cta-premium inline-flex items-center gap-2 px-6 py-3 text-white transition-all hover:gap-3 rounded-full" style="background:#E5322D;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Scopri la timeline <ArrowRight :size="16" /></NuxtLink>
+        </AnimateOnScroll>
       </div>
     </section>
 
     <section class="page-section page-section--soft relative overflow-hidden">
-      <div class="section-shell">
+      <div id="timeline" class="section-shell">
         <AnimateOnScroll variant="fadeUp" class="mb-12 text-center">
           <h2 class="text-[#111111] dark:text-white headline-balance" style="font-size:clamp(1.7rem,3vw,2.6rem);font-weight:800">Timeline <span class="ml-2" :style="{ color: RED }">1998 -> 2024</span></h2>
         </AnimateOnScroll>

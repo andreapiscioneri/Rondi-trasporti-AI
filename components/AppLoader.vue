@@ -102,7 +102,6 @@ onMounted(() => {
   width: clamp(140px, 20vw, 200px);
   height: auto;
   object-fit: contain;
-  filter: brightness(0) invert(1);
   opacity: 0.95;
 }
 

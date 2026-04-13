@@ -100,6 +100,14 @@ const SUSTAIN_IMG = 'https://images.unsplash.com/photo-1638636206910-49cdd0af6d3
 const SUSTAIN_SOLAR = 'https://images.unsplash.com/photo-1655300256620-680cb0f1cec3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400'
 const SUSTAIN_ROAD = 'https://images.unsplash.com/photo-1768323555231-5497afb0b6ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400'
 const SUSTAIN_PORT = 'https://images.unsplash.com/photo-1614571272828-2d8289ff8fc0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400'
+const SUSTAIN_GALLERY = [
+  { src: SUSTAIN_IMG, alt: 'Green Fleet' },
+  { src: SUSTAIN_SOLAR, alt: 'Impianto fotovoltaico' },
+  { src: SUSTAIN_ROAD, alt: 'Rete stradale e trasporto' },
+  { src: SUSTAIN_PORT, alt: 'Operazioni logistiche' },
+]
+
+const selectedSustainImage = ref(0)
 
 const INDUSTRY_ITEMS_IT = [
   {
@@ -241,11 +249,37 @@ onMounted(() => {
       <div class="section-shell grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <AnimateOnScroll variant="fadeLeft">
           <div class="relative flex gap-3">
-            <div class="flex-1 overflow-hidden rounded-[2rem] shadow-[0_30px_80px_rgba(0,0,0,0.18)]" style="aspect-ratio:4/5"><img :src="SUSTAIN_IMG" alt="Green Fleet" class="w-full h-full object-cover"></div>
+            <div class="flex-1 overflow-hidden rounded-[2rem] shadow-[0_30px_80px_rgba(0,0,0,0.18)]" style="aspect-ratio:4/5">
+              <Transition
+                mode="out-in"
+                enter-active-class="transition-all duration-500 ease-out"
+                leave-active-class="transition-all duration-350 ease-in"
+                enter-from-class="opacity-0 scale-[1.02]"
+                leave-to-class="opacity-0 scale-[0.985]"
+              >
+                <img
+                  :key="SUSTAIN_GALLERY[selectedSustainImage].src"
+                  :src="SUSTAIN_GALLERY[selectedSustainImage].src"
+                  :alt="SUSTAIN_GALLERY[selectedSustainImage].alt"
+                  class="w-full h-full object-cover"
+                >
+              </Transition>
+            </div>
             <div class="flex flex-col gap-3 w-28 flex-shrink-0 self-end">
-              <div class="overflow-hidden rounded-2xl" style="aspect-ratio:3/2"><img :src="SUSTAIN_SOLAR" alt="" class="w-full h-full object-cover"></div>
-              <div class="overflow-hidden rounded-2xl" style="aspect-ratio:3/2"><img :src="SUSTAIN_ROAD" alt="" class="w-full h-full object-cover"></div>
-              <div class="overflow-hidden rounded-2xl" style="aspect-ratio:3/2"><img :src="SUSTAIN_PORT" alt="" class="w-full h-full object-cover"></div>
+              <button
+                v-for="(thumb, index) in SUSTAIN_GALLERY"
+                :key="thumb.src"
+                class="group overflow-hidden rounded-2xl border transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E5322D]"
+                :class="selectedSustainImage === index
+                  ? 'border-[#E5322D] ring-2 ring-[#E5322D]/35 shadow-[0_12px_24px_rgba(229,50,45,0.2)]'
+                  : 'border-black/10 dark:border-white/10 opacity-85 hover:opacity-100'"
+                style="aspect-ratio:3/2"
+                :aria-label="`Mostra immagine sostenibilita ${index + 1}`"
+                :aria-pressed="selectedSustainImage === index"
+                @click="selectedSustainImage = index"
+              >
+                <img :src="thumb.src" :alt="thumb.alt" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+              </button>
             </div>
             <div class="absolute -bottom-4 -left-4 w-20 h-20 hidden lg:block rounded-full" style="background:#E5322D;opacity:0.15" />
           </div>

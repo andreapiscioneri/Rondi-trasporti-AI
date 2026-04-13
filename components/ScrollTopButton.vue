@@ -39,7 +39,7 @@ onBeforeUnmount(() => {
       style="background:#E5322D"
       @click="scrollToTop"
     >
-      <ChevronUp :size="22" class="mx-auto" />
+      <ChevronUp :size="28" stroke-width="2.75" class="mx-auto text-black" />
     </button>
   </Transition>
 </template>
