@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRight } from 'lucide-vue-next'
+import { ArrowDown, ArrowRight } from 'lucide-vue-next'
 
 const RED = '#E5322D'
 const { t } = useLang()
@@ -44,6 +44,16 @@ const heroData = computed(() => ({
   title: pg.value.hero.title,
   subtitle: pg.value.hero.subtitle,
 }))
+
+const scrollToTimeline = () => {
+  document.getElementById('timeline')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
+onMounted(() => {
+  if (!window.location.hash) return
+  history.replaceState(null, '', `${window.location.pathname}${window.location.search}`)
+  window.scrollTo({ top: 0, behavior: 'auto' })
+})
 
 </script>
 
@@ -102,7 +112,7 @@ const heroData = computed(() => ({
             <span class="px-3 py-1.5 rounded-full border border-black/20 dark:border-white/20 text-[#333333] dark:text-[#CCCCCC]" style="font-size:0.75rem;font-weight:700">Flotta specializzata</span>
             <span class="px-3 py-1.5 rounded-full border border-black/20 dark:border-white/20 text-[#333333] dark:text-[#CCCCCC]" style="font-size:0.75rem;font-weight:700">Team operativo certificato</span>
           </div>
-          <NuxtLink to="#timeline" class="cta-premium inline-flex items-center gap-2 px-6 py-3 text-white transition-all hover:gap-3 rounded-full" style="background:#E5322D;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Scopri la timeline <ArrowRight :size="16" /></NuxtLink>
+          <button type="button" class="cta-premium inline-flex items-center gap-2 px-6 py-3 text-white transition-all hover:gap-3 rounded-full" style="background:#E5322D;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase" @click="scrollToTimeline">Scopri la timeline <ArrowDown :size="16" /></button>
         </AnimateOnScroll>
       </div>
     </section>
