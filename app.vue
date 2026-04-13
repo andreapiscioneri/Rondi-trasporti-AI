@@ -37,7 +37,7 @@ watch(
 
     <AppHeader />
 
-    <main class="flex-1 pt-[82px] lg:pt-[92px] relative z-10">
+    <main class="flex-1 pt-[72px] sm:pt-[82px] lg:pt-[92px] relative z-10">
       <NuxtPage :transition="{ name: 'page', mode: 'out-in' }" />
     </main>
 

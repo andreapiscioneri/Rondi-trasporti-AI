@@ -108,15 +108,15 @@ onMounted(() => {
         ? 'bg-[#080808]/96 border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.30)] backdrop-blur-xl'
         : 'bg-[#0B0B0B]/94 border-transparent backdrop-blur-lg'"
     >
-      <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 h-[82px] flex items-center justify-between gap-4 text-white">
+      <div class="max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-10 h-[72px] sm:h-[82px] flex min-w-0 items-center justify-between gap-2 sm:gap-4 text-white">
 
         <!-- Logo -->
-        <NuxtLink to="/" class="flex-shrink-0 flex items-center gap-3">
+        <NuxtLink to="/" class="flex min-w-0 flex-shrink items-center gap-2 sm:gap-3">
           <img
             :src="logoRondi"
             alt="Trasporti Rondi"
             data-no-dim
-            class="h-11 sm:h-12 w-auto object-contain transition-transform duration-500 hover:scale-[1.02]"
+            class="h-8 sm:h-12 w-auto max-w-[132px] sm:max-w-[220px] object-contain transition-transform duration-500 hover:scale-[1.02]"
           >
         </NuxtLink>
 
@@ -137,7 +137,7 @@ onMounted(() => {
         </nav>
 
         <!-- Actions -->
-        <div class="flex items-center gap-2 sm:gap-3">
+        <div class="flex flex-shrink-0 items-center gap-2 sm:gap-3">
 
           <!-- Language toggle -->
           <button

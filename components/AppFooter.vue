@@ -48,7 +48,7 @@ const legalLinks = computed(() => {
 </script>
 
 <template>
-  <footer class="text-white bg-[#090909] relative overflow-hidden" style="font-family:'DM Sans',sans-serif">
+  <footer class="relative w-full overflow-hidden text-white bg-[#090909]" style="font-family:'DM Sans',sans-serif">
     <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(60rem 40rem at 80% -10%, rgba(229, 50, 45, 0.26), transparent 70%)" />
     <div class="absolute inset-x-0 top-0 h-px bg-white/10" />
 
@@ -79,7 +79,7 @@ const legalLinks = computed(() => {
             <h4 class="text-sm font-bold mb-3 uppercase tracking-[0.08em] text-white">{{ office.name }}</h4>
             <p class="text-white/70 text-sm leading-6 whitespace-pre-line break-words mb-3 inline-flex items-start gap-2"><MapPin :size="14" class="mt-1 text-[#E5322D]" />{{ office.address }}</p>
             <a :href="`tel:${office.phone.replace(/\s/g, '')}`" class="block text-white/85 text-sm mb-2 hover:text-white inline-flex items-center gap-2 break-words"><Phone :size="13" class="text-[#E5322D]" />{{ office.phone }}</a>
-            <a :href="`mailto:${office.email}`" class="block text-white/85 text-[0.8rem] hover:text-white inline-flex items-center gap-2 whitespace-nowrap leading-none pt-1"><Mail :size="13" class="text-[#E5322D]" />{{ office.email }}</a>
+            <a :href="`mailto:${office.email}`" class="inline-flex items-center gap-2 block max-w-full break-all pt-1 text-[0.8rem] leading-none text-white/85 hover:text-white"><Mail :size="13" class="text-[#E5322D]" />{{ office.email }}</a>
           </div>
         </div>
 
@@ -151,8 +151,8 @@ const legalLinks = computed(() => {
 
     <div class="border-t border-white/10 relative z-10">
       <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-[0.7rem] tracking-[0.06em] text-white/55 uppercase">
-        <p>{{ t.footer.legal }}</p>
-        <p>Trasporti Rondi S.p.A. • Brescia • Italia</p>
+        <p class="max-w-full break-words">{{ t.footer.legal }}</p>
+        <p class="max-w-full break-words">Trasporti Rondi S.p.A. • Brescia • Italia</p>
       </div>
     </div>
   </footer>
