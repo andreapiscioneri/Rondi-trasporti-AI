@@ -1,4 +1,54 @@
 <script setup lang="ts">
+import { Package2, Truck } from 'lucide-vue-next'
+
+const serviceFaq = [
+  {
+    question: 'Gestite sia carico completo sia parziale?',
+    answer: 'Si, pianifichiamo spedizioni full truck load e partite a carico parziale in base a priorita, volumi e frequenza.',
+  },
+  {
+    question: 'Come controllate tempi e puntualita?',
+    answer: 'Ogni tratta viene pianificata con finestre condivise e monitorata dal team operativo fino alla consegna finale.',
+  },
+  {
+    question: 'Il servizio e adatto a fiere o eventi?',
+    answer: 'Si, possiamo organizzare trasporti con time-slot rigidi e coordinamento su aree di allestimento.',
+  },
+]
+
+const tabs = [
+  {
+    label: 'Trasporto a pieno carico',
+    title: 'Trasporto a pieno carico',
+    description: 'Servizio dedicato con mezzo assegnato alla singola commessa. Pianifichiamo il viaggio in base a priorita del cliente, tempi di consegna e sicurezza del carico, mantenendo controllo completo dell\'intera tratta.',
+    icon: Truck,
+  },
+  {
+    label: 'Trasporto a carico parziale',
+    title: 'Trasporto a carico parziale',
+    description: 'Soluzione flessibile per volumi ridotti o spedizioni frazionate. Ottimizziamo saturazione dei mezzi e costo/tempo di trasporto con programmazione puntuale e tracciabilita operativa.',
+    icon: Package2,
+  },
+]
+
+const relatedServices = [
+  {
+    title: 'Trasporto Eccezionale',
+    href: '/trasporto-eccezionale',
+    image: 'https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+  },
+  {
+    title: 'Noleggio Mezzi Gruati',
+    href: '/noleggio-mezzi-gruati',
+    image: 'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+  },
+  {
+    title: 'Logistica',
+    href: '/soluzioni-logistiche',
+    image: 'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+  },
+]
+
 useSeo({
   title: 'Trasporto Standard',
   description: 'Servizio di trasporto standard nazionale con rete capillare, monitoraggio continuo e pianificazione puntuale.',
@@ -12,34 +62,33 @@ useSeo({
       url: 'https://www.trasportirondi.it/trasporto-standard',
       areaServed: ['Italia'],
     }),
+    buildFaqSchema(serviceFaq),
   ],
 })
 </script>
 
 <template>
-  <div>
-    <PageHeroBanner
-      :hero="{
-        image: 'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2200',
-        alt: 'Trasporto Standard',
-        tag: 'Servizio dedicato',
-        title: 'Trasporto Standard',
-        subtitle: 'Copertura nazionale per spedizioni industriali con controllo operativo end-to-end.',
-      }"
-    />
-
-    <section class="page-section page-section--light">
-      <div class="section-shell max-w-4xl">
-        <h2 class="mb-4 text-[#111111] dark:text-white headline-balance" style="font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800">Affidabilita quotidiana su scala nazionale</h2>
-        <p class="mb-8 text-[#666666] dark:text-[#999999]" style="line-height:1.78">Gestiamo tratte programmate e richieste spot con flotta moderna, monitoraggio continuo e team operativo dedicato alla puntualita.</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-          <div class="rounded-[1.2rem] border border-black/10 p-5 dark:border-white/10 dark:bg-[#111111]">Tracciamento continuo delle spedizioni</div>
-          <div class="rounded-[1.2rem] border border-black/10 p-5 dark:border-white/10 dark:bg-[#111111]">Pianificazione finestre di consegna</div>
-          <div class="rounded-[1.2rem] border border-black/10 p-5 dark:border-white/10 dark:bg-[#111111]">Gestione documentale completa</div>
-          <div class="rounded-[1.2rem] border border-black/10 p-5 dark:border-white/10 dark:bg-[#111111]">Supporto operativo rapido</div>
-        </div>
-        <NuxtLink to="/preventivo" class="cta-premium inline-flex items-center rounded-full px-6 py-3 text-white" style="background:#E5322D;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Richiedi preventivo</NuxtLink>
-      </div>
-    </section>
-  </div>
+  <SectionsServiceDetailShowcase
+    intro-title="Trasporto standard"
+    intro-subtitle="Trasporto conto terzi a pieno carico, a carico parziale e su esigenze programmate."
+    :intro-paragraphs="[
+      'Siamo specializzati nel trasporto su gomma di merci industriali con una flotta proprietaria ampia e modulabile.',
+      'Pianifichiamo ogni spedizione per offrire la soluzione piu efficiente in termini di tempi, saturazione mezzo e sicurezza del carico.',
+    ]"
+    intro-image="https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1800"
+    :tabs="tabs"
+    cta-label="Richiedi una quotazione"
+    cta-href="/preventivo"
+    why-title="Cosa ci differenzia"
+    why-text="Strutturazione dei processi, flessibilita di servizio e professionalita operativa ci consentono di affrontare ogni spedizione con metodo e precisione."
+    :checklist="[
+      'Assistenza continuativa',
+      'Personale qualificato',
+      'Flessibilita di servizio',
+      'Tracciabilita del carico',
+      'Parco mezzi ampio e diversificato',
+      'Copertura nazionale completa',
+    ]"
+    :related-services="relatedServices"
+  />
 </template>

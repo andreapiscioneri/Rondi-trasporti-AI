@@ -1,4 +1,54 @@
 <script setup lang="ts">
+import { Boxes, Forklift } from 'lucide-vue-next'
+
+const serviceFaq = [
+  {
+    question: 'Gestite sia stoccaggio sia ridistribuzione?',
+    answer: 'Si, il servizio integra ritiro, stoccaggio e ridistribuzione verso clienti o cantieri.',
+  },
+  {
+    question: 'Offrite supporto anche presso sedi cliente?',
+    answer: 'Su richiesta possiamo organizzare movimentazioni presso la sede del cliente con personale qualificato.',
+  },
+  {
+    question: 'Come migliorate i tempi di movimentazione?',
+    answer: 'Centralizziamo i flussi logistici in un unico coordinamento operativo per ridurre attese e rilavorazioni.',
+  },
+]
+
+const tabs = [
+  {
+    label: 'Stoccaggio magazzino',
+    title: 'Stoccaggio magazzino',
+    description: 'Organizziamo spazi e flussi di deposito per migliorare rotazione merce, ridurre stock improduttivo e accelerare la fase di preparazione spedizioni.',
+    icon: Boxes,
+  },
+  {
+    label: 'Logistica integrata',
+    title: 'Logistica integrata',
+    description: 'Gestiamo in modo coordinato ritiro, stoccaggio e ridistribuzione presso clienti, con visione unica della filiera e controllo dei passaggi operativi.',
+    icon: Forklift,
+  },
+]
+
+const relatedServices = [
+  {
+    title: 'Trasporto Standard',
+    href: '/trasporto-standard',
+    image: 'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+  },
+  {
+    title: 'Trasporto Eccezionale',
+    href: '/trasporto-eccezionale',
+    image: 'https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+  },
+  {
+    title: 'Noleggio Mezzi Gruati',
+    href: '/noleggio-mezzi-gruati',
+    image: 'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+  },
+]
+
 useSeo({
   title: 'Soluzioni Logistiche',
   description: 'Soluzioni logistiche integrate: stoccaggio, distribuzione, pratiche doganali e controllo flussi.',
@@ -12,19 +62,32 @@ useSeo({
       url: 'https://www.trasportirondi.it/soluzioni-logistiche',
       areaServed: ['Italia', 'Europa'],
     }),
+    buildFaqSchema(serviceFaq),
   ],
 })
 </script>
 
 <template>
-  <div>
-    <PageHeroBanner :hero="{ image: 'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2200', alt: 'Soluzioni Logistiche', tag: 'Servizio dedicato', title: 'Soluzioni Logistiche', subtitle: 'Filiera integrata tra magazzino, distribuzione e dogana.' }" />
-    <section class="page-section page-section--light">
-      <div class="section-shell max-w-4xl">
-        <h2 class="mb-4 text-[#111111] dark:text-white headline-balance" style="font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800">Una supply chain piu fluida</h2>
-        <p class="mb-8 text-[#666666] dark:text-[#999999]" style="line-height:1.78">Unifichiamo stoccaggio, handling, distribuzione e compliance doganale in un modello operativo scalabile e orientato ai KPI logistici.</p>
-        <NuxtLink to="/preventivo" class="cta-premium inline-flex items-center rounded-full px-6 py-3 text-white" style="background:#E5322D;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Richiedi preventivo</NuxtLink>
-      </div>
-    </section>
-  </div>
+  <SectionsServiceDetailShowcase
+    intro-title="Soluzioni logistiche"
+    intro-subtitle="Stoccaggio e movimentazione merce presso cliente con regia operativa unica."
+    :intro-paragraphs="[
+      'Affidare la gestione logistica a un partner strutturato permette di ridurre inefficienze, tempi morti e costi operativi indiretti.',
+      'Configuriamo servizi di stoccaggio e ridistribuzione in funzione dei volumi reali, migliorando continuita di approvvigionamento e servizio.',
+    ]"
+    intro-image="https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1800"
+    :tabs="tabs"
+    cta-label="Richiedi una quotazione"
+    cta-href="/preventivo"
+    why-title="Cosa ci differenzia"
+    why-text="Strutturazione dei processi, flessibilita di servizio e personale qualificato ci consentono di gestire la logistica con precisione e continuita."
+    :checklist="[
+      'Ottimizzazione stock di magazzino',
+      'Disponibilita personale qualificato',
+      'Flessibilita di servizio',
+      'Parco mezzi ampio e diversificato',
+      'Copertura nazionale completa',
+    ]"
+    :related-services="relatedServices"
+  />
 </template>

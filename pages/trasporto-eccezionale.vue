@@ -1,4 +1,60 @@
 <script setup lang="ts">
+import { Cog, Container, HardHat } from 'lucide-vue-next'
+
+const serviceFaq = [
+  {
+    question: 'Effettuate sopralluogo prima del trasporto?',
+    answer: 'Si, per commesse complesse svolgiamo una fase preliminare tecnica per verificare carico, accessi e percorso.',
+  },
+  {
+    question: 'Supportate anche la documentazione autorizzativa?',
+    answer: 'Affianchiamo il cliente nella preparazione della documentazione necessaria secondo normativa vigente.',
+  },
+  {
+    question: 'Quali tipologie di carico gestite?',
+    answer: 'Macchinari industriali, prefabbricati, componenti fuori sagoma e carichi speciali ad alta complessita.',
+  },
+]
+
+const tabs = [
+  {
+    label: 'Trasporto pesante',
+    title: 'Trasporto pesante',
+    description: 'Per i carichi ad alta massa sviluppiamo un piano logistico dettagliato per gestire sicurezza, percorribilita e stabilita del trasporto in ogni fase operativa.',
+    icon: HardHat,
+  },
+  {
+    label: 'Trasporto sagomati',
+    title: 'Trasporto sagomati',
+    description: 'Nelle spedizioni fuori sagoma analizziamo vincoli di altezza, larghezza e accesso, costruendo una strategia dedicata per prevenire criticita lungo il percorso.',
+    icon: Container,
+  },
+  {
+    label: 'Trasporto macchinari',
+    title: 'Trasporto macchinari',
+    description: 'Gestiamo trasporti di macchinari industriali con supporto tecnico continuo, dal briefing iniziale al posizionamento finale presso lo stabilimento di destinazione.',
+    icon: Cog,
+  },
+]
+
+const relatedServices = [
+  {
+    title: 'Trasporto Standard',
+    href: '/trasporto-standard',
+    image: 'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+  },
+  {
+    title: 'Noleggio Mezzi Gruati',
+    href: '/noleggio-mezzi-gruati',
+    image: 'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+  },
+  {
+    title: 'Logistica',
+    href: '/soluzioni-logistiche',
+    image: 'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+  },
+]
+
 useSeo({
   title: 'Trasporto Eccezionale',
   description: 'Trasporto eccezionale per carichi fuori sagoma e fuori massa con pianificazione tecnica dedicata.',
@@ -12,19 +68,35 @@ useSeo({
       url: 'https://www.trasportirondi.it/trasporto-eccezionale',
       areaServed: ['Italia', 'Europa'],
     }),
+    buildFaqSchema(serviceFaq),
   ],
 })
 </script>
 
 <template>
-  <div>
-    <PageHeroBanner :hero="{ image: 'https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2200', alt: 'Trasporto Eccezionale', tag: 'Servizio dedicato', title: 'Trasporto Eccezionale', subtitle: 'Carichi speciali con ingegnerizzazione del trasporto e sicurezza operativa.' }" />
-    <section class="page-section page-section--light">
-      <div class="section-shell max-w-4xl">
-        <h2 class="mb-4 text-[#111111] dark:text-white headline-balance" style="font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800">Quando il carico e fuori standard</h2>
-        <p class="mb-8 text-[#666666] dark:text-[#999999]" style="line-height:1.78">Progettiamo il trasporto eccezionale dal sopralluogo al posizionamento finale, con iter autorizzativo e coordinamento tecnico dedicato.</p>
-        <NuxtLink to="/preventivo" class="cta-premium inline-flex items-center rounded-full px-6 py-3 text-white" style="background:#E5322D;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Richiedi preventivo</NuxtLink>
-      </div>
-    </section>
-  </div>
+  <SectionsServiceDetailShowcase
+    intro-title="Trasporto eccezionale"
+    intro-subtitle="Trasporto pesante, sagomato e macchinari con pianificazione tecnica dedicata."
+    :intro-paragraphs="[
+      'La gestione della complessita e centrale: per ogni commessa sviluppiamo analisi preventiva, fattibilita percorso e approccio operativo su misura.',
+      'Affianchiamo il cliente nella componente documentale e nella preparazione delle fasi critiche per garantire sicurezza e continuita del servizio.',
+    ]"
+    intro-image="https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1800"
+    :tabs="tabs"
+    cta-label="Richiedi una quotazione"
+    cta-href="/preventivo"
+    why-title="Cosa ci differenzia"
+    why-text="Esperienza sul campo, struttura operativa e metodo di pianificazione ci permettono di affrontare anche i progetti di trasporto piu complessi."
+    :checklist="[
+      'Assistenza continuativa',
+      'Sopralluogo tecnico preliminare',
+      'Personale qualificato',
+      'Flessibilita di servizio',
+      'Supporto gestione normativa',
+      'Parco mezzi ampio e diversificato',
+      'Copertura nazionale completa',
+      'Possibilita di integrazione assicurativa',
+    ]"
+    :related-services="relatedServices"
+  />
 </template>

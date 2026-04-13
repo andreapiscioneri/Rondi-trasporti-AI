@@ -1,4 +1,54 @@
 <script setup lang="ts">
+import { Crane, ShieldCheck } from 'lucide-vue-next'
+
+const serviceFaq = [
+  {
+    question: 'Il noleggio include anche operatore?',
+    answer: 'Su richiesta mettiamo a disposizione operatore specializzato con abilitazioni aggiornate per gru su autocarro.',
+  },
+  {
+    question: 'Che tipo di movimentazioni coprite?',
+    answer: 'Movimentazioni industriali, carichi pesanti, installazioni e attivita di supporto in cantiere.',
+  },
+  {
+    question: 'Il servizio e flessibile su durata e finestre?',
+    answer: 'Si, definiamo piani operativi su esigenze specifiche: intervento singolo, giornata o commessa continuativa.',
+  },
+]
+
+const tabs = [
+  {
+    label: 'Movimentazione merce',
+    title: 'Movimentazione merce',
+    description: 'Il noleggio di mezzi gruati consente operazioni di carico/scarico e movimentazione pesante con ampia flessibilita operativa su sito cliente o cantiere.',
+    icon: Crane,
+  },
+  {
+    label: 'Operatori qualificati',
+    title: 'Operatori qualificati',
+    description: 'Su richiesta integriamo l\'operatore specializzato abilitato alla conduzione di gru su autocarro, per lavorare in sicurezza e conformita normativa.',
+    icon: ShieldCheck,
+  },
+]
+
+const relatedServices = [
+  {
+    title: 'Trasporto Standard',
+    href: '/trasporto-standard',
+    image: 'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+  },
+  {
+    title: 'Trasporto Eccezionale',
+    href: '/trasporto-eccezionale',
+    image: 'https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+  },
+  {
+    title: 'Logistica',
+    href: '/soluzioni-logistiche',
+    image: 'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+  },
+]
+
 useSeo({
   title: 'Noleggio Mezzi Gruati',
   description: 'Noleggio mezzi gruati con operatori qualificati per sollevamenti e movimentazioni industriali complesse.',
@@ -12,19 +62,32 @@ useSeo({
       url: 'https://www.trasportirondi.it/noleggio-mezzi-gruati',
       areaServed: ['Italia'],
     }),
+    buildFaqSchema(serviceFaq),
   ],
 })
 </script>
 
 <template>
-  <div>
-    <PageHeroBanner :hero="{ image: 'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2200', alt: 'Noleggio Mezzi Gruati', tag: 'Servizio dedicato', title: 'Noleggio Mezzi Gruati', subtitle: 'Potenza di sollevamento e precisione operativa per cantieri e impianti.' }" />
-    <section class="page-section page-section--light">
-      <div class="section-shell max-w-4xl">
-        <h2 class="mb-4 text-[#111111] dark:text-white headline-balance" style="font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800">Interventi di sollevamento ad alta affidabilita</h2>
-        <p class="mb-8 text-[#666666] dark:text-[#999999]" style="line-height:1.78">Mettiamo a disposizione mezzi e competenze per movimentazioni industriali, installazioni e operazioni tecniche con piani esecutivi dettagliati.</p>
-        <NuxtLink to="/preventivo" class="cta-premium inline-flex items-center rounded-full px-6 py-3 text-white" style="background:#E5322D;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Richiedi preventivo</NuxtLink>
-      </div>
-    </section>
-  </div>
+  <SectionsServiceDetailShowcase
+    intro-title="Noleggio mezzi gruati"
+    intro-subtitle="Movimenta la tua merce con mezzi specializzati e supporto tecnico dedicato."
+    :intro-paragraphs="[
+      'La nostra flotta comprende mezzi con gru a braccio di ultima generazione disponibili per noleggio su esigenze operative diverse.',
+      'Possiamo integrare operatori qualificati per condurre le operazioni in sicurezza e nel rispetto delle procedure previste.',
+    ]"
+    intro-image="https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1800"
+    :tabs="tabs"
+    cta-label="Richiedi una quotazione"
+    cta-href="/preventivo"
+    why-title="Cosa ci differenzia"
+    why-text="Processi strutturati, flessibilita operativa e personale specializzato ci permettono di offrire interventi affidabili su scenari complessi."
+    :checklist="[
+      'Mezzi di ultima generazione',
+      'Disponibilita operatori qualificati',
+      'Flessibilita di servizio',
+      'Parco mezzi ampio e diversificato',
+      'Copertura nazionale completa',
+    ]"
+    :related-services="relatedServices"
+  />
 </template>
