@@ -182,7 +182,7 @@ onMounted(() => {
 
     <!-- ── Mobile drawer ── -->
     <aside
-      class="fixed top-0 right-0 bottom-0 z-50 w-80 max-w-full bg-[#090909] text-white flex flex-col border-l border-white/10 transition-transform duration-300"
+      class="fixed top-0 right-0 bottom-0 z-50 w-full sm:w-80 max-w-full bg-[#090909] text-white flex flex-col border-l border-white/10 transition-transform duration-300"
       :style="{ transform: mobileOpen ? 'translateX(0)' : 'translateX(100%)' }"
     >
       <!-- Drawer header -->

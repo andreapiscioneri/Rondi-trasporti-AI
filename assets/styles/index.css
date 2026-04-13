@@ -69,8 +69,20 @@ html, body, #__nuxt {
   min-height: 100%;
 }
 
+html, body {
+  margin: 0;
+}
+
 body {
   overflow-x: hidden;
+}
+
+#__nuxt,
+.modern-shell,
+main {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 main section {
