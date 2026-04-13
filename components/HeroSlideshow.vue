@@ -177,7 +177,7 @@ onBeforeUnmount(() => {
 <template>
   <section
     class="relative w-full overflow-hidden bg-black"
-    style="min-height:100svh; height:100svh; max-height:960px"
+    style="min-height:92svh; height:92svh; max-height:960px"
     @mouseenter="paused = true"
     @mouseleave="paused = false"
     @touchstart.passive="onTouchStart"
@@ -212,16 +212,16 @@ onBeforeUnmount(() => {
     <div class="absolute left-0 top-0 w-[3px] h-full bg-[#E5322D]" />
 
     <!-- ── Main copy ── -->
-    <div class="absolute inset-0 flex flex-col justify-end p-6 sm:p-10 lg:p-16 pb-28 lg:pb-32">
+    <div class="absolute inset-0 flex flex-col justify-end p-5 pb-20 sm:p-10 sm:pb-28 lg:p-16 lg:pb-32">
       <div class="max-w-[1440px] mx-auto w-full">
 
         <!-- Tag -->
         <div ref="tagRef" style="opacity:0">
           <span
-            class="inline-flex items-center gap-2 mb-5 text-white/62"
-            style="font-size:0.75rem;font-weight:700;letter-spacing:0.24em;text-transform:uppercase"
+              class="inline-flex items-center gap-2 mb-4 sm:mb-5 text-white/62"
+              style="font-size:0.7rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase"
           >
-            <span class="w-7 h-px bg-[#E5322D]" />
+              <span class="w-6 sm:w-7 h-px bg-[#E5322D]" />
             {{ currentSlide.tag }}
           </span>
         </div>
@@ -229,8 +229,8 @@ onBeforeUnmount(() => {
         <!-- Title — word-by-word GSAP stagger -->
         <h1
           ref="titleRef"
-          class="text-white mb-5 max-w-4xl headline-balance"
-          style="font-size:clamp(2.4rem,6vw,5.2rem);font-weight:800;line-height:1.02;letter-spacing:-0.03em;overflow:hidden"
+          class="text-white mb-4 sm:mb-5 max-w-4xl headline-balance"
+          style="font-size:clamp(2rem,6vw,5.2rem);font-weight:800;line-height:1.02;letter-spacing:-0.03em;overflow:hidden"
         >
           <template v-for="(line, li) in titleLines" :key="li">
             <span class="block">
@@ -247,19 +247,19 @@ onBeforeUnmount(() => {
         <!-- Subtitle -->
         <p
           ref="subtitleRef"
-          class="text-white/72 mb-8 max-w-xl"
-          style="font-size:clamp(1rem,1.45vw,1.13rem);font-weight:500;line-height:1.72;opacity:0"
+          class="text-white/72 mb-6 sm:mb-8 max-w-xl"
+          style="font-size:clamp(0.95rem,1.45vw,1.13rem);font-weight:500;line-height:1.72;opacity:0"
         >
           {{ currentSlide.subtitle }}
         </p>
 
         <!-- CTAs -->
-        <div ref="ctaRef" class="flex flex-wrap gap-3" style="opacity:0">
+        <div ref="ctaRef" class="flex flex-col sm:flex-row gap-3 sm:flex-wrap" style="opacity:0">
           <NuxtLink
             :to="currentSlide.ctaHref"
             data-magnetic
-            class="cta-premium inline-flex items-center gap-2 px-7 py-3.5 text-white transition-all hover:gap-3 rounded-full"
-            :style="{ background: RED, fontSize: '0.84rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }"
+            class="cta-premium inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-7 sm:py-3.5 text-white transition-all hover:gap-3 rounded-full"
+            :style="{ background: RED, fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }"
           >
             {{ currentSlide.cta }}
             <ArrowRight :size="16" />
@@ -268,8 +268,8 @@ onBeforeUnmount(() => {
           <NuxtLink
             v-if="currentSlide.ctaSecondary && currentSlide.ctaSecondaryHref"
             :to="currentSlide.ctaSecondaryHref"
-            class="inline-flex items-center gap-2 px-7 py-3.5 border border-white/35 text-white hover:bg-white/10 hover:border-white/65 transition-all rounded-full"
-            style="font-size:0.84rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 sm:px-7 sm:py-3.5 border border-white/35 text-white hover:bg-white/10 hover:border-white/65 transition-all rounded-full"
+            style="font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase"
           >
             {{ currentSlide.ctaSecondary }}
           </NuxtLink>
@@ -278,7 +278,7 @@ onBeforeUnmount(() => {
     </div>
 
     <!-- ── Bottom controls ── -->
-    <div class="absolute bottom-0 left-0 right-0 flex items-end justify-between px-6 sm:px-10 lg:px-16 pb-8">
+    <div class="absolute bottom-0 left-0 right-0 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between px-5 sm:px-10 lg:px-16 pb-5 sm:pb-8">
 
       <!-- Progress bars (one per slide) -->
       <div class="flex items-center gap-2">
@@ -286,7 +286,7 @@ onBeforeUnmount(() => {
           v-for="(_, i) in slides"
           :key="i"
           class="group relative flex flex-col justify-end overflow-hidden"
-          style="width:40px;height:3px;background:rgba(255,255,255,0.18);border-radius:2px"
+          style="width:28px;height:3px;background:rgba(255,255,255,0.18);border-radius:2px"
           :aria-label="`Slide ${i + 1}`"
           @click="goTo(i)"
         >
@@ -304,16 +304,16 @@ onBeforeUnmount(() => {
       </div>
 
       <!-- Prev / Next -->
-      <div class="flex gap-2">
+      <div class="flex gap-2 self-end sm:self-auto">
         <button
-          class="w-10 h-10 flex items-center justify-center border border-white/22 text-white hover:bg-white/10 hover:border-white/50 transition-all rounded-full"
+          class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center border border-white/22 text-white hover:bg-white/10 hover:border-white/50 transition-all rounded-full"
           aria-label="Precedente"
           @click="prev"
         >
           <ChevronLeft :size="18" />
         </button>
         <button
-          class="w-10 h-10 flex items-center justify-center border border-white/22 text-white hover:bg-white/10 hover:border-white/50 transition-all rounded-full"
+          class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center border border-white/22 text-white hover:bg-white/10 hover:border-white/50 transition-all rounded-full"
           aria-label="Successivo"
           @click="next"
         >
