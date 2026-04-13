@@ -33,6 +33,8 @@ const paused  = ref(false)
 // Progress bar 0→100 within an interval
 const progress = ref(0)
 const INTERVAL = 5600 // ms
+const touchStartX = ref<number | null>(null)
+const touchDeltaX = ref(0)
 
 const currentSlide = computed(() => props.slides[current.value])
 
@@ -111,6 +113,7 @@ function tickProgress(now: number) {
 
     if (elapsed >= INTERVAL) {
       next()
+      progressRaf = requestAnimationFrame(tickProgress)
       return
     }
   } else {
@@ -118,6 +121,29 @@ function tickProgress(now: number) {
     startTime = performance.now() - (progress.value / 100) * INTERVAL
   }
   progressRaf = requestAnimationFrame(tickProgress)
+}
+
+function onTouchStart(event: TouchEvent) {
+  touchStartX.value = event.touches[0]?.clientX ?? null
+  touchDeltaX.value = 0
+}
+
+function onTouchMove(event: TouchEvent) {
+  if (touchStartX.value === null) return
+  const currentX = event.touches[0]?.clientX ?? touchStartX.value
+  touchDeltaX.value = currentX - touchStartX.value
+}
+
+function onTouchEnd() {
+  if (Math.abs(touchDeltaX.value) > 44) {
+    if (touchDeltaX.value < 0) {
+      next()
+    } else {
+      prev()
+    }
+  }
+  touchStartX.value = null
+  touchDeltaX.value = 0
 }
 
 // ─── Lifecycle ────────────────────────────────────────────────────────────────
@@ -143,16 +169,24 @@ onBeforeUnmount(() => {
     style="min-height:100svh; height:100svh; max-height:960px"
     @mouseenter="paused = true"
     @mouseleave="paused = false"
+    @touchstart.passive="onTouchStart"
+    @touchmove.passive="onTouchMove"
+    @touchend.passive="onTouchEnd"
   >
     <!-- ── Background image (CSS zoom keyframe) ── -->
     <Transition name="hero-fade" mode="out-in">
-      <img
+      <NuxtImg
         :key="`img-${current}`"
         :src="currentSlide.image"
         :alt="currentSlide.title"
+        preset="hero"
+        sizes="100vw"
+        format="avif,webp"
+        quality="80"
+        loading="eager"
         class="absolute inset-0 w-full h-full object-cover hero-image-motion"
         style="filter:brightness(0.40)"
-      >
+      />
     </Transition>
 
     <!-- Overlay gradients -->

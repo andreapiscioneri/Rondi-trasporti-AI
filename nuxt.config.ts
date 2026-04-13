@@ -13,7 +13,7 @@ const ANTI_FOUC = `(function(){try{
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@nuxtjs/i18n', '@nuxtjs/color-mode'],
+  modules: ['@nuxt/image', '@nuxtjs/i18n', '@nuxtjs/color-mode'],
   css: ['~/assets/styles/index.css'],
   vite: {
     plugins: [tailwindcss()],
@@ -44,6 +44,43 @@ export default defineNuxtConfig({
     classSuffix: '',          // Adds class "dark" (no suffix like "dark-mode")
     storageKey: 'rondi-theme', // localStorage key AND cookie name used by module
     // The module auto-uses cookies in SSR context (Nuxt) — storageKey = cookie name
+  },
+
+  image: {
+    format: ['avif', 'webp'],
+    quality: 78,
+    densities: [1, 2],
+    screens: {
+      xs: 360,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536,
+    },
+    presets: {
+      hero: {
+        modifiers: {
+          quality: 80,
+          fit: 'cover',
+          format: 'avif',
+        },
+      },
+      card: {
+        modifiers: {
+          quality: 76,
+          fit: 'cover',
+          format: 'webp',
+        },
+      },
+      gallery: {
+        modifiers: {
+          quality: 72,
+          fit: 'cover',
+          format: 'webp',
+        },
+      },
+    },
   },
 
   // ─── App head ────────────────────────────────────────────────────────────────

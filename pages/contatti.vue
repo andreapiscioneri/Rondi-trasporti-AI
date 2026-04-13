@@ -19,23 +19,23 @@ const OFFICE_MAPS = [
   'https://images.unsplash.com/photo-1762344682624-176d89eb3bfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
 ]
 
+const heroData = computed(() => ({
+  image: 'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2400',
+  alt: pg.value.hero.title,
+  tag: pg.value.hero.tag,
+  title: pg.value.hero.title,
+  subtitle: pg.value.hero.subtitle,
+}))
+
 </script>
 
 <template>
   <div>
-    <section class="relative page-section page-section--dark overflow-hidden">
-      <div class="absolute inset-0">
-        <img :src="HQ_IMG" alt="" class="w-full h-full object-cover opacity-15 scale-105">
-        <div class="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] to-[#0A0A0A]/50" />
-      </div>
-      <div class="absolute left-0 top-0 bottom-0 w-1" :style="{ background: RED }" />
-      <div class="section-shell relative z-10 max-w-2xl">
-        <AnimateOnScroll variant="fadeUp">
-          <span class="block mb-4" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#E5322D">{{ pg.hero.tag }}</span>
-          <h1 class="text-white mb-4 headline-balance" style="font-size:clamp(2.5rem,5vw,4.2rem);font-weight:800;line-height:1.04">{{ pg.hero.title }}</h1>
-          <p class="text-white/62" style="font-size:clamp(1rem,1.5vw,1.125rem);line-height:1.72">{{ pg.hero.subtitle }}</p>
-        </AnimateOnScroll>
-        <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3">
+    <PageHeroBanner :hero="heroData" />
+
+    <section class="page-section page-section--dark !pt-10 !pb-10">
+      <div class="section-shell">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div class="surface-card px-4 py-4 rounded-2xl"><div class="flex items-center gap-2 mb-2 text-black dark:text-white/80"><Clock :size="14" class="text-[#E5322D]" /><span style="font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Risposta</span></div><p class="text-[#111111] dark:text-white" style="font-size:1rem;font-weight:800">&lt; 24h</p></div>
           <div class="surface-card px-4 py-4 rounded-2xl"><div class="flex items-center gap-2 mb-2 text-black dark:text-white/80"><MessageSquareText :size="14" class="text-[#E5322D]" /><span style="font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Canali attivi</span></div><p class="text-[#111111] dark:text-white" style="font-size:1rem;font-weight:800">Mail + Phone</p></div>
           <div class="surface-card px-4 py-4 rounded-2xl"><div class="flex items-center gap-2 mb-2 text-black dark:text-white/80"><Truck :size="14" class="text-[#E5322D]" /><span style="font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Copertura</span></div><p class="text-[#111111] dark:text-white" style="font-size:1rem;font-weight:800">Italia + Estero</p></div>

@@ -18,6 +18,7 @@
 
 const dot  = ref<HTMLElement | null>(null)
 const ring = ref<HTMLElement | null>(null)
+const label = ref<HTMLElement | null>(null)
 
 const isPointerFine = ref(false)
 
@@ -32,6 +33,7 @@ let hovering = false
 let textMode = false
 let hidden   = true
 let clicking = false
+let mode: 'default' | 'view' | 'zoom' = 'default'
 
 // ─── RAF loop ─────────────────────────────────────────────────────────────────
 function tick() {
@@ -48,6 +50,10 @@ function tick() {
 
     ring.value.style.transform =
       `translate(${rX - ox}px, ${rY - oy}px) scale(${sc})`
+  }
+
+  if (label.value) {
+    label.value.style.transform = `translate(${rX + 18}px, ${rY - 24}px)`
   }
 
   rafId = requestAnimationFrame(tick)
@@ -75,6 +81,9 @@ function onMouseMove(e: MouseEvent) {
   const target = e.target as HTMLElement
   const nextHover = !!target.closest('a, button, [data-cursor-hover], label, [role="button"], [data-magnetic]')
   const nextText  = !nextHover && !!target.closest('p, h1, h2, h3, h4, h5, h6, span, li, blockquote, em, strong')
+  const modeTarget = target.closest<HTMLElement>('[data-cursor]')
+  const nextMode = (modeTarget?.dataset.cursor as 'view' | 'zoom' | undefined) ?? 'default'
+  const nextLabel = modeTarget?.dataset.cursorLabel ?? ''
 
   if (nextHover !== hovering) {
     hovering = nextHover
@@ -86,6 +95,17 @@ function onMouseMove(e: MouseEvent) {
     textMode = nextText
     ring.value?.classList.toggle('is-text', textMode)
   }
+
+  if (nextMode !== mode) {
+    mode = nextMode
+    ring.value?.classList.toggle('is-view', mode === 'view')
+    ring.value?.classList.toggle('is-zoom', mode === 'zoom')
+  }
+
+  if (label.value) {
+    label.value.textContent = nextLabel
+    label.value.classList.toggle('is-visible', Boolean(nextLabel) && !hidden)
+  }
 }
 
 function scheduleHide() {
@@ -95,6 +115,7 @@ function scheduleHide() {
     hidden = true
     dot.value?.classList.add('is-hidden')
     ring.value?.classList.add('is-hidden')
+    label.value?.classList.remove('is-visible')
   }, 160)
 }
 
@@ -172,6 +193,7 @@ onBeforeUnmount(() => {
     <div v-if="isPointerFine" class="cursor-root" aria-hidden="true">
       <div ref="dot"  class="cursor-dot  is-hidden" />
       <div ref="ring" class="cursor-ring is-hidden" />
+      <div ref="label" class="cursor-label" />
     </div>
   </Teleport>
 </template>
@@ -227,12 +249,45 @@ onBeforeUnmount(() => {
   border-width: 2px;
 }
 
+.cursor-ring.is-view {
+  border-color: rgba(255, 255, 255, .9);
+  background: rgba(255, 255, 255, .10);
+}
+
+.cursor-ring.is-zoom {
+  border-color: rgba(229, 50, 45, .95);
+  background: rgba(229, 50, 45, .12);
+}
+
 /* Thin vertical bar over readable text */
 .cursor-ring.is-text {
   width: 2px; height: 28px;
   border-radius: 2px;
   border-color: rgba(229, 50, 45, .55);
   background:   rgba(229, 50, 45, .12);
+}
+
+.cursor-label {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(10, 10, 10, 0.84);
+  border-radius: 999px;
+  padding: 0.35rem 0.55rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #f5f5f5;
+  opacity: 0;
+  transition: opacity .2s ease;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.cursor-label.is-visible {
+  opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {

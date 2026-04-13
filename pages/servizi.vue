@@ -23,41 +23,19 @@ const SERVICE_IMAGES = [
   'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900',
   'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900',
 ]
+
+const heroData = computed(() => ({
+  image: 'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2400',
+  alt: t.value.serviziPage.hero.title,
+  tag: t.value.serviziPage.hero.tag,
+  title: t.value.serviziPage.hero.title,
+  subtitle: t.value.serviziPage.hero.subtitle,
+}))
 </script>
 
 <template>
   <div>
-    <section class="relative page-section page-section--dark overflow-hidden">
-      <div class="absolute inset-0">
-        <img
-          src="https://images.unsplash.com/photo-1668532070017-1956f52f097f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920"
-          alt=""
-          class="w-full h-full object-cover opacity-20 scale-105"
-        >
-        <div class="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/75 to-transparent" />
-      </div>
-      <div class="absolute left-0 top-0 bottom-0 w-1 bg-[#E5322D]" />
-      <div class="section-shell relative z-10">
-        <span
-          class="block mb-4"
-          style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #E5322D"
-        >
-          {{ t.serviziPage.hero.tag }}
-        </span>
-        <h1
-          class="text-white mb-4 max-w-2xl headline-balance"
-          style="font-size: clamp(2.5rem, 5vw, 4.2rem); font-weight: 800; line-height: 1.04; letter-spacing: -0.03em"
-        >
-          {{ t.serviziPage.hero.title }}
-        </h1>
-        <p
-          class="text-white/60 max-w-lg"
-          style="font-size: clamp(1rem, 1.5vw, 1.125rem); font-weight: 500; line-height: 1.72"
-        >
-          {{ t.serviziPage.hero.subtitle }}
-        </p>
-      </div>
-    </section>
+    <PageHeroBanner :hero="heroData" />
 
     <div class="sticky top-[82px] z-30 bg-white/80 dark:bg-black/70 border-b border-black/10 dark:border-white/10 overflow-x-auto backdrop-blur-xl">
       <div class="section-shell px-4 sm:px-6 lg:px-10 flex gap-2 py-3 whitespace-nowrap">
@@ -82,7 +60,7 @@ const SERVICE_IMAGES = [
     >
       <div class="section-shell">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div class="relative overflow-hidden group">
+          <div class="relative overflow-hidden group" :class="i % 2 === 1 ? 'lg:order-2' : ''">
             <div class="overflow-hidden rounded-[2rem] shadow-[0_28px_70px_rgba(0,0,0,0.14)]" style="aspect-ratio: 4/3">
               <img
                 :src="SERVICE_IMAGES[i]"
@@ -95,7 +73,7 @@ const SERVICE_IMAGES = [
             </div>
           </div>
 
-          <div>
+          <div :class="i % 2 === 1 ? 'lg:order-1' : ''">
             <span
               class="block mb-3"
               style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #E5322D"
