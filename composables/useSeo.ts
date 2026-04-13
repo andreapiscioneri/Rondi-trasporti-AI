@@ -46,6 +46,13 @@ export interface SeoOptions {
   noindex?: boolean
   /** Override og:type (default: 'website') */
   ogType?: 'website' | 'article'
+  /** Optional GEO meta overrides */
+  geo?: {
+    region?: string
+    placename?: string
+    position?: string
+    icbm?: string
+  }
 }
 
 // ─── Main composable ──────────────────────────────────────────────────────────
@@ -67,6 +74,11 @@ export function useSeo(options: SeoOptions) {
   const canonical = `${SEO_BASE_URL}${routePath === '/' ? '' : routePath}`
   const ogImage   = options.image ?? OG_DEFAULT
 
+  const geoRegion = options.geo?.region ?? 'IT-25'
+  const geoPlacename = options.geo?.placename ?? 'Brescia'
+  const geoPosition = options.geo?.position ?? '45.5416;10.2118'
+  const geoIcbm = options.geo?.icbm ?? '45.5416, 10.2118'
+
   // Enforce 155-char limit on description
   const desc = options.description.length > MAX_DESC_LEN
     ? options.description.slice(0, MAX_DESC_LEN - 1) + '…'
@@ -85,6 +97,12 @@ export function useSeo(options: SeoOptions) {
   useHead({
     title: fullTitle,
     link: alternateLinks,
+    meta: [
+      { key: 'geo-region', name: 'geo.region', content: geoRegion },
+      { key: 'geo-placename', name: 'geo.placename', content: geoPlacename },
+      { key: 'geo-position', name: 'geo.position', content: geoPosition },
+      { key: 'geo-icbm', name: 'ICBM', content: geoIcbm },
+    ],
     ...(options.jsonLd && {
       script: [{
         type: 'application/ld+json',

@@ -4,31 +4,35 @@ import { buildGeoLocalPath, GEO_CITIES } from '~/shared/local-seo'
 
 const { t } = useLang()
 const localePath = useLocalePath()
+const route = useRoute()
+const isServiziRoot = computed(() => !route.params.service)
 
-useSeo({
-  title: 'Servizi di Trasporto e Logistica',
-  description: 'Trasporto nazionale e internazionale, carichi eccezionali, gru fino a 1000t e logistica integrata. Scopri tutti i servizi Trasporti Rondi.',
-  path: '/servizi',
-  jsonLd: [
-    buildServiceSchema('Trasporto Nazionale', 'Servizi di trasporto merci su tutto il territorio italiano con flotta moderna e tracciamento in tempo reale.'),
-    buildServiceSchema('Trasporto Internazionale', 'Rotte consolidate verso 30+ paesi europei con gestione interna della documentazione doganale.'),
-    buildFaqSchema([
-      {
-        question: 'Quali servizi offre Trasporti Rondi?',
-        answer: 'Offriamo trasporti nazionali e internazionali, trasporti eccezionali, gru e movimentazioni, logistica e dogana.',
-      },
-      {
-        question: 'In quali aree operate?',
-        answer: 'Operiamo in tutta Italia e su tratte internazionali europee, con pagine locali dedicate per le principali aree operative.',
-      },
-      {
-        question: 'Come posso richiedere un preventivo?',
-        answer: 'Puoi usare la pagina Preventivo: il team commerciale prende in carico la richiesta con piano operativo dedicato.',
-      },
-    ]),
-    buildBreadcrumbSchema([{ name: 'Home', href: '/' }, { name: 'Servizi', href: '/servizi' }]),
-  ],
-})
+if (isServiziRoot.value) {
+  useSeo({
+    title: 'Servizi di Trasporto e Logistica',
+    description: 'Trasporto nazionale e internazionale, carichi eccezionali, gru fino a 1000t e logistica integrata. Scopri tutti i servizi Trasporti Rondi.',
+    path: '/servizi',
+    jsonLd: [
+      buildServiceSchema('Trasporto Nazionale', 'Servizi di trasporto merci su tutto il territorio italiano con flotta moderna e tracciamento in tempo reale.'),
+      buildServiceSchema('Trasporto Internazionale', 'Rotte consolidate verso 30+ paesi europei con gestione interna della documentazione doganale.'),
+      buildFaqSchema([
+        {
+          question: 'Quali servizi offre Trasporti Rondi?',
+          answer: 'Offriamo trasporti nazionali e internazionali, trasporti eccezionali, gru e movimentazioni, logistica e dogana.',
+        },
+        {
+          question: 'In quali aree operate?',
+          answer: 'Operiamo in tutta Italia e su tratte internazionali europee, con pagine locali dedicate per le principali aree operative.',
+        },
+        {
+          question: 'Come posso richiedere un preventivo?',
+          answer: 'Puoi usare la pagina Preventivo: il team commerciale prende in carico la richiesta con piano operativo dedicato.',
+        },
+      ]),
+      buildBreadcrumbSchema([{ name: 'Home', href: '/' }, { name: 'Servizi', href: '/servizi' }]),
+    ],
+  })
+}
 
 const serviceIcons = [Truck, Globe, Maximize2, Wrench, Package]
 
@@ -91,6 +95,9 @@ const pageFaqItems = [
 
 <template>
   <div>
+    <NuxtPage v-if="!isServiziRoot" />
+
+    <template v-else>
     <PageHeroBanner :hero="heroData" />
 
     <div class="sticky top-[82px] z-30 bg-white/80 dark:bg-black/70 border-b border-black/10 dark:border-white/10 overflow-x-auto backdrop-blur-xl">
@@ -206,5 +213,6 @@ const pageFaqItems = [
         </div>
       </div>
     </section>
+    </template>
   </div>
 </template>
