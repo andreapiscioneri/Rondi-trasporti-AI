@@ -4,7 +4,7 @@ export const translations = {
       home: "Home",
       servizi: "Servizi",
       sostenibilita: "Sostenibilità",
-      storia: "La Nostra Storia",
+      storia: "Storia",
       lavora: "Lavora con Noi",
       whistleblowing: "Whistleblowing",
       contatti: "Contatti",
@@ -12,79 +12,260 @@ export const translations = {
       menu: "Menu",
     },
     hero: {
-      tag: "Dal 1998 · Eccellenza nel Trasporto Industriale",
-      title: "La Forza del Trasporto.\nLa Visione del Futuro.",
+      tag: "Dal 1998 · Trasporto industriale di livello superiore",
+      title: "La solidità di oggi.\nLa direzione di domani.",
       subtitle:
-        "Trasporti nazionali, internazionali ed eccezionali. Logistica integrata e servizi gru per l'industria italiana.",
-      cta: "Richiedi un Preventivo",
+        "Trasporti nazionali, internazionali ed eccezionali, logistica integrata e servizi gru progettati per l'industria.",
+      cta: "Richiedi un preventivo",
       ctaSecondary: "Scopri i Servizi",
     },
     services: {
-      tag: "I Nostri Servizi",
-      title: "Soluzioni Complete per la Logistica Moderna",
+      tag: "I nostri servizi",
+      title: "Soluzioni complete per la logistica industriale",
       subtitle:
-        "Cinque aree di eccellenza per rispondere ad ogni esigenza del trasporto industriale",
+        "Cinque aree operative per rispondere con precisione a ogni esigenza del trasporto industriale.",
       items: [
         {
-          title: "Trasporti Nazionali",
-          desc: "Copertura capillare su tutto il territorio italiano con tracciamento GPS in tempo reale e consegne H24.",
+          title: "Trasporti nazionali",
+          desc: "Copertura capillare in tutta Italia, tracciamento GPS in tempo reale e gestione flessibile delle consegne.",
         },
         {
-          title: "Trasporti Internazionali",
-          desc: "Rotte affidabili verso 30+ paesi con gestione completa della documentazione doganale interna.",
+          title: "Trasporti internazionali",
+          desc: "Rotte consolidate verso oltre 30 paesi con gestione interna della documentazione doganale.",
         },
         {
-          title: "Trasporti Eccezionali",
-          desc: "Specialisti in carichi fuori sagoma e fuori massa con autorizzazioni ministeriali e scorte dedicate.",
+          title: "Trasporti eccezionali",
+          desc: "Carichi fuori sagoma e fuori massa gestiti con autorizzazioni ministeriali e scorte dedicate.",
         },
         {
-          title: "Gru e Movimentazioni",
-          desc: "Sollevamento industriale di precisione con gru fino a 1000t e operatori certificati.",
+          title: "Gru e movimentazioni",
+          desc: "Sollevamenti industriali di precisione con mezzi fino a 1000 tonnellate e operatori certificati.",
         },
         {
-          title: "Logistica e Dogana",
-          desc: "Gestione integrata di magazzino, distribuzione e pratiche doganali import/export.",
+          title: "Logistica e dogana",
+          desc: "Gestione integrata di magazzino, distribuzione e pratiche doganali per import ed export.",
         },
       ],
-      cta: "Scopri Tutti i Servizi",
+      cta: "Scopri tutti i servizi",
+    },
+    serviceDetails: {
+      national: {
+        seoTitle: "Trasporto Nazionale",
+        seoDescription: "Servizio di trasporto nazionale con rete capillare, monitoraggio continuo e pianificazione puntuale.",
+        introTitle: "Trasporto nazionale senza margini di errore",
+        introSubtitle: "Dalla raccolta alla consegna, ogni tratta è pianificata per mantenere tempi, controllo e continuità operativa.",
+        introParagraphs: [
+          "Siamo specializzati nel trasporto su gomma di merci industriali con una flotta proprietaria ampia e modulabile.",
+          "Pianifichiamo ogni spedizione per offrire la soluzione più efficiente in termini di tempi, saturazione mezzo e sicurezza del carico.",
+        ],
+        tabs: [
+          {
+            label: "Trasporto a pieno carico",
+            title: "Trasporto a pieno carico",
+            description: "Servizio dedicato con mezzo assegnato alla singola commessa. Pianifichiamo il viaggio in base a priorità del cliente, tempi di consegna e sicurezza del carico, mantenendo controllo completo dell'intera tratta.",
+          },
+          {
+            label: "Trasporto a carico parziale",
+            title: "Trasporto a carico parziale",
+            description: "Soluzione flessibile per volumi ridotti o spedizioni frazionate. Ottimizziamo saturazione dei mezzi e costo/tempo di trasporto con programmazione puntuale e tracciabilità operativa.",
+          },
+        ],
+        whyTitle: "Cosa ci differenzia",
+        whyText: "Strutturazione dei processi, flessibilità di servizio e professionalità operativa ci consentono di affrontare ogni spedizione con metodo e precisione.",
+        checklist: [
+          "Assistenza continuativa",
+          "Personale qualificato",
+          "Flessibilità di servizio",
+          "Tracciabilità del carico",
+          "Parco mezzi ampio e diversificato",
+          "Copertura nazionale completa",
+        ],
+        ctaLabel: "Richiedi una quotazione",
+        related: ["Trasporto Internazionale", "Trasporto Eccezionale", "Gru e Movimentazioni", "Logistica"],
+      },
+      international: {
+        seoTitle: "Trasporto Internazionale",
+        seoDescription: "Trasporto internazionale su rotte consolidate europee con supporto doganale e coordinamento operativo.",
+        introTitle: "Trasporto internazionale, con regia totale",
+        introSubtitle: "Rotte europee, documentazione e coordinamento: gestiamo ogni passaggio per farti arrivare puntuale oltre confine.",
+        introParagraphs: [
+          "Pianifichiamo spedizioni internazionali con un approccio strutturato su tempi, tratte e priorità del cliente.",
+          "Il presidio documentale e il controllo operativo continuo riducono criticità e aumentano affidabilità lungo tutta la catena di trasporto.",
+        ],
+        tabs: [
+          {
+            label: "Rotte europee",
+            title: "Rotte europee",
+            description: "Gestiamo tratte internazionali con network operativo affidabile e pianificazione su priorità, tempi e criticità logistiche.",
+          },
+          {
+            label: "Presidio documentale",
+            title: "Presidio documentale",
+            description: "Affianchiamo il cliente nella gestione dei documenti necessari per velocizzare i flussi e ridurre interruzioni operative.",
+          },
+          {
+            label: "Coordinamento continuo",
+            title: "Coordinamento continuo",
+            description: "Il team segue l'intero ciclo spedizione con controllo stato e supporto nelle fasi più sensibili del trasporto cross-border.",
+          },
+        ],
+        whyTitle: "Cosa ci differenzia",
+        whyText: "Metodo operativo, rete affidabile e presidio documentale ci permettono di garantire continuità anche su tratte internazionali complesse.",
+        checklist: [
+          "Assistenza continuativa",
+          "Supporto documentale",
+          "Flessibilità di servizio",
+          "Coordinamento operativo dedicato",
+          "Copertura internazionale su direttrici consolidate",
+        ],
+        ctaLabel: "Richiedi una quotazione",
+        related: ["Trasporto Nazionale", "Trasporto Eccezionale", "Gru e Movimentazioni", "Logistica"],
+      },
+      exceptional: {
+        seoTitle: "Trasporto Eccezionale",
+        seoDescription: "Trasporto eccezionale per carichi fuori sagoma e fuori massa con pianificazione tecnica dedicata.",
+        introTitle: "Trasporto eccezionale che porta oltre i limiti",
+        introSubtitle: "Carichi fuori sagoma, fuori massa e progetti complessi: li studiamo, li autorizziamo e li facciamo viaggiare con precisione.",
+        introParagraphs: [
+          "La gestione della complessità è centrale: per ogni commessa sviluppiamo analisi preventiva, fattibilità percorso e approccio operativo su misura.",
+          "Affianchiamo il cliente nella componente documentale e nella preparazione delle fasi critiche per garantire sicurezza e continuità del servizio.",
+        ],
+        tabs: [
+          {
+            label: "Trasporto pesante",
+            title: "Trasporto pesante",
+            description: "Per i carichi ad alta massa sviluppiamo un piano logistico dettagliato per gestire sicurezza, percorribilità e stabilità del trasporto in ogni fase operativa.",
+          },
+          {
+            label: "Trasporto sagomati",
+            title: "Trasporto sagomati",
+            description: "Nelle spedizioni fuori sagoma analizziamo vincoli di altezza, larghezza e accesso, costruendo una strategia dedicata per prevenire criticità lungo il percorso.",
+          },
+          {
+            label: "Trasporto macchinari",
+            title: "Trasporto macchinari",
+            description: "Gestiamo trasporti di macchinari industriali con supporto tecnico continuo, dal briefing iniziale al posizionamento finale presso lo stabilimento di destinazione.",
+          },
+        ],
+        whyTitle: "Cosa ci differenzia",
+        whyText: "Esperienza sul campo, struttura operativa e metodo di pianificazione ci permettono di affrontare anche i progetti di trasporto più complessi.",
+        checklist: [
+          "Assistenza continuativa",
+          "Sopralluogo tecnico preliminare",
+          "Personale qualificato",
+          "Flessibilità di servizio",
+          "Supporto gestione normativa",
+          "Parco mezzi ampio e diversificato",
+          "Copertura nazionale completa",
+          "Possibilità di integrazione assicurativa",
+        ],
+        ctaLabel: "Richiedi una quotazione",
+        related: ["Trasporto Nazionale", "Trasporto Internazionale", "Gru e Movimentazioni", "Logistica"],
+      },
+      handling: {
+        seoTitle: "Gru e Movimentazioni",
+        seoDescription: "Servizio gru e movimentazioni con mezzi specializzati e supporto tecnico per operazioni industriali complesse.",
+        introTitle: "Gru e movimentazioni per lavori pesanti",
+        introSubtitle: "Sollevamenti, posizionamenti e interventi tecnici gestiti con mezzi speciali e operatori qualificati.",
+        introParagraphs: [
+          "La nostra flotta comprende mezzi con gru a braccio di ultima generazione disponibili per noleggio su esigenze operative diverse.",
+          "Possiamo integrare operatori qualificati per condurre le operazioni in sicurezza e nel rispetto delle procedure previste.",
+        ],
+        tabs: [
+          {
+            label: "Movimentazione merce",
+            title: "Movimentazione merce",
+            description: "Il noleggio di mezzi gruati consente operazioni di carico/scarico e movimentazione pesante con ampia flessibilità operativa su sito cliente o cantiere.",
+          },
+          {
+            label: "Operatori qualificati",
+            title: "Operatori qualificati",
+            description: "Su richiesta integriamo l'operatore specializzato abilitato alla conduzione di gru su autocarro, per lavorare in sicurezza e conformità normativa.",
+          },
+        ],
+        whyTitle: "Cosa ci differenzia",
+        whyText: "Processi strutturati, flessibilità operativa e personale specializzato ci permettono di offrire interventi affidabili su scenari complessi.",
+        checklist: [
+          "Mezzi di ultima generazione",
+          "Disponibilità operatori qualificati",
+          "Flessibilità di servizio",
+          "Parco mezzi ampio e diversificato",
+          "Copertura nazionale completa",
+        ],
+        ctaLabel: "Richiedi una quotazione",
+        related: ["Trasporto Nazionale", "Trasporto Internazionale", "Trasporto Eccezionale", "Logistica"],
+      },
+      logistics: {
+        seoTitle: "Soluzioni Logistiche",
+        seoDescription: "Soluzioni logistiche integrate: stoccaggio, distribuzione, pratiche doganali e controllo flussi.",
+        introTitle: "Logistica che semplifica la filiera",
+        introSubtitle: "Stoccaggio, flussi e distribuzione coordinati in un unico sistema operativo.",
+        introParagraphs: [
+          "Affidare la gestione logistica a un partner strutturato permette di ridurre inefficienze, tempi morti e costi operativi indiretti.",
+          "Configuriamo servizi di stoccaggio e ridistribuzione in funzione dei volumi reali, migliorando continuità di approvvigionamento e servizio.",
+        ],
+        tabs: [
+          {
+            label: "Stoccaggio magazzino",
+            title: "Stoccaggio magazzino",
+            description: "Organizziamo spazi e flussi di deposito per migliorare rotazione merce, ridurre stock improduttivo e accelerare la fase di preparazione spedizioni.",
+          },
+          {
+            label: "Logistica integrata",
+            title: "Logistica integrata",
+            description: "Gestiamo in modo coordinato ritiro, stoccaggio e ridistribuzione presso clienti, con visione unica della filiera e controllo dei passaggi operativi.",
+          },
+        ],
+        whyTitle: "Cosa ci differenzia",
+        whyText: "Strutturazione dei processi, flessibilità di servizio e personale qualificato ci consentono di gestire la logistica con precisione e continuità.",
+        checklist: [
+          "Ottimizzazione stock di magazzino",
+          "Disponibilità personale qualificato",
+          "Flessibilità di servizio",
+          "Parco mezzi ampio e diversificato",
+          "Copertura nazionale completa",
+        ],
+        ctaLabel: "Richiedi una quotazione",
+        related: ["Trasporto Nazionale", "Trasporto Internazionale", "Trasporto Eccezionale", "Gru e Movimentazioni"],
+      },
     },
     sustainability: {
       tag: "Sostenibilità",
-      title: "Green Logistics per un Futuro Migliore",
-      subtitle: "L'impegno ambientale non è un'opzione: è la nostra strategia.",
-      desc: "Trasporti Rondi ha scelto un percorso concreto verso la neutralità carbonica: energia fotovoltaica nelle sedi operative, flotta progressivamente rinnovata con veicoli Euro 6, e un sistema di monitoraggio delle emissioni CO₂ in ogni spedizione.",
-      cta: "Scopri il Nostro Impegno",
+      title: "Logistica green per un futuro migliore",
+      subtitle: "L'impegno ambientale non è un'opzione: è parte della strategia.",
+      desc: "Trasporti Rondi ha scelto un percorso concreto verso la neutralità carbonica: energia fotovoltaica nelle sedi operative, rinnovo progressivo della flotta con veicoli Euro 6 e monitoraggio delle emissioni CO₂ su ogni spedizione.",
+      cta: "Scopri il nostro impegno",
       certTitle: "Le Nostre Certificazioni",
       certs: ["ISO 9001:2015", "ISO 14001:2015", "ADR", "SQAS"],
     },
     stats: {
-      tag: "I Numeri Parlano",
-      title: "Dati Reali, Trasparenza Totale",
+      tag: "I numeri parlano",
+      title: "Dati reali, trasparenza totale",
       items: [
-        { value: "1998", label: "Anno di Fondazione" },
-        { value: "150+", label: "Automezzi in Flotta" },
-        { value: "30+", label: "Paesi Serviti" },
-        { value: "2.5M+", label: "Km Percorsi / Anno" },
-        { value: "200+", label: "Professionisti del Settore" },
-        { value: "25+", label: "Anni di Esperienza" },
+        { value: "1998", label: "anno di fondazione" },
+        { value: "150+", label: "automezzi in flotta" },
+        { value: "30+", label: "paesi serviti" },
+        { value: "2.5M+", label: "km percorsi / anno" },
+        { value: "200+", label: "professionisti del settore" },
+        { value: "25+", label: "anni di esperienza" },
       ],
     },
     ctaBanner: {
       title: "Pronto a ottimizzare la tua catena logistica?",
       subtitle:
         "Richiedi un preventivo personalizzato. Risposta garantita entro 24 ore.",
-      cta: "Contattaci Ora",
+      cta: "Contattaci ora",
     },
     serviziPage: {
       hero: {
         tag: "Servizi",
-        title: "Ogni Trasporto è una Missione.",
+        title: "Ogni trasporto è una missione.",
         subtitle: "Competenza specializzata per ogni esigenza industriale.",
       },
       items: [
         {
           id: "nazionali",
-          tag: "Trasporti Nazionali",
+          tag: "Trasporti nazionali",
           title: "Connettere l'Italia, punto per punto.",
           desc: "La nostra rete capillare raggiunge ogni angolo del territorio nazionale con una flotta moderna e sistemi di tracciamento avanzati. Garantiamo puntualità, sicurezza e flessibilità operativa 24/7.",
           features: [
@@ -97,8 +278,8 @@ export const translations = {
         },
         {
           id: "internazionali",
-          tag: "Trasporti Internazionali",
-          title: "Oltre i Confini, con la Stessa Precisione.",
+          tag: "Trasporti internazionali",
+          title: "Oltre i confini, con la stessa precisione.",
           desc: "Operiamo su rotte consolidate verso oltre 30 paesi europei ed extraeuropei. Il nostro ufficio interno gestisce tutta la documentazione doganale, garantendo transiti rapidi e conformi.",
           features: [
             "30+ paesi serviti regolarmente",
@@ -110,8 +291,8 @@ export const translations = {
         },
         {
           id: "eccezionali",
-          tag: "Trasporti Eccezionali",
-          title: "Dove gli Altri si Fermano, Noi Continuiamo.",
+          tag: "Trasporti eccezionali",
+          title: "Dove gli altri si fermano, noi continuiamo.",
           desc: "Siamo specialisti nel trasporto di carichi fuori sagoma, fuori massa e indivisibili. Dalla progettazione del percorso all'ottenimento delle autorizzazioni, gestiamo ogni aspetto del trasporto eccezionale.",
           features: [
             "Veicoli modulari e semirimorchi speciali",
@@ -123,8 +304,8 @@ export const translations = {
         },
         {
           id: "gru",
-          tag: "Gru e Movimentazioni",
-          title: "Potenza di Sollevamento, Precisione Millimetrica.",
+          tag: "Gru e movimentazioni",
+          title: "Potenza di sollevamento, precisione millimetrica.",
           desc: "Il nostro parco gru copre un range di portate da 50 a 1000 tonnellate. Operatori certificati e attrezzatura di ultima generazione per ogni tipo di intervento industriale.",
           features: [
             "Gru fino a 1000t di portata",
@@ -136,9 +317,9 @@ export const translations = {
         },
         {
           id: "logistica",
-          tag: "Logistica e Dogana",
-          title: "La Tua Supply Chain, Ottimizzata.",
-          desc: "Offriamo servizi di logistica integrata: stoccaggio in magazzini certificati, distribuzione last-mile, e gestione completa delle pratiche doganali per import/export. Un unico interlocutore per tutta la filiera.",
+          tag: "Logistica e dogana",
+          title: "La tua supply chain, ottimizzata.",
+          desc: "Offriamo servizi di logistica integrata: stoccaggio in magazzini certificati, distribuzione last-mile e gestione completa delle pratiche doganali per import/export. Un unico interlocutore per tutta la filiera.",
           features: [
             "Magazzini coperti e all'aperto certificati",
             "Software WMS per la gestione stock",
@@ -148,49 +329,49 @@ export const translations = {
           ],
         },
       ],
-      cta: "Richiedi Preventivo",
+      cta: "Richiedi preventivo",
     },
     sostenibilitaPage: {
       hero: {
-        tag: "Sostenibilità & Certificazioni",
-        title: "La Responsabilità è nel DNA di Trasporti Rondi.",
-        subtitle: "Un impegno concreto per la riduzione dell'impatto ambientale.",
+        tag: "Sostenibilità e certificazioni",
+        title: "La responsabilità è nel DNA di Trasporti Rondi.",
+        subtitle: "Un impegno concreto per ridurre l'impatto ambientale.",
       },
       sections: [
         {
-          tag: "Energia Rinnovabile",
-          title: "Pannelli Fotovoltaici",
+          tag: "Energia rinnovabile",
+          title: "Pannelli fotovoltaici",
           desc: "Le nostre sedi operative sono alimentate da impianti fotovoltaici ad alta efficienza. L'energia prodotta copre il fabbisogno degli uffici e delle officine, riducendo drasticamente le emissioni legate al consumo energetico stazionario.",
         },
         {
-          tag: "Flotta Green",
-          title: "Veicoli Euro 6 e Oltre",
+          tag: "Flotta green",
+          title: "Veicoli Euro 6 e oltre",
           desc: "Il progressivo rinnovo della flotta con veicoli conformi alla normativa Euro 6 ha ridotto le emissioni di particolato e NOx del 45% rispetto alla flotta precedente. Obiettivo: 100% veicoli a basse emissioni entro il 2030.",
         },
         {
-          tag: "Monitoraggio Emissioni",
-          title: "CO₂ sotto Controllo",
+          tag: "Monitoraggio emissioni",
+          title: "CO₂ sotto controllo",
           desc: "Ogni spedizione è accompagnata da un calcolo preciso delle emissioni CO₂ generate. I dati sono disponibili in tempo reale per i nostri clienti attraverso il portale dedicato, garantendo trasparenza e responsabilità condivisa.",
         },
       ],
       certs: {
-        title: "Certificazioni e Conformità",
+        title: "Certificazioni e conformità",
         subtitle:
           "Ogni certificazione è la prova di un impegno verificato da terze parti indipendenti.",
         items: [
           {
             code: "ISO 9001:2015",
-            name: "Sistema di Gestione Qualità",
+            name: "Sistema di gestione qualità",
             desc: "Garanzia di processi standardizzati e miglioramento continuo.",
           },
           {
             code: "ISO 14001:2015",
-            name: "Sistema di Gestione Ambientale",
+            name: "Sistema di gestione ambientale",
             desc: "Impegno certificato nella riduzione dell'impatto ambientale.",
           },
           {
             code: "ADR",
-            name: "Merci Pericolose",
+            name: "Merci pericolose",
             desc: "Abilitazione al trasporto di sostanze pericolose in conformità ADR.",
           },
           {
@@ -201,34 +382,34 @@ export const translations = {
         ],
       },
       envStats: [
-        { value: "-45%", label: "Emissioni NOx vs. flotta precedente" },
-        { value: "100%", label: "Energia fotovoltaica nelle sedi" },
-        { value: "2030", label: "Target flotta a basse emissioni" },
-        { value: "0", label: "Incidenti ambientali (ultimi 5 anni)" },
+        { value: "-45%", label: "emissioni NOx vs. flotta precedente" },
+        { value: "100%", label: "energia fotovoltaica nelle sedi" },
+        { value: "2030", label: "target flotta a basse emissioni" },
+        { value: "0", label: "incidenti ambientali (ultimi 5 anni)" },
       ],
     },
     storiaPage: {
       hero: {
         tag: "La Nostra Storia",
-        title: "25 Anni di Strade Percorse.",
+        title: "25 anni di strada, crescita e risultati.",
         subtitle:
-          "Un viaggio che ha trasformato una piccola impresa familiare in un leader del trasporto industriale italiano.",
+          "Un percorso che ha trasformato una piccola impresa familiare in un riferimento del trasporto industriale italiano.",
       },
       timeline: [
         {
           year: "1998",
-          title: "La Fondazione",
+          title: "Le origini",
           desc: "Trasporti Rondi nasce come impresa familiare con due automezzi e una visione chiara: affidabilità e qualità nel trasporto nazionale.",
         },
         {
           year: "2002",
-          title: "Espansione Internazionale",
-          desc: "Avvio delle prime rotte internazionali verso Germania e Francia. La flotta cresce a 15 veicoli e si apre l'ufficio spedizioni dedicato.",
+          title: "Espansione internazionale",
+          desc: "Avvio delle prime rotte internazionali verso Germania e Francia. La flotta cresce a 15 veicoli e si apre un ufficio spedizioni dedicato.",
         },
         {
           year: "2006",
-          title: "Trasporti Eccezionali",
-          desc: "Acquisizione delle prime autorizzazioni ministeriali per il trasporto di carichi eccezionali. Ingresso in un segmento altamente specializzato.",
+          title: "Trasporti eccezionali",
+          desc: "Acquisizione delle prime autorizzazioni ministeriali per il trasporto di carichi eccezionali. L'azienda entra in un segmento altamente specializzato.",
         },
         {
           year: "2010",
@@ -237,82 +418,82 @@ export const translations = {
         },
         {
           year: "2014",
-          title: "Energia Fotovoltaica",
+          title: "Energia fotovoltaica",
           desc: "Installazione dei primi impianti fotovoltaici nelle sedi operative. Riduzione del 60% del consumo energetico da fonti fossili.",
         },
         {
           year: "2018",
-          title: "Nuovo Hub Logistico",
+          title: "Nuovo hub logistico",
           desc: "Inaugurazione del nuovo hub logistico con magazzini certificati e sistema WMS integrato. La capacità di stoccaggio triplica.",
         },
         {
           year: "2022",
-          title: "ISO 14001 e Rinnovo Flotta",
+          title: "ISO 14001 e rinnovo flotta",
           desc: "Certificazione ambientale ISO 14001:2015 e avvio del piano di rinnovo flotta con veicoli Euro 6. Riduzione del 45% delle emissioni NOx.",
         },
         {
           year: "2024",
-          title: "Leader del Settore",
+          title: "Riferimento del settore",
           desc: "Trasporti Rondi si afferma come riferimento nel trasporto eccezionale con oltre 150 automezzi, 200+ professionisti e 30 paesi serviti.",
         },
       ],
-      cta: "Fai Parte della Storia",
+      cta: "Entra nella nostra storia",
     },
     lavoraPage: {
       hero: {
         tag: "Lavora con Noi",
-        title: "Costruisci il Futuro del Trasporto con Noi.",
+        title: "Costruisci con noi il futuro del trasporto.",
         subtitle:
           "Cerchiamo professionisti che condividano la nostra passione per l'eccellenza operativa.",
       },
       perks: [
         {
-          title: "Formazione Continua",
+          title: "Formazione continua",
           desc: "Programmi di aggiornamento professionale e certificazioni finanziate dall'azienda.",
         },
         {
-          title: "Ambiente Dinamico",
-          desc: "Un team internazionale in crescita con opportunità reali di avanzamento di carriera.",
+          title: "Ambiente dinamico",
+          desc: "Un team internazionale in crescita con opportunità concrete di avanzamento di carriera.",
         },
         {
-          title: "Benefits Competitivi",
+          title: "Benefit competitivi",
           desc: "Retribuzione sopra la media di settore, buoni pasto e assicurazione sanitaria integrativa.",
         },
         {
-          title: "Tecnologia Avanzata",
+          title: "Tecnologia avanzata",
           desc: "Flotte moderne, sistemi GPS di ultima generazione e software gestionali all'avanguardia.",
         },
       ],
       positions: {
-        title: "Posizioni Aperte",
+        title: "Posizioni aperte",
         apply: "Candidati",
         items: [
           {
-            title: "Autista di Linea Nazionale",
+            title: "Autista di linea nazionale",
             type: "Full-time",
             location: "Brescia / Italia",
             desc: "Guida di veicoli pesanti (patente CE + CQC) su rotte nazionali. Esperienza minima 2 anni.",
           },
           {
-            title: "Autista Internazionale",
+            title: "Autista internazionale",
             type: "Full-time",
             location: "Brescia / Europa",
             desc: "Rotte internazionali verso Francia, Germania, Spagna e oltre. Conoscenza base dell'inglese.",
           },
           {
-            title: "Addetto Logistica e Magazzino",
+            title: "Addetto logistica e magazzino",
             type: "Full-time",
             location: "Brescia",
             desc: "Gestione magazzino, inventario WMS, coordinamento spedizioni in entrata e uscita.",
           },
           {
-            title: "Impiegato Ufficio Spedizioni",
+            title: "Impiegato ufficio spedizioni",
             type: "Full-time",
             location: "Brescia",
             desc: "Pianificazione trasporti, gestione documenti CMR e doganali. Conoscenza software TMS.",
           },
           {
-            title: "Meccanico Officina Pesante",
+            title: "Meccanico officina pesante",
             type: "Full-time",
             location: "Brescia",
             desc: "Manutenzione e riparazione di veicoli pesanti. Diploma tecnico e esperienza nel settore.",
@@ -320,7 +501,7 @@ export const translations = {
         ],
       },
       form: {
-        title: "Candidatura Spontanea",
+        title: "Candidatura spontanea",
         subtitle:
           "Non trovi la posizione adatta? Inviaci la tua candidatura spontanea.",
         name: "Nome e Cognome",
@@ -330,13 +511,13 @@ export const translations = {
         message: "Presentati e descrivi la tua esperienza",
         cv: "Allega Curriculum Vitae",
         privacy: "Ho letto e accetto la Privacy Policy",
-        submit: "Invia Candidatura",
+        submit: "Invia candidatura",
       },
     },
     whistlePage: {
       hero: {
         tag: "Whistleblowing",
-        title: "Segnalazioni in Totale Sicurezza.",
+        title: "Segnalazioni, in totale sicurezza.",
         subtitle:
           "Un canale riservato per segnalare irregolarità in conformità al D.Lgs. 24/2023.",
       },
@@ -351,7 +532,7 @@ export const translations = {
         ],
       },
       form: {
-        title: "Invia una Segnalazione",
+        title: "Invia una segnalazione",
         subtitle:
           "Compila il modulo seguente. La segnalazione sarà trattata con la massima riservatezza.",
         category: "Categoria della Segnalazione",
@@ -369,7 +550,7 @@ export const translations = {
         name: "Nome (opzionale)",
         email: "Email (opzionale, per ricevere aggiornamenti)",
         attachments: "Aggiungi Allegati (opzionale)",
-        submit: "Invia Segnalazione",
+        submit: "Invia segnalazione",
         disclaimer:
           "La presente segnalazione sarà trattata in conformità al D.Lgs. 24/2023 e al Regolamento UE 2016/679 (GDPR).",
       },
@@ -377,7 +558,7 @@ export const translations = {
     contattiPage: {
       hero: {
         tag: "Contatti",
-        title: "Siamo Qui per Te.",
+        title: "Siamo qui per te.",
         subtitle:
           "Tre sedi operative per rispondere ad ogni esigenza con rapidità e professionalità.",
       },
@@ -408,7 +589,7 @@ export const translations = {
         },
       ],
       form: {
-        title: "Invia un Messaggio",
+        title: "Invia un messaggio",
         name: "Nome e Cognome",
         company: "Azienda",
         email: "Email",
@@ -488,71 +669,252 @@ export const translations = {
     },
     hero: {
       tag: "Since 1998 · Excellence in Industrial Transport",
-      title: "The Power of Transport.\nThe Vision of the Future.",
+      title: "The strength of today.\nThe direction of tomorrow.",
       subtitle:
-        "National, international and exceptional transport. Integrated logistics and crane services for Italian industry.",
-      cta: "Request a Quote",
-      ctaSecondary: "Discover Our Services",
+        "National, international and exceptional transport, integrated logistics and crane services built for industry.",
+      cta: "Request a quote",
+      ctaSecondary: "Discover our services",
     },
     services: {
-      tag: "Our Services",
-      title: "Complete Solutions for Modern Logistics",
+      tag: "Our services",
+      title: "Complete solutions for industrial logistics",
       subtitle:
-        "Five areas of excellence for every industrial transport requirement",
+        "Five operational areas to answer every industrial transport need with precision.",
       items: [
         {
           title: "National Transport",
-          desc: "Extensive coverage across Italy with real-time GPS tracking and 24/7 delivery options.",
+          desc: "Extensive coverage across Italy with real-time GPS tracking and flexible delivery management.",
         },
         {
           title: "International Transport",
-          desc: "Reliable routes to 30+ countries with full in-house customs documentation management.",
+          desc: "Established routes to 30+ countries with in-house customs documentation management.",
         },
         {
           title: "Exceptional Transport",
-          desc: "Specialists in oversize and overweight loads with dedicated permits and escorts.",
+          desc: "Oversize and overweight loads handled with dedicated permits and escort support.",
         },
         {
           title: "Crane & Handling",
-          desc: "Industrial precision lifting with cranes up to 1000t and certified operators.",
+          desc: "Precision industrial lifting with cranes up to 1000 tonnes and certified operators.",
         },
         {
           title: "Logistics & Customs",
-          desc: "Integrated warehouse management, distribution and customs clearance for import/export.",
+          desc: "Integrated warehouse management, distribution and customs clearance for import and export.",
         },
       ],
-      cta: "View All Services",
+      cta: "View all services",
+    },
+    serviceDetails: {
+      national: {
+        seoTitle: "National Transport",
+        seoDescription: "National transport service with wide coverage, continuous monitoring and punctual planning.",
+        introTitle: "National transport without room for error",
+        introSubtitle: "From collection to delivery, every route is planned to keep timing, control and operational continuity on track.",
+        introParagraphs: [
+          "We specialize in road transport for industrial goods with a large, flexible owned fleet.",
+          "Every shipment is planned to deliver the most efficient solution in terms of timing, vehicle utilization and cargo safety.",
+        ],
+        tabs: [
+          {
+            label: "Full truckload",
+            title: "Full truckload",
+            description: "Dedicated service with a vehicle assigned to the specific job. We plan each trip around customer priorities, delivery timing and cargo safety while keeping full control of the route.",
+          },
+          {
+            label: "Less-than-truckload",
+            title: "Less-than-truckload",
+            description: "Flexible solution for smaller volumes or split shipments. We optimize truck utilization and transport cost/time with precise scheduling and operational tracking.",
+          },
+        ],
+        whyTitle: "What sets us apart",
+        whyText: "Structured processes, service flexibility and operational professionalism let us handle every shipment with method and precision.",
+        checklist: [
+          "Continuous support",
+          "Qualified staff",
+          "Service flexibility",
+          "Cargo traceability",
+          "Large and diversified fleet",
+          "Full national coverage",
+        ],
+        ctaLabel: "Request a quote",
+        related: ["International Transport", "Exceptional Transport", "Crane & Handling", "Logistics"],
+      },
+      international: {
+        seoTitle: "International Transport",
+        seoDescription: "International transport on established European routes with customs support and operational coordination.",
+        introTitle: "International transport with full direction",
+        introSubtitle: "European routes, documentation and coordination: we manage every step to get you across borders on time.",
+        introParagraphs: [
+          "We plan international shipments with a structured approach to timing, routes and customer priorities.",
+          "Document control and continuous operational oversight reduce risk and improve reliability throughout the transport chain.",
+        ],
+        tabs: [
+          {
+            label: "European routes",
+            title: "European routes",
+            description: "We manage international routes with a reliable operational network and planning centered on priorities, timing and logistics constraints.",
+          },
+          {
+            label: "Document control",
+            title: "Document control",
+            description: "We support the customer with all required paperwork to speed up flows and reduce operational interruptions.",
+          },
+          {
+            label: "Continuous coordination",
+            title: "Continuous coordination",
+            description: "The team follows the full shipment cycle with status monitoring and support during the most sensitive cross-border phases.",
+          },
+        ],
+        whyTitle: "What sets us apart",
+        whyText: "Operational method, a reliable network and document control let us guarantee continuity even on complex international routes.",
+        checklist: [
+          "Continuous support",
+          "Document assistance",
+          "Service flexibility",
+          "Dedicated operational coordination",
+          "International coverage on established corridors",
+        ],
+        ctaLabel: "Request a quote",
+        related: ["National Transport", "Exceptional Transport", "Crane & Handling", "Logistics"],
+      },
+      exceptional: {
+        seoTitle: "Exceptional Transport",
+        seoDescription: "Exceptional transport for oversize and overweight loads with dedicated technical planning.",
+        introTitle: "Exceptional transport that goes beyond limits",
+        introSubtitle: "Oversize loads, overweight loads and complex projects: we study them, authorize them and move them with precision.",
+        introParagraphs: [
+          "Complexity is central: for every job we develop a preliminary analysis, route feasibility and a tailored operational approach.",
+          "We support the customer with documentation and critical phase preparation to ensure safety and service continuity.",
+        ],
+        tabs: [
+          {
+            label: "Heavy transport",
+            title: "Heavy transport",
+            description: "For high-mass loads we build a detailed logistics plan to manage safety, route viability and transport stability across every operational stage.",
+          },
+          {
+            label: "Oversize transport",
+            title: "Oversize transport",
+            description: "For out-of-gauge shipments we analyze height, width and access constraints, building a dedicated strategy to prevent issues along the route.",
+          },
+          {
+            label: "Machinery transport",
+            title: "Machinery transport",
+            description: "We manage industrial machinery transports with continuous technical support, from the first briefing to final placement at destination.",
+          },
+        ],
+        whyTitle: "What sets us apart",
+        whyText: "Field experience, operational structure and planning method let us handle even the most complex transport projects.",
+        checklist: [
+          "Continuous support",
+          "Preliminary technical survey",
+          "Qualified staff",
+          "Service flexibility",
+          "Regulatory support",
+          "Large and diversified fleet",
+          "Full national coverage",
+          "Optional insurance integration",
+        ],
+        ctaLabel: "Request a quote",
+        related: ["National Transport", "International Transport", "Crane & Handling", "Logistics"],
+      },
+      handling: {
+        seoTitle: "Crane & Handling",
+        seoDescription: "Crane and handling service with specialized equipment and technical support for complex industrial operations.",
+        introTitle: "Crane and handling for heavy work",
+        introSubtitle: "Lifting, positioning and technical interventions managed with special equipment and qualified operators.",
+        introParagraphs: [
+          "Our fleet includes modern truck-mounted cranes available for different operational needs.",
+          "We can provide qualified operators to carry out the work safely and in full compliance with procedures.",
+        ],
+        tabs: [
+          {
+            label: "Material handling",
+            title: "Material handling",
+            description: "Truck-mounted crane rental enables loading, unloading and heavy handling with broad operational flexibility on site or at the customer premises.",
+          },
+          {
+            label: "Qualified operators",
+            title: "Qualified operators",
+            description: "On request we integrate a specialized operator certified to use truck-mounted cranes, ensuring safe work and full regulatory compliance.",
+          },
+        ],
+        whyTitle: "What sets us apart",
+        whyText: "Structured processes, operational flexibility and specialized staff let us deliver reliable interventions in complex scenarios.",
+        checklist: [
+          "Latest-generation equipment",
+          "Qualified operators available",
+          "Service flexibility",
+          "Large and diversified fleet",
+          "Full national coverage",
+        ],
+        ctaLabel: "Request a quote",
+        related: ["National Transport", "International Transport", "Exceptional Transport", "Logistics"],
+      },
+      logistics: {
+        seoTitle: "Logistics Solutions",
+        seoDescription: "Integrated logistics solutions: warehousing, distribution, customs procedures and flow control.",
+        introTitle: "Logistics that simplify the chain",
+        introSubtitle: "Warehousing, flows and distribution coordinated within one operational system.",
+        introParagraphs: [
+          "Giving logistics to a structured partner reduces inefficiencies, downtime and indirect operating costs.",
+          "We configure storage and redistribution services according to actual volumes, improving supply continuity and service quality.",
+        ],
+        tabs: [
+          {
+            label: "Warehouse storage",
+            title: "Warehouse storage",
+            description: "We organize storage spaces and flows to improve turnover, reduce idle stock and speed up shipment preparation.",
+          },
+          {
+            label: "Integrated logistics",
+            title: "Integrated logistics",
+            description: "We coordinate collection, storage and redistribution for customers, with a single view of the supply chain and full control of each step.",
+          },
+        ],
+        whyTitle: "What sets us apart",
+        whyText: "Structured processes, service flexibility and qualified staff let us manage logistics with precision and continuity.",
+        checklist: [
+          "Warehouse stock optimization",
+          "Qualified staff available",
+          "Service flexibility",
+          "Large and diversified fleet",
+          "Full national coverage",
+        ],
+        ctaLabel: "Request a quote",
+        related: ["National Transport", "International Transport", "Exceptional Transport", "Crane & Handling"],
+      },
     },
     sustainability: {
       tag: "Sustainability",
-      title: "Green Logistics for a Better Future",
-      subtitle: "Environmental commitment is not an option: it's our strategy.",
-      desc: "Trasporti Rondi has chosen a concrete path towards carbon neutrality: photovoltaic energy at operational sites, a fleet progressively renewed with Euro 6 vehicles, and a CO₂ emissions monitoring system for every shipment.",
-      cta: "Discover Our Commitment",
+      title: "Green logistics for a better future",
+      subtitle: "Environmental commitment is not an option: it is part of the strategy.",
+      desc: "Trasporti Rondi has chosen a concrete path towards carbon neutrality: photovoltaic energy at operational sites, a fleet progressively renewed with Euro 6 vehicles and a CO₂ emissions monitoring system for every shipment.",
+      cta: "Discover our commitment",
       certTitle: "Our Certifications",
       certs: ["ISO 9001:2015", "ISO 14001:2015", "ADR", "SQAS"],
     },
     stats: {
-      tag: "Numbers Speak",
-      title: "Real Data, Total Transparency",
+      tag: "Numbers speak",
+      title: "Real data, total transparency",
       items: [
-        { value: "1998", label: "Year Founded" },
-        { value: "150+", label: "Vehicles in Fleet" },
-        { value: "30+", label: "Countries Served" },
-        { value: "2.5M+", label: "Km Driven / Year" },
-        { value: "200+", label: "Industry Professionals" },
-        { value: "25+", label: "Years of Experience" },
+        { value: "1998", label: "year founded" },
+        { value: "150+", label: "vehicles in fleet" },
+        { value: "30+", label: "countries served" },
+        { value: "2.5M+", label: "km driven / year" },
+        { value: "200+", label: "industry professionals" },
+        { value: "25+", label: "years of experience" },
       ],
     },
     ctaBanner: {
       title: "Ready to optimize your logistics chain?",
       subtitle: "Request a personalized quote. Response guaranteed within 24 hours.",
-      cta: "Contact Us Now",
+      cta: "Contact us now",
     },
     serviziPage: {
       hero: {
         tag: "Services",
-        title: "Every Transport is a Mission.",
+        title: "Every transport is a mission.",
         subtitle: "Specialized expertise for every industrial requirement.",
       },
       items: [
@@ -572,7 +934,7 @@ export const translations = {
         {
           id: "internazionali",
           tag: "International Transport",
-          title: "Beyond Borders, with the Same Precision.",
+          title: "Beyond borders, with the same precision.",
           desc: "We operate on established routes to over 30 European and non-European countries. Our in-house office manages all customs documentation, ensuring fast and compliant transits.",
           features: [
             "30+ countries served regularly",
@@ -585,7 +947,7 @@ export const translations = {
         {
           id: "eccezionali",
           tag: "Exceptional Transport",
-          title: "Where Others Stop, We Continue.",
+          title: "Where others stop, we keep going.",
           desc: "We are specialists in the transport of oversize, overweight and indivisible loads. From route design to obtaining permits, we manage every aspect of exceptional transport.",
           features: [
             "Modular vehicles and special semi-trailers",
@@ -598,7 +960,7 @@ export const translations = {
         {
           id: "gru",
           tag: "Crane & Handling",
-          title: "Lifting Power, Millimeter Precision.",
+          title: "Lifting power, millimetre precision.",
           desc: "Our crane fleet covers a range from 50 to 1000 tonnes. Certified operators and state-of-the-art equipment for every type of industrial intervention.",
           features: [
             "Cranes up to 1000t capacity",
@@ -611,8 +973,8 @@ export const translations = {
         {
           id: "logistica",
           tag: "Logistics & Customs",
-          title: "Your Supply Chain, Optimized.",
-          desc: "We offer integrated logistics services: storage in certified warehouses, last-mile distribution, and complete customs clearance for import/export. One partner for the entire supply chain.",
+          title: "Your supply chain, optimized.",
+          desc: "We offer integrated logistics services: storage in certified warehouses, last-mile distribution and complete customs clearance for import and export. One partner for the entire supply chain.",
           features: [
             "Certified covered and open warehouses",
             "WMS software for stock management",
@@ -622,49 +984,49 @@ export const translations = {
           ],
         },
       ],
-      cta: "Request a Quote",
+      cta: "Request a quote",
     },
     sostenibilitaPage: {
       hero: {
-        tag: "Sustainability & Certifications",
+        tag: "Sustainability & certifications",
         title: "Responsibility is in the DNA of Trasporti Rondi.",
         subtitle: "A concrete commitment to reducing environmental impact.",
       },
       sections: [
         {
-          tag: "Renewable Energy",
-          title: "Photovoltaic Panels",
+          tag: "Renewable energy",
+          title: "Photovoltaic panels",
           desc: "Our operational sites are powered by high-efficiency photovoltaic systems. The energy produced covers the needs of offices and workshops, drastically reducing emissions from stationary energy consumption.",
         },
         {
-          tag: "Green Fleet",
-          title: "Euro 6 Vehicles and Beyond",
+          tag: "Green fleet",
+          title: "Euro 6 vehicles and beyond",
           desc: "The progressive renewal of the fleet with Euro 6 compliant vehicles has reduced particulate and NOx emissions by 45% compared to the previous fleet. Target: 100% low-emission vehicles by 2030.",
         },
         {
-          tag: "Emissions Monitoring",
-          title: "CO₂ Under Control",
+          tag: "Emissions monitoring",
+          title: "CO₂ under control",
           desc: "Every shipment is accompanied by a precise calculation of the CO₂ emissions generated. Data is available in real time for our clients through the dedicated portal, ensuring shared transparency and responsibility.",
         },
       ],
       certs: {
-        title: "Certifications & Compliance",
+        title: "Certifications & compliance",
         subtitle:
           "Every certification is proof of a commitment verified by independent third parties.",
         items: [
           {
             code: "ISO 9001:2015",
-            name: "Quality Management System",
+            name: "Quality management system",
             desc: "Guarantee of standardized processes and continuous improvement.",
           },
           {
             code: "ISO 14001:2015",
-            name: "Environmental Management System",
+            name: "Environmental management system",
             desc: "Certified commitment to reducing environmental impact.",
           },
           {
             code: "ADR",
-            name: "Dangerous Goods",
+            name: "Dangerous goods",
             desc: "Authorization for transport of dangerous substances in ADR compliance.",
           },
           {
@@ -676,32 +1038,32 @@ export const translations = {
       },
       envStats: [
         { value: "-45%", label: "NOx emissions vs. previous fleet" },
-        { value: "100%", label: "Photovoltaic energy at sites" },
-        { value: "2030", label: "Low-emission fleet target" },
-        { value: "0", label: "Environmental incidents (last 5 years)" },
+        { value: "100%", label: "photovoltaic energy at sites" },
+        { value: "2030", label: "low-emission fleet target" },
+        { value: "0", label: "environmental incidents (last 5 years)" },
       ],
     },
     storiaPage: {
       hero: {
         tag: "Our History",
-        title: "25 Years of Roads Traveled.",
+        title: "25 years of roads travelled.",
         subtitle:
-          "A journey that transformed a small family business into a leader in Italian industrial transport.",
+          "A journey that transformed a small family business into a reference point in Italian industrial transport.",
       },
       timeline: [
         {
           year: "1998",
-          title: "The Foundation",
+          title: "The beginning",
           desc: "Trasporti Rondi was born as a family business with two trucks and a clear vision: reliability and quality in national transport.",
         },
         {
           year: "2002",
-          title: "International Expansion",
+          title: "International expansion",
           desc: "Launch of the first international routes to Germany and France. The fleet grows to 15 vehicles and a dedicated freight office opens.",
         },
         {
           year: "2006",
-          title: "Exceptional Transport",
+          title: "Exceptional transport",
           desc: "Acquisition of the first ministerial authorizations for exceptional cargo transport, entering a highly specialized segment.",
         },
         {
@@ -711,82 +1073,82 @@ export const translations = {
         },
         {
           year: "2014",
-          title: "Photovoltaic Energy",
+          title: "Photovoltaic energy",
           desc: "Installation of the first photovoltaic systems at operational sites. 60% reduction in energy consumption from fossil fuels.",
         },
         {
           year: "2018",
-          title: "New Logistics Hub",
+          title: "New logistics hub",
           desc: "Opening of the new logistics hub with certified warehouses and integrated WMS system. Storage capacity triples.",
         },
         {
           year: "2022",
-          title: "ISO 14001 & Fleet Renewal",
+          title: "ISO 14001 & fleet renewal",
           desc: "ISO 14001:2015 environmental certification and start of fleet renewal plan with Euro 6 vehicles. 45% reduction in NOx emissions.",
         },
         {
           year: "2024",
-          title: "Industry Leader",
+          title: "Industry reference",
           desc: "Trasporti Rondi establishes itself as a reference in exceptional transport with 150+ vehicles, 200+ professionals and 30 countries served.",
         },
       ],
-      cta: "Be Part of the Story",
+      cta: "Join the story",
     },
     lavoraPage: {
       hero: {
         tag: "Careers",
-        title: "Build the Future of Transport with Us.",
+        title: "Build the future of transport with us.",
         subtitle:
           "We seek professionals who share our passion for operational excellence.",
       },
       perks: [
         {
-          title: "Continuous Training",
+          title: "Continuous training",
           desc: "Professional development programs and company-funded certifications.",
         },
         {
-          title: "Dynamic Environment",
+          title: "Dynamic environment",
           desc: "A growing international team with real career advancement opportunities.",
         },
         {
-          title: "Competitive Benefits",
+          title: "Competitive benefits",
           desc: "Above-industry-average pay, meal vouchers and supplementary health insurance.",
         },
         {
-          title: "Advanced Technology",
+          title: "Advanced technology",
           desc: "Modern fleets, latest-generation GPS systems and cutting-edge management software.",
         },
       ],
       positions: {
-        title: "Open Positions",
+        title: "Open positions",
         apply: "Apply",
         items: [
           {
-            title: "National Line Driver",
+            title: "National line driver",
             type: "Full-time",
             location: "Brescia / Italy",
             desc: "Driving heavy vehicles (CE licence + CQC) on national routes. Minimum 2 years experience.",
           },
           {
-            title: "International Driver",
+            title: "International driver",
             type: "Full-time",
             location: "Brescia / Europe",
             desc: "International routes to France, Germany, Spain and beyond. Basic English knowledge required.",
           },
           {
-            title: "Logistics & Warehouse Operative",
+            title: "Logistics & warehouse operative",
             type: "Full-time",
             location: "Brescia",
             desc: "Warehouse management, WMS inventory, coordination of inbound and outbound shipments.",
           },
           {
-            title: "Freight Office Employee",
+            title: "Freight office employee",
             type: "Full-time",
             location: "Brescia",
             desc: "Transport planning, CMR and customs document management. TMS software knowledge required.",
           },
           {
-            title: "Heavy Vehicle Mechanic",
+            title: "Heavy vehicle mechanic",
             type: "Full-time",
             location: "Brescia",
             desc: "Maintenance and repair of heavy vehicles. Technical diploma and industry experience required.",
@@ -794,7 +1156,7 @@ export const translations = {
         ],
       },
       form: {
-        title: "Spontaneous Application",
+        title: "Spontaneous application",
         subtitle: "Can't find the right position? Send us your spontaneous application.",
         name: "Full Name",
         email: "Email",
@@ -803,13 +1165,13 @@ export const translations = {
         message: "Introduce yourself and describe your experience",
         cv: "Attach CV",
         privacy: "I have read and accept the Privacy Policy",
-        submit: "Submit Application",
+        submit: "Submit application",
       },
     },
     whistlePage: {
       hero: {
         tag: "Whistleblowing",
-        title: "Reports in Total Security.",
+        title: "Reports in total security.",
         subtitle:
           "A confidential channel for reporting irregularities in compliance with Legislative Decree 24/2023.",
       },
@@ -824,7 +1186,7 @@ export const translations = {
         ],
       },
       form: {
-        title: "Submit a Report",
+        title: "Submit a report",
         subtitle:
           "Fill in the form below. The report will be handled with the utmost confidentiality.",
         category: "Report Category",
@@ -842,7 +1204,7 @@ export const translations = {
         name: "Name (optional)",
         email: "Email (optional, to receive updates)",
         attachments: "Add Attachments (optional)",
-        submit: "Submit Report",
+        submit: "Submit report",
         disclaimer:
           "This report will be processed in accordance with Legislative Decree 24/2023 and EU Regulation 2016/679 (GDPR).",
       },
@@ -850,7 +1212,7 @@ export const translations = {
     contattiPage: {
       hero: {
         tag: "Contact",
-        title: "We Are Here for You.",
+        title: "We are here for you.",
         subtitle:
           "Three operational sites to respond to every need quickly and professionally.",
       },
@@ -881,7 +1243,7 @@ export const translations = {
         },
       ],
       form: {
-        title: "Send a Message",
+        title: "Send a message",
         name: "Full Name",
         company: "Company",
         email: "Email",

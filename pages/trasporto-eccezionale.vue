@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { Cog, Container, HardHat } from 'lucide-vue-next'
+
+const { t } = useLang()
+const copy = computed(() => t.value.serviceDetails.exceptional)
 
 const serviceFaq = [
   {
@@ -16,60 +18,39 @@ const serviceFaq = [
   },
 ]
 
-const tabs = [
+const relatedServices = computed(() => [
   {
-    label: 'Trasporto pesante',
-    title: 'Trasporto pesante',
-    description: 'Per i carichi ad alta massa sviluppiamo un piano logistico dettagliato per gestire sicurezza, percorribilita e stabilita del trasporto in ogni fase operativa.',
-    icon: HardHat,
-  },
-  {
-    label: 'Trasporto sagomati',
-    title: 'Trasporto sagomati',
-    description: 'Nelle spedizioni fuori sagoma analizziamo vincoli di altezza, larghezza e accesso, costruendo una strategia dedicata per prevenire criticita lungo il percorso.',
-    icon: Container,
-  },
-  {
-    label: 'Trasporto macchinari',
-    title: 'Trasporto macchinari',
-    description: 'Gestiamo trasporti di macchinari industriali con supporto tecnico continuo, dal briefing iniziale al posizionamento finale presso lo stabilimento di destinazione.',
-    icon: Cog,
-  },
-]
-
-const relatedServices = [
-  {
-    title: 'Trasporto Nazionale',
+    title: copy.value.related[0],
     href: '/trasporto-nazionale',
     image: 'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
   {
-    title: 'Trasporto Internazionale',
+    title: copy.value.related[1],
     href: '/trasporto-internazionale',
     image: 'https://images.unsplash.com/photo-1772959785247-e0904e476455?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
   {
-    title: 'Gru e Movimentazioni',
+    title: copy.value.related[2],
     href: '/gru-e-movimentazioni',
     image: 'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
   {
-    title: 'Logistica',
+    title: copy.value.related[3],
     href: '/soluzioni-logistiche',
     image: 'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
-]
+])
 
 useSeo({
-  title: 'Trasporto Eccezionale',
-  description: 'Trasporto eccezionale per carichi fuori sagoma e fuori massa con pianificazione tecnica dedicata.',
+  title: copy.value.seoTitle,
+  description: copy.value.seoDescription,
   path: '/trasporto-eccezionale',
   jsonLd: [
     buildBreadcrumbSchema([
       { name: 'Home', href: '/' },
-      { name: 'Trasporto Eccezionale', href: '/trasporto-eccezionale' },
+      { name: copy.value.seoTitle, href: '/trasporto-eccezionale' },
     ]),
-    buildServiceSchema('Trasporto Eccezionale', 'Movimentazione di carichi fuori sagoma con iter autorizzativo e percorso dedicato.', {
+    buildServiceSchema(copy.value.seoTitle, copy.value.seoDescription, {
       url: 'https://www.trasportirondi.it/trasporto-eccezionale',
       areaServed: ['Italia', 'Europa'],
     }),
@@ -80,28 +61,16 @@ useSeo({
 
 <template>
   <SectionsServiceDetailShowcase
-    intro-title="Trasporto eccezionale che porta oltre i limiti"
-    intro-subtitle="Carichi fuori sagoma, fuori massa e progetti complessi: li studiamo, li autorizziamo e li facciamo viaggiare con precisione."
-    :intro-paragraphs="[
-      'La gestione della complessita e centrale: per ogni commessa sviluppiamo analisi preventiva, fattibilita percorso e approccio operativo su misura.',
-      'Affianchiamo il cliente nella componente documentale e nella preparazione delle fasi critiche per garantire sicurezza e continuita del servizio.',
-    ]"
+    :intro-title="copy.introTitle"
+    :intro-subtitle="copy.introSubtitle"
+    :intro-paragraphs="copy.introParagraphs"
     intro-image="https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1800"
-    :tabs="tabs"
-    cta-label="Richiedi una quotazione"
+    :tabs="copy.tabs"
+    :cta-label="copy.ctaLabel"
     cta-href="/preventivo"
-    why-title="Cosa ci differenzia"
-    why-text="Esperienza sul campo, struttura operativa e metodo di pianificazione ci permettono di affrontare anche i progetti di trasporto piu complessi."
-    :checklist="[
-      'Assistenza continuativa',
-      'Sopralluogo tecnico preliminare',
-      'Personale qualificato',
-      'Flessibilita di servizio',
-      'Supporto gestione normativa',
-      'Parco mezzi ampio e diversificato',
-      'Copertura nazionale completa',
-      'Possibilita di integrazione assicurativa',
-    ]"
+    :why-title="copy.whyTitle"
+    :why-text="copy.whyText"
+    :checklist="copy.checklist"
     :related-services="relatedServices"
   />
 </template>

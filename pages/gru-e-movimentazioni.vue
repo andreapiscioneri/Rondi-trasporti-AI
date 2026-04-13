@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { Forklift, ShieldCheck } from 'lucide-vue-next'
+
+const { t } = useLang()
+const copy = computed(() => t.value.serviceDetails.handling)
 
 const serviceFaq = [
   {
@@ -16,54 +18,39 @@ const serviceFaq = [
   },
 ]
 
-const tabs = [
+const relatedServices = computed(() => [
   {
-    label: 'Movimentazione merce',
-    title: 'Movimentazione merce',
-    description: 'Il noleggio di mezzi gruati consente operazioni di carico/scarico e movimentazione pesante con ampia flessibilita operativa su sito cliente o cantiere.',
-    icon: Forklift,
-  },
-  {
-    label: 'Operatori qualificati',
-    title: 'Operatori qualificati',
-    description: 'Su richiesta integriamo l\'operatore specializzato abilitato alla conduzione di gru su autocarro, per lavorare in sicurezza e conformita normativa.',
-    icon: ShieldCheck,
-  },
-]
-
-const relatedServices = [
-  {
-    title: 'Trasporto Nazionale',
+    title: copy.value.related[0],
     href: '/trasporto-nazionale',
     image: 'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
   {
-    title: 'Trasporto Internazionale',
+    title: copy.value.related[1],
     href: '/trasporto-internazionale',
     image: 'https://images.unsplash.com/photo-1772959785247-e0904e476455?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
   {
-    title: 'Trasporto Eccezionale',
+    title: copy.value.related[2],
     href: '/trasporto-eccezionale',
     image: 'https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
   {
-    title: 'Logistica',
+    title: copy.value.related[3],
     href: '/soluzioni-logistiche',
     image: 'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
-]
+])
 
 useSeo({
-  title: 'Gru e Movimentazioni',
-  description: 'Servizio gru e movimentazioni con mezzi specializzati e supporto tecnico per operazioni industriali complesse.',
+  title: copy.value.seoTitle,
+  description: copy.value.seoDescription,
   path: '/gru-e-movimentazioni',
   jsonLd: [
     buildBreadcrumbSchema([
       { name: 'Home', href: '/' },
-      { name: 'Gru e Movimentazioni', href: '/gru-e-movimentazioni' },
+      { name: copy.value.seoTitle, href: '/gru-e-movimentazioni' },
     ]),
-    buildServiceSchema('Gru e Movimentazioni', 'Mezzi gruati e supporto operativo per sollevamenti e movimentazioni complesse.', {
+    buildServiceSchema(copy.value.seoTitle, copy.value.seoDescription, {
       url: 'https://www.trasportirondi.it/gru-e-movimentazioni',
       areaServed: ['Italia'],
     }),
@@ -74,25 +61,16 @@ useSeo({
 
 <template>
   <SectionsServiceDetailShowcase
-    intro-title="Gru e movimentazioni per lavori pesanti"
-    intro-subtitle="Sollevamenti, posizionamenti e interventi tecnici gestiti con mezzi speciali e operatori qualificati."
-    :intro-paragraphs="[
-      'La nostra flotta comprende mezzi con gru a braccio di ultima generazione disponibili per noleggio su esigenze operative diverse.',
-      'Possiamo integrare operatori qualificati per condurre le operazioni in sicurezza e nel rispetto delle procedure previste.',
-    ]"
+    :intro-title="copy.introTitle"
+    :intro-subtitle="copy.introSubtitle"
+    :intro-paragraphs="copy.introParagraphs"
     intro-image="https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1800"
-    :tabs="tabs"
-    cta-label="Richiedi una quotazione"
+    :tabs="copy.tabs"
+    :cta-label="copy.ctaLabel"
     cta-href="/preventivo"
-    why-title="Cosa ci differenzia"
-    why-text="Processi strutturati, flessibilita operativa e personale specializzato ci permettono di offrire interventi affidabili su scenari complessi."
-    :checklist="[
-      'Mezzi di ultima generazione',
-      'Disponibilita operatori qualificati',
-      'Flessibilita di servizio',
-      'Parco mezzi ampio e diversificato',
-      'Copertura nazionale completa',
-    ]"
+    :why-title="copy.whyTitle"
+    :why-text="copy.whyText"
+    :checklist="copy.checklist"
     :related-services="relatedServices"
   />
 </template>

@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { Boxes, Forklift } from 'lucide-vue-next'
+
+const { t } = useLang()
+const copy = computed(() => t.value.serviceDetails.logistics)
 
 const serviceFaq = [
   {
@@ -16,54 +18,39 @@ const serviceFaq = [
   },
 ]
 
-const tabs = [
+const relatedServices = computed(() => [
   {
-    label: 'Stoccaggio magazzino',
-    title: 'Stoccaggio magazzino',
-    description: 'Organizziamo spazi e flussi di deposito per migliorare rotazione merce, ridurre stock improduttivo e accelerare la fase di preparazione spedizioni.',
-    icon: Boxes,
-  },
-  {
-    label: 'Logistica integrata',
-    title: 'Logistica integrata',
-    description: 'Gestiamo in modo coordinato ritiro, stoccaggio e ridistribuzione presso clienti, con visione unica della filiera e controllo dei passaggi operativi.',
-    icon: Forklift,
-  },
-]
-
-const relatedServices = [
-  {
-    title: 'Trasporto Nazionale',
+    title: copy.value.related[0],
     href: '/trasporto-nazionale',
     image: 'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
   {
-    title: 'Trasporto Internazionale',
+    title: copy.value.related[1],
     href: '/trasporto-internazionale',
     image: 'https://images.unsplash.com/photo-1772959785247-e0904e476455?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
   {
-    title: 'Trasporto Eccezionale',
+    title: copy.value.related[2],
     href: '/trasporto-eccezionale',
     image: 'https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
   {
-    title: 'Gru e Movimentazioni',
+    title: copy.value.related[3],
     href: '/gru-e-movimentazioni',
     image: 'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
-]
+])
 
 useSeo({
-  title: 'Soluzioni Logistiche',
-  description: 'Soluzioni logistiche integrate: stoccaggio, distribuzione, pratiche doganali e controllo flussi.',
+  title: copy.value.seoTitle,
+  description: copy.value.seoDescription,
   path: '/soluzioni-logistiche',
   jsonLd: [
     buildBreadcrumbSchema([
       { name: 'Home', href: '/' },
-      { name: 'Soluzioni Logistiche', href: '/soluzioni-logistiche' },
+      { name: copy.value.seoTitle, href: '/soluzioni-logistiche' },
     ]),
-    buildServiceSchema('Soluzioni Logistiche', 'Integrazione di magazzino, distribuzione e processi doganali in un unico flusso.', {
+    buildServiceSchema(copy.value.seoTitle, copy.value.seoDescription, {
       url: 'https://www.trasportirondi.it/soluzioni-logistiche',
       areaServed: ['Italia', 'Europa'],
     }),
@@ -74,25 +61,16 @@ useSeo({
 
 <template>
   <SectionsServiceDetailShowcase
-    intro-title="Logistica che semplifica la filiera"
-    intro-subtitle="Stoccaggio, flussi e distribuzione coordinati in un unico sistema operativo."
-    :intro-paragraphs="[
-      'Affidare la gestione logistica a un partner strutturato permette di ridurre inefficienze, tempi morti e costi operativi indiretti.',
-      'Configuriamo servizi di stoccaggio e ridistribuzione in funzione dei volumi reali, migliorando continuita di approvvigionamento e servizio.',
-    ]"
+    :intro-title="copy.introTitle"
+    :intro-subtitle="copy.introSubtitle"
+    :intro-paragraphs="copy.introParagraphs"
     intro-image="https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1800"
-    :tabs="tabs"
-    cta-label="Richiedi una quotazione"
+    :tabs="copy.tabs"
+    :cta-label="copy.ctaLabel"
     cta-href="/preventivo"
-    why-title="Cosa ci differenzia"
-    why-text="Strutturazione dei processi, flessibilita di servizio e personale qualificato ci consentono di gestire la logistica con precisione e continuita."
-    :checklist="[
-      'Ottimizzazione stock di magazzino',
-      'Disponibilita personale qualificato',
-      'Flessibilita di servizio',
-      'Parco mezzi ampio e diversificato',
-      'Copertura nazionale completa',
-    ]"
+    :why-title="copy.whyTitle"
+    :why-text="copy.whyText"
+    :checklist="copy.checklist"
     :related-services="relatedServices"
   />
 </template>
