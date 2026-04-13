@@ -35,7 +35,7 @@ onBeforeUnmount(() => {
     <button
       v-if="visible"
       aria-label="Torna su"
-      class="fixed bottom-6 right-6 z-[70] h-14 w-14 rounded-full text-black shadow-[0_20px_40px_rgba(0,0,0,0.35)] transition-transform hover:scale-105"
+      class="fixed bottom-6 right-6 z-[45] h-14 w-14 rounded-full text-black shadow-[0_20px_40px_rgba(0,0,0,0.35)] transition-transform hover:scale-105"
       style="background:#E5322D"
       @click="scrollToTop"
     >

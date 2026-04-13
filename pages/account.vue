@@ -21,8 +21,8 @@ const heroData = computed(() => ({
   subtitle: pg.value.hero.subtitle,
 }))
 
-const loginEmail = ref('')
-const loginPassword = ref('')
+const loginEmail = ref('Rondi')
+const loginPassword = ref('rondi123')
 const resetEmail = ref('')
 const remembered = ref(true)
 const loginSubmitted = ref(false)
@@ -66,26 +66,36 @@ const accessCards = [
 
             <form class="flex flex-col gap-5" @submit="onLogin">
               <label class="flex flex-col gap-2">
-                <span class="text-[#444444] dark:text-[#CCCCCC]" style="font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">{{ pg.login.email }}</span>
-                <input v-model="loginEmail" type="email" required class="rounded-xl border border-black/10 dark:border-white/10 bg-[#F7F7F7] dark:bg-[#181818] px-4 py-3 text-[#111111] dark:text-white focus:border-[#E5322D] focus:outline-none">
+                <span class="text-[#444444] dark:text-[#CCCCCC]" style="font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Nome utente o email</span>
+                <input v-model="loginEmail" type="text" required placeholder="Rondi" class="rounded-xl border border-black/10 dark:border-white/10 bg-[#F7F7F7] dark:bg-[#181818] px-4 py-3 text-[#111111] dark:text-white focus:border-[#E5322D] focus:outline-none">
               </label>
 
               <label class="flex flex-col gap-2">
                 <span class="text-[#444444] dark:text-[#CCCCCC]" style="font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">{{ pg.login.password }}</span>
-                <input v-model="loginPassword" type="password" required class="rounded-xl border border-black/10 dark:border-white/10 bg-[#F7F7F7] dark:bg-[#181818] px-4 py-3 text-[#111111] dark:text-white focus:border-[#E5322D] focus:outline-none">
+                <input v-model="loginPassword" type="password" required placeholder="rondi123" class="rounded-xl border border-black/10 dark:border-white/10 bg-[#F7F7F7] dark:bg-[#181818] px-4 py-3 text-[#111111] dark:text-white focus:border-[#E5322D] focus:outline-none">
               </label>
 
-              <label class="flex items-center gap-3 text-[#555555] dark:text-[#AAAAAA]" style="font-size:0.875rem">
-                <input v-model="remembered" type="checkbox" class="h-4 w-4 rounded border-black/20 text-[#E5322D] focus:ring-[#E5322D]">
+              <button
+                type="button"
+                class="inline-flex items-center gap-3 self-start text-[#555555] dark:text-[#AAAAAA]"
+                style="font-size:0.875rem"
+                @click="remembered = !remembered"
+              >
+                <span
+                  class="flex h-5 w-5 items-center justify-center rounded-[0.35rem] border transition-colors"
+                  :class="remembered ? 'border-[#E5322D] bg-[#E5322D]' : 'border-[#E5322D] bg-transparent'"
+                >
+                  <span v-if="remembered" class="text-black" style="font-size:0.82rem;line-height:1;font-weight:900">✓</span>
+                </span>
                 {{ pg.login.remember }}
-              </label>
+              </button>
 
               <button type="submit" class="cta-premium inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-white" :style="{ background: RED, fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }">
                 {{ pg.login.submit }} <ArrowRight :size="16" />
               </button>
 
               <p v-if="loginSubmitted" class="rounded-xl border border-[#E5322D]/25 bg-[#E5322D]/8 px-4 py-3 text-[#111111] dark:text-white" style="font-size:0.875rem;line-height:1.7">
-                Login UI pronta. Il collegamento all'autenticazione server va agganciato nel backend CMS.
+                Credenziali demo: Rondi / rondi123. Il collegamento all'autenticazione server va agganciato nel backend CMS.
               </p>
             </form>
           </div>
