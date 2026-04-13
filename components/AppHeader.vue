@@ -101,6 +101,7 @@ onMounted(() => {
 
           <NuxtLink
             to="/contatti"
+            data-magnetic
             class="cta-premium hidden md:inline-flex items-center px-5 py-2.5 text-white text-[0.72rem] font-bold tracking-[0.1em] uppercase hover:opacity-95 transition-all duration-300"
             :style="{ background: RED }"
           >

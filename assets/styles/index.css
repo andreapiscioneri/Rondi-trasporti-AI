@@ -330,3 +330,98 @@ textarea:focus {
     filter: saturate(1.08);
   }
 }
+
+/* ─── Page transitions ────────────────────────────────────────────────────────
+   Name: "page"  — used in both nuxt.config and <NuxtPage :transition>
+   Feel: quick fade + 18px vertical shift + soft blur
+   Duration: 320ms out / 320ms in (= 640ms total per nav)
+*/
+.page-enter-active {
+  transition:
+    opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.32s ease;
+}
+
+.page-leave-active {
+  transition:
+    opacity 0.26s cubic-bezier(0.4, 0, 1, 1),
+    transform 0.26s cubic-bezier(0.4, 0, 1, 1),
+    filter 0.26s ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(3px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+  filter: blur(3px);
+}
+
+/* Disable for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .page-enter-active,
+  .page-leave-active {
+    transition: opacity 0.15s ease !important;
+  }
+
+  .page-enter-from,
+  .page-leave-to {
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* ─── Custom cursor — hide native pointer on fine-pointer devices ─────────────
+   AppCursor.vue re-shows a custom cursor for those devices.
+   The cursor:none is set programmatically in AppCursor.vue to avoid hiding
+   the native cursor during SSR when the component hasn't hydrated yet.
+*/
+
+/* ─── Magnetic button — transition helper ─────────────────────────────────────
+   The magnetic transform is applied via JS in AppCursor.vue.
+   Declare will-change here so the GPU layer is promoted upfront.
+*/
+[data-magnetic] {
+  display: inline-flex;
+  will-change: transform;
+}
+
+/* ─── Image hover — zoom + parallax ──────────────────────────────────────────
+   Usage: wrap img in a container with .img-hover-zoom
+   The container clips overflow; the img scales on hover.
+*/
+.img-hover-zoom {
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.img-hover-zoom img {
+  transition: transform 0.65s cubic-bezier(0.2, 0.9, 0.25, 1);
+  will-change: transform;
+}
+
+.img-hover-zoom:hover img {
+  transform: scale(1.06);
+}
+
+/* ─── Stagger-reveal helper ───────────────────────────────────────────────────
+   Apply .stagger-children on the AnimateOnScroll wrapper with stagger: true.
+   Each direct child gets opacity:0 on server — GSAP resets on client mount.
+*/
+.stagger-children > * {
+  opacity: 0;
+}
+
+/* ─── Focus visible — red accent ring ────────────────────────────────────────
+   Override browser default to match brand, while keeping full accessibility.
+*/
+:focus-visible {
+  outline: 2px solid rgba(229, 50, 45, 0.75);
+  outline-offset: 3px;
+  border-radius: 4px;
+}

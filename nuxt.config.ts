@@ -30,6 +30,9 @@ export default defineNuxtConfig({
     storageKey: 'rondi-theme',
   },
   app: {
+    // Page-level transitions — fade + slight vertical shift + blur
+    // CSS defined in assets/styles/index.css (.page-enter-*, .page-leave-*)
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       title: 'Trasporti Rondi',
       link: [

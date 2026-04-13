@@ -100,6 +100,7 @@ onBeforeUnmount(() => stopInterval())
             <div class="flex flex-wrap gap-3">
               <NuxtLink
                 :to="currentSlide.ctaHref"
+                data-magnetic
                 class="cta-premium inline-flex items-center gap-2 px-7 py-3.5 text-white transition-all hover:gap-3 rounded-full"
                 :style="{ background: RED, fontSize: '0.84rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }"
               >
