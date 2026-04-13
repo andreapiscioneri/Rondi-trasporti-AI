@@ -6,6 +6,14 @@ const guaranteeIcons = [EyeOff, ShieldCheck, Lock, Clock]
 const { t } = useLang()
 const pg = computed(() => t.value.whistlePage)
 
+useSeo({
+  title: 'Whistleblowing',
+  description: 'Canale riservato per segnalazioni aziendali in conformita al D.Lgs. 24/2023.',
+  path: '/whistleblowing',
+  noindex: true,
+  jsonLd: buildBreadcrumbSchema([{ name: 'Home', href: '/' }, { name: 'Whistleblowing', href: '/whistleblowing' }]),
+})
+
 const anonymous = ref(true)
 const submitted = ref(false)
 

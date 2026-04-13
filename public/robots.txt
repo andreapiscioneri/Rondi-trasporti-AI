@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
 
+# Avoid indexing internal/system patterns
+Disallow: /_nuxt/
+Disallow: /?*
+
+# Explicit allow of primary SEO pages
+Allow: /servizi
+Allow: /contatti
+Allow: /storia
+Allow: /sostenibilita
+
 Sitemap: https://www.trasportirondi.it/sitemap.xml

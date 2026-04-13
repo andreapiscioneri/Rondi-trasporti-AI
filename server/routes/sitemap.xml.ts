@@ -3,6 +3,8 @@
  * Lists all public pages with their priority and change frequency.
  */
 
+import { GEO_LOCAL_PATHS, GEO_SERVICE_ROOT_PATHS } from '~/shared/local-seo'
+
 const BASE_URL = 'https://www.trasportirondi.it'
 
 const PAGES = [
@@ -12,12 +14,27 @@ const PAGES = [
   { path: '/storia',         priority: '0.7', freq: 'yearly'  },
   { path: '/lavora-con-noi', priority: '0.7', freq: 'weekly'  },
   { path: '/contatti',       priority: '0.9', freq: 'monthly' },
+  { path: '/whistleblowing', priority: '0.4', freq: 'yearly'  },
 ]
+
+const LOCAL_PAGES = GEO_LOCAL_PATHS.map(path => ({
+  path,
+  priority: '0.76',
+  freq: 'monthly',
+}))
+
+const GEO_SERVICE_PAGES = GEO_SERVICE_ROOT_PATHS.map(path => ({
+  path,
+  priority: '0.82',
+  freq: 'monthly',
+}))
 
 export default defineEventHandler(() => {
   const now = new Date().toISOString().split('T')[0]
 
-  const urls = PAGES.map(p => `
+  const allPages = [...PAGES, ...GEO_SERVICE_PAGES, ...LOCAL_PAGES]
+
+  const urls = allPages.map(p => `
   <url>
     <loc>${BASE_URL}${p.path}</loc>
     <lastmod>${now}</lastmod>

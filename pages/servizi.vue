@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ArrowRight, CheckCircle2, Globe, Maximize2, Package, Truck, Wrench } from 'lucide-vue-next'
+import { buildGeoLocalPath, GEO_CITIES } from '~/shared/local-seo'
 
 const { t } = useLang()
 
@@ -23,6 +24,19 @@ const SERVICE_IMAGES = [
   'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900',
   'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900',
 ]
+
+const GEO_SERVICE_SLUGS = [
+  'trasporti-nazionali',
+  'trasporti-internazionali',
+  'trasporti-eccezionali',
+  'gru-movimentazioni',
+  'logistica-dogana',
+]
+
+function geoServicePathByIndex(index: number, citySlug: string) {
+  const serviceSlug = GEO_SERVICE_SLUGS[index] || GEO_SERVICE_SLUGS[0]
+  return buildGeoLocalPath(serviceSlug, citySlug)
+}
 
 const heroData = computed(() => ({
   image: 'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2400',
@@ -108,6 +122,17 @@ const heroData = computed(() => ({
               {{ t.serviziPage.cta }}
               <ArrowRight :size="16" />
             </NuxtLink>
+
+            <div class="mt-6 flex flex-wrap gap-2">
+              <NuxtLink
+                v-for="city in GEO_CITIES"
+                :key="`${item.id}-${city.slug}`"
+                :to="geoServicePathByIndex(i, city.slug)"
+                class="rounded-full border border-black/15 px-3 py-1.5 text-[0.7rem] font-bold uppercase tracking-[0.1em] text-[#444444] transition-colors hover:border-[#E5322D]/40 hover:text-[#E5322D] dark:border-white/20 dark:text-[#cccccc]"
+              >
+                {{ item.tag }} · {{ city.name }}
+              </NuxtLink>
+            </div>
           </div>
         </div>
       </div>

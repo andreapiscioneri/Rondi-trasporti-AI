@@ -1,3 +1,11 @@
+<script setup lang="ts">
+useSeo({
+  title: 'Pagina non trovata',
+  description: 'La pagina richiesta non e disponibile.',
+  noindex: true,
+})
+</script>
+
 <template>
   <section class="min-h-[50vh] flex items-center justify-center px-6 py-24 bg-white dark:bg-[#0A0A0A]">
     <div class="text-center max-w-xl mx-auto">
