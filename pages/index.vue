@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRight, Globe, Maximize2, Package, Truck, Wrench } from 'lucide-vue-next'
+import { ArrowRight, Building2, Factory, Globe, Maximize2, Package, Train, Truck, Wrench } from 'lucide-vue-next'
 
 const { lang, t } = useLang()
 
@@ -17,7 +17,7 @@ const HERO_SLIDES_IT = [
     title: 'La Forza del\nTrasporto.',
     subtitle: "Soluzioni logistiche nazionali, internazionali ed eccezionali per l'industria italiana.",
     cta: 'Richiedi Preventivo',
-    ctaHref: '/contatti',
+    ctaHref: '/preventivo',
     ctaSecondary: 'Scopri i Servizi',
     ctaSecondaryHref: '/servizi',
   },
@@ -54,7 +54,7 @@ const HERO_SLIDES_EN = [
     title: 'The Power of\nTransport.',
     subtitle: 'National, international and exceptional logistics for Italian industry.',
     cta: 'Get a Quote',
-    ctaHref: '/contatti',
+    ctaHref: '/preventivo',
     ctaSecondary: 'Our Services',
     ctaSecondaryHref: '/servizi',
   },
@@ -100,7 +100,69 @@ const SUSTAIN_SOLAR = 'https://images.unsplash.com/photo-1655300256620-680cb0f1c
 const SUSTAIN_ROAD = 'https://images.unsplash.com/photo-1768323555231-5497afb0b6ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400'
 const SUSTAIN_PORT = 'https://images.unsplash.com/photo-1614571272828-2d8289ff8fc0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400'
 
+const INDUSTRY_ITEMS_IT = [
+  {
+    icon: Building2,
+    title: 'Edilizia',
+    desc: 'Trasporto e movimentazione di prefabbricati, macchinari e componenti strutturali per cantieri complessi.',
+  },
+  {
+    icon: Factory,
+    title: 'Siderurgico',
+    desc: 'Gestione operativa di coils, carpenterie e carichi ad alta massa per impianti e acciaierie.',
+  },
+  {
+    icon: Train,
+    title: 'Ferroviario',
+    desc: 'Supporto a manutenzioni e cantieri ferroviari con mezzi speciali e finestre operative pianificate.',
+  },
+]
+
+const INDUSTRY_ITEMS_EN = [
+  {
+    icon: Building2,
+    title: 'Construction',
+    desc: 'Transport and handling of prefabricated elements, machinery and structural components for complex sites.',
+  },
+  {
+    icon: Factory,
+    title: 'Steel Industry',
+    desc: 'Operational management for coils, steel structures and high-mass loads for industrial plants.',
+  },
+  {
+    icon: Train,
+    title: 'Railway',
+    desc: 'Support for rail maintenance and infrastructure projects with dedicated heavy transport operations.',
+  },
+]
+
+const industrySection = computed(() => ({
+  tag: lang.value === 'it' ? 'I settori con cui lavoriamo' : 'Industries we serve',
+  title: lang.value === 'it' ? 'Competenze Verticali ad Alta Intensita Operativa' : 'Vertical Expertise for High-Intensity Operations',
+  subtitle: lang.value === 'it'
+    ? 'Esperienza specializzata nei comparti dove precisione, tempi e sicurezza fanno la differenza.'
+    : 'Specialized execution where precision, timing and safety are mission-critical.',
+  items: lang.value === 'it' ? INDUSTRY_ITEMS_IT : INDUSTRY_ITEMS_EN,
+}))
+
 const slides = computed(() => (lang.value === 'it' ? HERO_SLIDES_IT : HERO_SLIDES_EN))
+
+const statsSectionRef = ref<HTMLElement | null>(null)
+const statsParallaxY = ref(0)
+
+onMounted(() => {
+  const onScroll = () => {
+    if (!statsSectionRef.value) return
+    const rect = statsSectionRef.value.getBoundingClientRect()
+    const viewport = window.innerHeight || 1
+    const progress = (viewport - rect.top) / (viewport + rect.height)
+    statsParallaxY.value = Math.max(-24, Math.min(46, progress * 70 - 22))
+  }
+
+  onScroll()
+  window.addEventListener('scroll', onScroll, { passive: true })
+  onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
+})
 </script>
 
 <template>
@@ -148,6 +210,33 @@ const slides = computed(() => (lang.value === 'it' ? HERO_SLIDES_IT : HERO_SLIDE
     </section>
 
     <section class="page-section page-section--soft">
+      <div class="section-shell">
+        <AnimateOnScroll variant="fadeUp" class="text-center mb-12">
+          <span class="block mb-3" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#E5322D">{{ industrySection.tag }}</span>
+          <h2 class="text-[#111111] dark:text-white mb-4 headline-balance" style="font-size:clamp(2rem,3.4vw,2.6rem);font-weight:800;line-height:1.08">{{ industrySection.title }}</h2>
+          <p class="mx-auto max-w-3xl text-[#666666] dark:text-[#999999]" style="font-size:clamp(1rem,1.1vw,1.0625rem);line-height:1.78">{{ industrySection.subtitle }}</p>
+        </AnimateOnScroll>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+          <AnimateOnScroll
+            v-for="(item, i) in industrySection.items"
+            :key="item.title"
+            variant="fadeUp"
+            :delay="i * 0.06"
+          >
+            <article class="h-full rounded-[1.5rem] border border-black/10 dark:border-white/10 bg-white dark:bg-[#111111] p-6 lg:p-7 text-center">
+              <div class="mx-auto mb-4 h-12 w-12 rounded-full border border-[#E5322D]/25 flex items-center justify-center">
+                <component :is="item.icon" :size="24" class="text-[#E5322D]" />
+              </div>
+              <h3 class="mb-3 text-[#111111] dark:text-white" style="font-size:1.05rem;font-weight:800;line-height:1.25">{{ item.title }}</h3>
+              <p class="text-[#666666] dark:text-[#999999]" style="font-size:0.9rem;line-height:1.74">{{ item.desc }}</p>
+            </article>
+          </AnimateOnScroll>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section page-section--soft">
       <div class="section-shell grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <AnimateOnScroll variant="fadeLeft">
           <div class="relative flex gap-3">
@@ -175,7 +264,16 @@ const slides = computed(() => (lang.value === 'it' ? HERO_SLIDES_IT : HERO_SLIDE
       </div>
     </section>
 
-    <section class="page-section page-section--dark relative overflow-hidden">
+    <section ref="statsSectionRef" class="page-section page-section--dark relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2200"
+          alt=""
+          class="h-full w-full object-cover"
+          :style="{ transform: `translate3d(0, ${statsParallaxY}px, 0) scale(1.14)`, filter: 'brightness(0.28)' }"
+        >
+      </div>
+      <div class="absolute inset-0 pointer-events-none" style="background:linear-gradient(145deg, rgba(6,6,6,0.86) 0%, rgba(20,20,20,0.62) 45%, rgba(229,50,45,0.38) 100%)" />
       <div class="absolute inset-0 pointer-events-none" style="background-image:repeating-linear-gradient(90deg,rgba(255,255,255,0.02) 0, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 12.5%)" />
       <div class="section-shell relative z-10">
         <AnimateOnScroll variant="fadeUp" class="text-center mb-14">

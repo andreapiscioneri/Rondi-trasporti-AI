@@ -121,14 +121,14 @@ defineProps<{
       <div v-if="model.faqItems?.length" class="mt-8 rounded-[1.35rem] border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-[#111111]">
         <h2 class="mb-4 text-[1rem] font-bold text-[#111111] dark:text-white">FAQ locali</h2>
         <div class="space-y-3">
-          <details
+          <div
             v-for="item in model.faqItems"
             :key="item.question"
             class="rounded-xl border border-black/10 px-4 py-3 dark:border-white/10"
           >
-            <summary class="cursor-pointer text-[0.88rem] font-semibold text-[#222222] dark:text-[#f0f0f0]">{{ item.question }}</summary>
+            <h3 class="text-[0.88rem] font-semibold text-[#222222] dark:text-[#f0f0f0]">{{ item.question }}</h3>
             <p class="mt-2 text-[0.84rem] leading-7 text-[#666666] dark:text-[#b3b3b3]">{{ item.answer }}</p>
-          </details>
+          </div>
         </div>
       </div>
     </div>

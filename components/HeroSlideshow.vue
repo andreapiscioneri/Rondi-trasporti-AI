@@ -38,6 +38,17 @@ const touchDeltaX = ref(0)
 
 const currentSlide = computed(() => props.slides[current.value])
 
+const preloadSlides = computed(() => props.slides.slice(0, 2))
+
+useHead(() => ({
+  link: preloadSlides.value.map((slide, index) => ({
+    rel: 'preload',
+    as: 'image',
+    href: slide.image,
+    fetchpriority: index === 0 ? 'high' : 'auto',
+  })),
+}))
+
 // Split title at newlines, then each line into words
 const titleLines = computed(() =>
   currentSlide.value.title.split('\n').map(line =>
@@ -173,21 +184,25 @@ onBeforeUnmount(() => {
     @touchmove.passive="onTouchMove"
     @touchend.passive="onTouchEnd"
   >
-    <!-- ── Background image (CSS zoom keyframe) ── -->
-    <Transition name="hero-fade" mode="out-in">
+    <!-- ── Background images (stacked for smooth transitions) ── -->
+    <div class="absolute inset-0">
       <NuxtImg
-        :key="`img-${current}`"
-        :src="currentSlide.image"
-        :alt="currentSlide.title"
+        v-for="(slide, i) in slides"
+        :key="slide.image"
+        :src="slide.image"
+        :alt="slide.title"
         preset="hero"
         sizes="100vw"
-        format="avif,webp"
-        quality="80"
-        loading="eager"
-        class="absolute inset-0 w-full h-full object-cover hero-image-motion"
+        format="webp"
+        quality="74"
+        :loading="i === 0 ? 'eager' : 'lazy'"
+        :fetchpriority="i === 0 ? 'high' : 'auto'"
+        :preload="i === 0"
+        class="absolute inset-0 h-full w-full object-cover transition-opacity duration-[900ms] ease-out hero-image-motion"
+        :class="i === current ? 'opacity-100' : 'opacity-0'"
         style="filter:brightness(0.40)"
       />
-    </Transition>
+    </div>
 
     <!-- Overlay gradients -->
     <div class="absolute inset-0 bg-gradient-to-t from-black via-black/42 to-black/28 pointer-events-none" />

@@ -10,10 +10,19 @@ const BASE_URL = 'https://www.trasportirondi.it'
 const PAGES = [
   { path: '/',               priority: '1.0', freq: 'weekly'  },
   { path: '/servizi',        priority: '0.9', freq: 'monthly' },
+  { path: '/trasporto-standard', priority: '0.86', freq: 'monthly' },
+  { path: '/trasporto-internazionale', priority: '0.86', freq: 'monthly' },
+  { path: '/trasporto-eccezionale', priority: '0.86', freq: 'monthly' },
+  { path: '/soluzioni-logistiche', priority: '0.84', freq: 'monthly' },
+  { path: '/noleggio-mezzi-gruati', priority: '0.84', freq: 'monthly' },
+  { path: '/preventivo',     priority: '0.9', freq: 'monthly' },
   { path: '/sostenibilita',  priority: '0.8', freq: 'monthly' },
   { path: '/storia',         priority: '0.7', freq: 'yearly'  },
   { path: '/lavora-con-noi', priority: '0.7', freq: 'weekly'  },
   { path: '/contatti',       priority: '0.9', freq: 'monthly' },
+  { path: '/privacy-policy', priority: '0.4', freq: 'yearly'  },
+  { path: '/cookie-policy',  priority: '0.4', freq: 'yearly'  },
+  { path: '/trattamento-dati', priority: '0.4', freq: 'yearly' },
   { path: '/whistleblowing', priority: '0.4', freq: 'yearly'  },
 ]
 

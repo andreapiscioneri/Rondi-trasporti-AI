@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Clock, Mail, MapPin, MessageSquareText, Phone, Truck } from 'lucide-vue-next'
+import { Clock, Mail, MapPin, MessageSquareText, Phone, ShieldCheck, Truck } from 'lucide-vue-next'
 
 const RED = '#E5322D'
 const { t } = useLang()
@@ -17,6 +17,12 @@ const OFFICE_MAPS = [
   'https://images.unsplash.com/photo-1638636206910-49cdd0af6d3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
   'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
   'https://images.unsplash.com/photo-1762344682624-176d89eb3bfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+]
+
+const trustItems = [
+  { icon: Clock, title: 'Risposta in 24h', desc: 'Tempi certi, nessuna attesa' },
+  { icon: ShieldCheck, title: 'Dati al sicuro', desc: 'Privacy garantita, nessuno spam' },
+  { icon: Phone, title: 'Urgente?', desc: 'Chiama +39 030 123 4567' },
 ]
 
 const heroData = computed(() => ({
@@ -77,15 +83,11 @@ const heroData = computed(() => ({
           <!-- Trust signals -->
           <div class="flex flex-col gap-3 mb-8">
             <div
-              v-for="item in [
-                { icon: '⏱', title: 'Risposta in 24h', desc: 'Tempi certi, nessuna attesa' },
-                { icon: '🔒', title: 'Dati al sicuro', desc: 'Privacy garantita, nessuno spam' },
-                { icon: '📞', title: 'Urgente?', desc: 'Chiama +39 030 123 4567' },
-              ]"
+              v-for="item in trustItems"
               :key="item.title"
               class="flex items-start gap-3"
             >
-              <span class="text-lg leading-none mt-0.5">{{ item.icon }}</span>
+              <component :is="item.icon" :size="18" class="mt-0.5 text-[#E5322D]" />
               <div>
                 <p class="text-[#111] dark:text-white" style="font-size:0.875rem;font-weight:700">{{ item.title }}</p>
                 <p class="text-[#888] dark:text-[#aaa]" style="font-size:0.8125rem">{{ item.desc }}</p>

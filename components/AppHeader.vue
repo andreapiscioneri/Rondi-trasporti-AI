@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Mail, Menu, Phone, X } from 'lucide-vue-next'
+import { Mail, Menu, Phone, Plus, X } from 'lucide-vue-next'
 import logoRondi from '~/assets/images/trasporti_rondi_logo.png'
 
 const { lang, t, toggleLang } = useLang()
@@ -9,8 +9,27 @@ const mobileOpen = ref(false)
 const scrolled    = ref(false)
 const RED = '#E5322D'
 
-const navLinks = computed(() => [
-  { label: t.value.nav.home,          href: '/' },
+const desktopTransportLinks = computed(() => {
+  if (lang.value === 'en') {
+    return [
+      { label: 'National Transport', href: '/trasporto-standard' },
+      { label: 'International', href: '/trasporto-internazionale' },
+      { label: 'Exceptional', href: '/trasporto-eccezionale' },
+      { label: 'Crane & Handling', href: '/noleggio-mezzi-gruati' },
+      { label: 'Logistics', href: '/soluzioni-logistiche' },
+    ]
+  }
+
+  return [
+    { label: 'Trasporto Nazionale', href: '/trasporto-standard' },
+    { label: 'Internazionale', href: '/trasporto-internazionale' },
+    { label: 'Eccezionale', href: '/trasporto-eccezionale' },
+    { label: 'Gru e Movimentazioni', href: '/noleggio-mezzi-gruati' },
+    { label: 'Logistica', href: '/soluzioni-logistiche' },
+  ]
+})
+
+const mobileMenuLinks = computed(() => [
   { label: t.value.nav.servizi,       href: '/servizi' },
   { label: t.value.nav.sostenibilita, href: '/sostenibilita' },
   { label: t.value.nav.storia,        href: '/storia' },
@@ -18,8 +37,10 @@ const navLinks = computed(() => [
   { label: t.value.nav.contatti,      href: '/contatti' },
 ])
 
-const isActive = (href: string) =>
-  href === '/' ? route.path === '/' : route.path.startsWith(href)
+const isActive = (href: string) => {
+  const cleanHref = href.split('#')[0] || href
+  return cleanHref === '/' ? route.path === '/' : route.path.startsWith(cleanHref)
+}
 
 // Close drawer on route change
 watch(() => route.path, () => { mobileOpen.value = false })
@@ -75,7 +96,7 @@ onMounted(() => {
         ? 'bg-[#080808]/96 border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.30)] backdrop-blur-xl'
         : 'bg-[#0B0B0B]/94 border-transparent backdrop-blur-lg'"
     >
-      <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 h-[82px] flex items-center justify-between gap-6 text-white">
+      <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 h-[82px] flex items-center justify-between gap-4 text-white">
 
         <!-- Logo -->
         <NuxtLink to="/" class="flex-shrink-0 flex items-center gap-3">
@@ -88,15 +109,15 @@ onMounted(() => {
         </NuxtLink>
 
         <!-- Desktop navigation -->
-        <nav class="hidden lg:flex items-center border border-white/10 bg-white/5 backdrop-blur-sm">
+        <nav class="hidden lg:flex flex-1 items-center justify-center gap-1">
           <NuxtLink
-            v-for="link in navLinks"
+            v-for="link in desktopTransportLinks"
             :key="link.href"
             :to="link.href"
-            class="relative px-4 py-3 text-[0.73rem] font-semibold tracking-[0.12em] uppercase border-r border-white/10 last:border-r-0 transition-all duration-200"
+            class="relative rounded-full px-4 py-2 text-[0.73rem] font-semibold tracking-[0.1em] uppercase transition-all duration-200"
             :class="isActive(link.href)
               ? 'text-white bg-[#E5322D]'
-              : 'text-white/70 hover:text-white hover:bg-white/8'"
+              : 'text-white/72 hover:text-white hover:bg-white/10'"
           >
             {{ link.label }}
           </NuxtLink>
@@ -118,17 +139,18 @@ onMounted(() => {
 
           <!-- CTA -->
           <NuxtLink
-            to="/contatti"
+            to="/preventivo"
             data-magnetic
-            class="cta-premium hidden md:inline-flex items-center px-5 py-2.5 text-white text-[0.72rem] font-bold tracking-[0.1em] uppercase hover:opacity-92 transition-all duration-200 ml-1"
+            class="cta-premium hidden lg:inline-flex items-center gap-2 px-5 py-3 text-white text-[0.72rem] font-bold tracking-[0.1em] uppercase hover:opacity-92 transition-all duration-200 rounded-sm"
             :style="{ background: RED }"
           >
-            {{ lang === 'it' ? 'Richiedi Preventivo' : 'Request Quote' }}
+            <Plus :size="14" />
+            {{ lang === 'it' ? 'Richiedi quotazione' : 'Request Quote' }}
           </NuxtLink>
 
           <!-- Hamburger -->
           <button
-            class="lg:hidden w-9 h-9 flex items-center justify-center text-white hover:text-white/80 transition-colors"
+            class="w-10 h-10 flex items-center justify-center border border-white/18 bg-white/5 text-white hover:text-white/85 hover:bg-white/10 transition-colors rounded-sm"
             aria-label="Toggle menu"
             @click="mobileOpen = !mobileOpen"
           >
@@ -141,7 +163,7 @@ onMounted(() => {
 
     <!-- ── Mobile overlay ── -->
     <div
-      class="fixed inset-0 z-40 lg:hidden transition-opacity duration-300"
+      class="fixed inset-0 z-40 transition-opacity duration-300"
       style="background:rgba(0,0,0,0.58)"
       :class="mobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'"
       @click="mobileOpen = false"
@@ -149,7 +171,7 @@ onMounted(() => {
 
     <!-- ── Mobile drawer ── -->
     <aside
-      class="fixed top-0 right-0 bottom-0 z-50 w-80 max-w-full bg-[#090909] text-white lg:hidden flex flex-col border-l border-white/10 transition-transform duration-300"
+      class="fixed top-0 right-0 bottom-0 z-50 w-80 max-w-full bg-[#090909] text-white flex flex-col border-l border-white/10 transition-transform duration-300"
       :style="{ transform: mobileOpen ? 'translateX(0)' : 'translateX(100%)' }"
     >
       <!-- Drawer header -->
@@ -163,7 +185,7 @@ onMounted(() => {
       <!-- Drawer nav -->
       <nav class="flex-1 overflow-y-auto p-6 flex flex-col">
         <NuxtLink
-          v-for="link in navLinks"
+          v-for="link in mobileMenuLinks"
           :key="link.href"
           :to="link.href"
           class="py-3.5 border-b border-white/8 text-[0.95rem] transition-colors duration-200"
@@ -172,13 +194,6 @@ onMounted(() => {
             : 'text-white/78 hover:text-white'"
         >
           {{ link.label }}
-        </NuxtLink>
-        <NuxtLink
-          to="/whistleblowing"
-          class="py-3.5 border-b border-white/8 text-[0.95rem] transition-colors"
-          :class="isActive('/whistleblowing') ? 'font-bold text-[#E5322D]' : 'text-white/78 hover:text-white'"
-        >
-          {{ t.nav.whistleblowing }}
         </NuxtLink>
       </nav>
 

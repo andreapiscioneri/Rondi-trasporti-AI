@@ -184,7 +184,7 @@ const pageModel = computed(() => ({
   localIntent: service.value!.localIntent,
   mapEmbedUrl: mapEmbedUrl.value,
   ctaLabel: `Richiedi preventivo ${city.value!.name}`,
-  ctaHref: '/contatti',
+  ctaHref: '/preventivo',
   serviceRootHref: '/servizi',
   cityLinks: cityLinks.value,
   districtLinks: districtLinks.value,

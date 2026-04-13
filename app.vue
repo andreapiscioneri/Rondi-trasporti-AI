@@ -41,6 +41,9 @@ watch(
       <NuxtPage :transition="{ name: 'page', mode: 'out-in' }" />
     </main>
 
+    <ScrollTopButton />
+    <CookieBanner />
+
     <AppFooter />
   </div>
 </template>

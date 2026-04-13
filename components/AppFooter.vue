@@ -3,7 +3,7 @@ import { Mail, MapPin, Phone } from 'lucide-vue-next'
 import logoRondi from '~/assets/images/trasporti_rondi_logo.png'
 import { buildGeoLocalPath, buildGeoServiceRootPath, GEO_CITIES, GEO_PRIMARY_CITY, GEO_SERVICES } from '~/shared/local-seo'
 
-const { t } = useLang()
+const { t, lang } = useLang()
 const offices = computed(() => t.value.contattiPage.offices)
 
 const primaryCity = GEO_CITIES.find(city => city.slug === GEO_PRIMARY_CITY) || GEO_CITIES[0]
@@ -28,6 +28,22 @@ const geoCityHubLinks = computed(() =>
     href: buildGeoLocalPath('trasporti-nazionali', city.slug),
   })),
 )
+
+const legalLinks = computed(() => {
+  if (lang.value === 'en') {
+    return [
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Cookie Policy', href: '/cookie-policy' },
+      { label: 'Data Processing', href: '/trattamento-dati' },
+    ]
+  }
+
+  return [
+    { label: 'Privacy Policy', href: '/privacy-policy' },
+    { label: 'Cookie Policy', href: '/cookie-policy' },
+    { label: 'Trattamento Dati', href: '/trattamento-dati' },
+  ]
+})
 </script>
 
 <template>
@@ -53,16 +69,16 @@ const geoCityHubLinks = computed(() =>
           </div>
         </div>
 
-        <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
+        <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-4">
           <div
             v-for="office in offices"
             :key="office.id"
-            class="hover-lift min-w-0 rounded-[1.5rem] border border-white/10 bg-white/5 backdrop-blur-sm p-5"
+            class="hover-lift min-w-0 rounded-[1.5rem] border border-white/10 bg-white/5 backdrop-blur-sm p-6"
           >
             <h4 class="text-sm font-bold mb-3 uppercase tracking-[0.08em] text-white">{{ office.name }}</h4>
             <p class="text-white/70 text-sm leading-6 whitespace-pre-line break-words mb-3 inline-flex items-start gap-2"><MapPin :size="14" class="mt-1 text-[#E5322D]" />{{ office.address }}</p>
-            <a :href="`tel:${office.phone.replace(/\s/g, '')}`" class="block text-white/85 text-sm mb-1 hover:text-white inline-flex items-center gap-2 break-words"><Phone :size="13" class="text-[#E5322D]" />{{ office.phone }}</a>
-            <a :href="`mailto:${office.email}`" class="block text-white/85 text-sm hover:text-white inline-flex items-center gap-2 break-all"><Mail :size="13" class="text-[#E5322D]" />{{ office.email }}</a>
+            <a :href="`tel:${office.phone.replace(/\s/g, '')}`" class="block text-white/85 text-sm mb-2 hover:text-white inline-flex items-center gap-2 break-words"><Phone :size="13" class="text-[#E5322D]" />{{ office.phone }}</a>
+            <a :href="`mailto:${office.email}`" class="block text-white/85 text-[0.8rem] hover:text-white inline-flex items-center gap-2 whitespace-nowrap leading-none pt-1"><Mail :size="13" class="text-[#E5322D]" />{{ office.email }}</a>
           </div>
         </div>
 
@@ -115,6 +131,19 @@ const geoCityHubLinks = computed(() =>
               </NuxtLink>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="mt-8 border-t border-white/10 pt-6">
+        <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.72rem] font-semibold uppercase tracking-[0.08em]">
+          <NuxtLink
+            v-for="item in legalLinks"
+            :key="item.href"
+            :to="item.href"
+            class="text-white/60 transition-colors hover:text-[#E5322D]"
+          >
+            {{ item.label }}
+          </NuxtLink>
         </div>
       </div>
     </div>

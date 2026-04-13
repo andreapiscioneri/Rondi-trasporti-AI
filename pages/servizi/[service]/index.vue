@@ -64,7 +64,7 @@ const model = computed(() => ({
   localIntent: service.value!.localIntent,
   mapEmbedUrl: `https://www.google.com/maps?q=${primaryCity.value.lat},${primaryCity.value.lng}&z=8&output=embed`,
   ctaLabel: `Richiedi preventivo ${service.value!.shortName}`,
-  ctaHref: '/contatti',
+  ctaHref: '/preventivo',
   serviceRootHref: '/servizi',
   cityLinks: cityLinks.value,
   districtLinks: [],

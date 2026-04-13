@@ -11,6 +11,20 @@ useSeo({
   jsonLd: [
     buildServiceSchema('Trasporto Nazionale', 'Servizi di trasporto merci su tutto il territorio italiano con flotta moderna e tracciamento in tempo reale.'),
     buildServiceSchema('Trasporto Internazionale', 'Rotte consolidate verso 30+ paesi europei con gestione interna della documentazione doganale.'),
+    buildFaqSchema([
+      {
+        question: 'Quali servizi offre Trasporti Rondi?',
+        answer: 'Offriamo trasporti nazionali e internazionali, trasporti eccezionali, gru e movimentazioni, logistica e dogana.',
+      },
+      {
+        question: 'In quali aree operate?',
+        answer: 'Operiamo in tutta Italia e su tratte internazionali europee, con pagine locali dedicate per le principali aree operative.',
+      },
+      {
+        question: 'Come posso richiedere un preventivo?',
+        answer: 'Puoi contattarci dalla pagina Contatti: il team commerciale prende in carico la richiesta con piano operativo dedicato.',
+      },
+    ]),
     buildBreadcrumbSchema([{ name: 'Home', href: '/' }, { name: 'Servizi', href: '/servizi' }]),
   ],
 })
@@ -33,6 +47,18 @@ const GEO_SERVICE_SLUGS = [
   'logistica-dogana',
 ]
 
+const SERVICE_DETAIL_PATHS = [
+  '/trasporto-standard',
+  '/trasporto-internazionale',
+  '/trasporto-eccezionale',
+  '/noleggio-mezzi-gruati',
+  '/soluzioni-logistiche',
+]
+
+function serviceDetailPathByIndex(index: number) {
+  return SERVICE_DETAIL_PATHS[index] || '/servizi'
+}
+
 function geoServicePathByIndex(index: number, citySlug: string) {
   const serviceSlug = GEO_SERVICE_SLUGS[index] || GEO_SERVICE_SLUGS[0]
   return buildGeoLocalPath(serviceSlug, citySlug)
@@ -45,6 +71,21 @@ const heroData = computed(() => ({
   title: t.value.serviziPage.hero.title,
   subtitle: t.value.serviziPage.hero.subtitle,
 }))
+
+const pageFaqItems = [
+  {
+    question: 'Quali servizi offre Trasporti Rondi?',
+    answer: 'Offriamo trasporti nazionali e internazionali, trasporti eccezionali, gru e movimentazioni, logistica e dogana.',
+  },
+  {
+    question: 'In quali aree operate?',
+    answer: 'Operiamo in tutta Italia e su tratte internazionali europee, con pagine locali dedicate per le principali aree operative.',
+  },
+  {
+    question: 'Come posso richiedere un preventivo?',
+    answer: 'Puoi contattarci dalla pagina Contatti: il team commerciale prende in carico la richiesta con piano operativo dedicato.',
+  },
+]
 </script>
 
 <template>
@@ -114,14 +155,24 @@ const heroData = computed(() => ({
                 </span>
               </div>
             </div>
-            <NuxtLink
-              to="/contatti"
-              class="cta-premium inline-flex items-center gap-2 px-6 py-3 text-white transition-all hover:gap-3 rounded-full"
-              style="background: #E5322D; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase"
-            >
-              {{ t.serviziPage.cta }}
-              <ArrowRight :size="16" />
-            </NuxtLink>
+            <div class="flex flex-wrap gap-3">
+              <NuxtLink
+                :to="serviceDetailPathByIndex(i)"
+                class="inline-flex items-center gap-2 px-6 py-3 border border-black/15 dark:border-white/20 text-[#111111] dark:text-white transition-all hover:border-[#E5322D]/40 hover:text-[#E5322D] rounded-full"
+                style="font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase"
+              >
+                Scopri servizio
+                <ArrowRight :size="16" />
+              </NuxtLink>
+              <NuxtLink
+                to="/preventivo"
+                class="cta-premium inline-flex items-center gap-2 px-6 py-3 text-white transition-all hover:gap-3 rounded-full"
+                style="background: #E5322D; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase"
+              >
+                {{ t.serviziPage.cta }}
+                <ArrowRight :size="16" />
+              </NuxtLink>
+            </div>
 
             <div class="mt-6 flex flex-wrap gap-2">
               <NuxtLink
@@ -134,6 +185,23 @@ const heroData = computed(() => ({
               </NuxtLink>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section page-section--light border-t border-black/10 dark:border-white/10">
+      <div class="section-shell max-w-4xl">
+        <AnimateOnScroll variant="fadeUp" class="mb-8">
+          <span class="block mb-3 text-[0.75rem] font-bold uppercase tracking-[0.2em] text-[#E5322D]">FAQ</span>
+          <h2 class="headline-balance text-[#111111] dark:text-white" style="font-size:clamp(1.7rem,3vw,2.35rem);font-weight:800">Domande frequenti sui servizi</h2>
+        </AnimateOnScroll>
+        <div class="space-y-3">
+          <AnimateOnScroll v-for="(item, i) in pageFaqItems" :key="item.question" variant="fadeUp" :delay="i * 0.05">
+            <div class="rounded-[1.1rem] border border-black/10 bg-white p-5 dark:border-white/10 dark:bg-[#111111]">
+              <h3 class="mb-2 text-[0.95rem] font-bold text-[#111111] dark:text-white">{{ item.question }}</h3>
+              <p class="text-[0.88rem] leading-7 text-[#666666] dark:text-[#b3b3b3]">{{ item.answer }}</p>
+            </div>
+          </AnimateOnScroll>
         </div>
       </div>
     </section>
