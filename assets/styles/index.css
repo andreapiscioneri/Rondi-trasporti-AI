@@ -96,6 +96,36 @@ main section {
 
 img { backface-visibility: hidden; }
 
+/* Remove all image-related shadows site-wide. */
+img,
+picture,
+figure,
+[class*='shadow-']:has(img),
+[class*='shadow-']:has(picture),
+[class*='shadow-']:has(figure),
+[style*='box-shadow']:has(img),
+[style*='box-shadow']:has(picture),
+[style*='box-shadow']:has(figure) {
+  box-shadow: none !important;
+}
+
+/* Reduce image corner rounding site-wide (without touching true circular elements). */
+:root {
+  --image-radius: 0.9rem;
+}
+
+img,
+picture,
+figure,
+[class*='rounded-']:not(.rounded-full):not(.rounded-none):has(img),
+[class*='rounded-']:not(.rounded-full):not(.rounded-none):has(picture),
+[class*='rounded-']:not(.rounded-full):not(.rounded-none):has(figure),
+[style*='border-radius']:has(img),
+[style*='border-radius']:has(picture),
+[style*='border-radius']:has(figure) {
+  border-radius: var(--image-radius) !important;
+}
+
 /* ── Forms ────────────────────────────────────────────────────────────────── */
 input,
 select,

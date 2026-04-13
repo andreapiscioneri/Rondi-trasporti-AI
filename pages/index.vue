@@ -249,7 +249,7 @@ onMounted(() => {
       <div class="section-shell grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <AnimateOnScroll variant="fadeLeft">
           <div class="relative flex gap-3">
-            <div class="flex-1 overflow-hidden rounded-[2rem] shadow-[0_30px_80px_rgba(0,0,0,0.18)]" style="aspect-ratio:4/5">
+            <div class="flex-1 overflow-hidden rounded-[1.25rem] shadow-[0_30px_80px_rgba(0,0,0,0.18)]" style="aspect-ratio:4/5">
               <Transition
                 mode="out-in"
                 enter-active-class="transition-all duration-500 ease-out"
@@ -269,7 +269,7 @@ onMounted(() => {
               <button
                 v-for="(thumb, index) in SUSTAIN_GALLERY"
                 :key="thumb.src"
-                class="group overflow-hidden rounded-2xl border transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E5322D]"
+                class="group overflow-hidden rounded-xl border transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E5322D]"
                 :class="selectedSustainImage === index
                   ? 'border-[#E5322D] ring-2 ring-[#E5322D]/35 shadow-[0_12px_24px_rgba(229,50,45,0.2)]'
                   : 'border-black/10 dark:border-white/10 opacity-85 hover:opacity-100'"

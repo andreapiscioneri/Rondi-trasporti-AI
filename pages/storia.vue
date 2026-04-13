@@ -65,7 +65,7 @@ onMounted(() => {
       <div class="section-shell grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         <AnimateOnScroll variant="fadeLeft">
           <div class="relative flex gap-3">
-            <div class="flex-1 overflow-hidden rounded-[2rem] shadow-[0_30px_80px_rgba(0,0,0,0.18)]" style="aspect-ratio:4/5">
+            <div class="flex-1 overflow-hidden rounded-[1.25rem] shadow-[0_30px_80px_rgba(0,0,0,0.18)]" style="aspect-ratio:4/5">
               <Transition
                 mode="out-in"
                 enter-active-class="transition-all duration-500 ease-out"
@@ -85,7 +85,7 @@ onMounted(() => {
               <button
                 v-for="(thumb, index) in STORIA_GALLERY"
                 :key="thumb.src"
-                class="group overflow-hidden rounded-2xl border transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E5322D]"
+                class="group overflow-hidden rounded-xl border transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E5322D]"
                 :class="selectedStoryImage === index
                   ? 'border-[#E5322D] ring-2 ring-[#E5322D]/35 shadow-[0_12px_24px_rgba(229,50,45,0.2)]'
                   : 'border-black/10 dark:border-white/10 opacity-85 hover:opacity-100'"
@@ -139,7 +139,7 @@ onMounted(() => {
                   class="hidden md:block"
                   :class="i % 2 === 0 ? '' : 'md:invisible'"
                 >
-                  <div class="overflow-hidden rounded-[1.35rem] border border-black/10 bg-white dark:border-white/10 dark:bg-[#111111]">
+                  <div class="overflow-hidden rounded-[1rem] border border-black/10 bg-white dark:border-white/10 dark:bg-[#111111]">
                     <div class="overflow-hidden" style="aspect-ratio:16/10"><img :src="TIMELINE_IMAGES[i]" :alt="item.year" class="w-full h-full object-cover"></div>
                     <div class="p-5">
                       <p class="mb-2 text-[0.72rem] font-bold uppercase tracking-[0.14em]" :style="{ color: RED }">{{ item.year }}</p>
@@ -153,7 +153,7 @@ onMounted(() => {
                   class="hidden md:block"
                   :class="i % 2 === 1 ? '' : 'md:invisible'"
                 >
-                  <div class="overflow-hidden rounded-[1.35rem] border border-black/10 bg-white dark:border-white/10 dark:bg-[#111111]">
+                  <div class="overflow-hidden rounded-[1rem] border border-black/10 bg-white dark:border-white/10 dark:bg-[#111111]">
                     <div class="overflow-hidden" style="aspect-ratio:16/10"><img :src="TIMELINE_IMAGES[i]" :alt="item.year" class="w-full h-full object-cover"></div>
                     <div class="p-5">
                       <p class="mb-2 text-[0.72rem] font-bold uppercase tracking-[0.14em]" :style="{ color: RED }">{{ item.year }}</p>
@@ -164,7 +164,7 @@ onMounted(() => {
                 </div>
 
                 <div class="md:hidden pl-8">
-                  <div class="overflow-hidden rounded-[1.1rem] border border-black/10 bg-white dark:border-white/10 dark:bg-[#111111]">
+                  <div class="overflow-hidden rounded-[0.9rem] border border-black/10 bg-white dark:border-white/10 dark:bg-[#111111]">
                     <div class="overflow-hidden" style="aspect-ratio:16/9"><img :src="TIMELINE_IMAGES[i]" :alt="item.year" class="w-full h-full object-cover"></div>
                     <div class="p-4">
                       <p class="mb-2 text-[0.7rem] font-bold uppercase tracking-[0.14em]" :style="{ color: RED }">{{ item.year }}</p>
