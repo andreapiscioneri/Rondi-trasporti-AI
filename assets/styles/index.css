@@ -2,40 +2,69 @@
 @import './tailwind.css';
 @import './theme.css';
 
-/* Global typography */
+/* ══════════════════════════════════════════════════════════════════════════════
+   GLOBAL THEME TRANSITION
+   ──────────────────────────────────────────────────────────────────────────────
+   KEY PRINCIPLE: Transitions on color-related properties are applied ONLY when
+   the user actively toggles the theme (data-theme-transitioning on <html>).
+   The rest of the time, no forced transitions — this preserves animation perf.
+
+   Excludes: transform, width, height, opacity — these are used by GSAP.
+   Only transitions: bg-color, color, border-color, box-shadow, filter.
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+html[data-theme-transitioning] body,
+html[data-theme-transitioning] header,
+html[data-theme-transitioning] footer,
+html[data-theme-transitioning] main,
+html[data-theme-transitioning] nav,
+html[data-theme-transitioning] section,
+html[data-theme-transitioning] article,
+html[data-theme-transitioning] aside,
+html[data-theme-transitioning] div:not(.cursor-dot):not(.cursor-ring):not(.cursor-root),
+html[data-theme-transitioning] span:not(.hero-word),
+html[data-theme-transitioning] p,
+html[data-theme-transitioning] h1,
+html[data-theme-transitioning] h2,
+html[data-theme-transitioning] h3,
+html[data-theme-transitioning] h4,
+html[data-theme-transitioning] h5,
+html[data-theme-transitioning] h6,
+html[data-theme-transitioning] a,
+html[data-theme-transitioning] button,
+html[data-theme-transitioning] input,
+html[data-theme-transitioning] select,
+html[data-theme-transitioning] textarea,
+html[data-theme-transitioning] label,
+html[data-theme-transitioning] svg,
+html[data-theme-transitioning] img {
+  transition:
+    background-color 350ms ease,
+    border-color     350ms ease,
+    color            350ms ease,
+    box-shadow       350ms ease,
+    filter           350ms ease !important;
+}
+
+/* ── Global typography ────────────────────────────────────────────────────── */
 body {
   font-family: 'DM Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 250, 250, 1) 100%);
+  background-color: var(--bg);
+  color: var(--text-primary);
 }
 
-h1,
-h2,
-h3,
-h4,
-.display-title {
+h1, h2, h3, h4, .display-title {
   font-family: 'Manrope', sans-serif;
 }
 
-/* Hide scrollbar utility */
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* Smooth scroll */
+/* ── Base layout ──────────────────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
 }
 
-html,
-body,
-#__nuxt {
+html, body, #__nuxt {
   max-width: 100%;
   min-height: 100%;
 }
@@ -44,36 +73,78 @@ body {
   overflow-x: hidden;
 }
 
-::selection {
-  background: rgba(229, 50, 45, 0.18);
-  color: #111111;
-}
-
-.dark body {
-  background:
-    linear-gradient(180deg, rgba(10, 10, 10, 0.98) 0%, rgba(5, 5, 5, 1) 100%);
-}
-
 main section {
   position: relative;
 }
 
-img {
-  backface-visibility: hidden;
+/* ── Selection color ──────────────────────────────────────────────────────── */
+::selection {
+  background: var(--brand-subtle);
+  color: var(--text-primary);
 }
 
+/* ── Focus ring (WCAG AA) ─────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Scrollbar utilities ──────────────────────────────────────────────────── */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+img { backface-visibility: hidden; }
+
+/* ── Forms ────────────────────────────────────────────────────────────────── */
 input,
 select,
 textarea {
-  border-radius: 12px;
-  transition: border-color 0.24s ease, box-shadow 0.24s ease, transform 0.24s ease;
+  border-radius: var(--radius-md);
+  background-color: var(--input-bg);
+  border: 1.5px solid var(--input-border);
+  color: var(--text-primary);
+  transition:
+    border-color 0.22s ease,
+    box-shadow   0.22s ease,
+    background-color 0.22s ease;
 }
+
+input::placeholder,
+textarea::placeholder { color: var(--text-placeholder); }
 
 input:focus,
 select:focus,
 textarea:focus {
-  box-shadow: 0 0 0 3px rgba(229, 50, 45, 0.14);
+  outline: none;
+  border-color: var(--input-border-focus);
+  box-shadow: var(--input-shadow-focus);
+  background-color: var(--input-bg-focus);
 }
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   DARK MODE — IMAGE TREATMENT
+   ──────────────────────────────────────────────────────────────────────────────
+   Slightly dim and desaturate images in dark mode so they don't look
+   blown-out against the near-black backgrounds.
+   data-no-dim: opt-out attribute (logos, icons, hero images)
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+.dark img:not([data-no-dim]):not(.logo):not(.cursor-dot) {
+  filter: brightness(0.88) saturate(0.95);
+}
+
+/* Hero images are already dimmed via brightness(0.40) inline style — skip */
+.dark .hero-image-motion { filter: brightness(0.40) !important; }
+
+/* Logo should stay crisp — no dimming */
+.dark img[alt*="logo"],
+.dark img[alt*="Logo"],
+.dark img[alt*="Rondi"] { filter: none !important; }
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   SITE ATMOSPHERE (ambient background gradients)
+   ══════════════════════════════════════════════════════════════════════════════ */
 
 .site-atmosphere {
   position: fixed;
@@ -81,9 +152,9 @@ textarea:focus {
   pointer-events: none;
   z-index: 0;
   background:
-    radial-gradient(42rem 42rem at 10% 12%, rgba(229, 50, 45, 0.09), transparent 70%),
-    radial-gradient(34rem 34rem at 86% 20%, rgba(229, 50, 45, 0.06), transparent 70%),
-    radial-gradient(38rem 38rem at 50% 90%, rgba(17, 17, 17, 0.07), transparent 70%);
+    radial-gradient(42rem 42rem at 10% 12%, rgba(229, 50, 45, 0.07), transparent 70%),
+    radial-gradient(34rem 34rem at 86% 20%, rgba(229, 50, 45, 0.05), transparent 70%),
+    radial-gradient(38rem 38rem at 50% 90%, rgba(17, 17, 17, 0.06), transparent 70%);
   animation: driftAura 18s ease-in-out infinite alternate;
 }
 
@@ -91,79 +162,84 @@ textarea:focus {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 0.7px, transparent 0.7px);
+  background-image: radial-gradient(rgba(0, 0, 0, 0.035) 0.7px, transparent 0.7px);
   background-size: 3px 3px;
   opacity: 0.18;
 }
 
 .dark .site-atmosphere {
   background:
-    radial-gradient(44rem 44rem at 10% 12%, rgba(229, 50, 45, 0.16), transparent 70%),
-    radial-gradient(36rem 36rem at 86% 20%, rgba(229, 50, 45, 0.12), transparent 70%),
-    radial-gradient(40rem 40rem at 50% 90%, rgba(255, 255, 255, 0.05), transparent 70%);
+    radial-gradient(44rem 44rem at 10% 12%, rgba(229, 50, 45, 0.14), transparent 70%),
+    radial-gradient(36rem 36rem at 86% 20%, rgba(229, 50, 45, 0.10), transparent 70%),
+    radial-gradient(40rem 40rem at 50% 90%, rgba(255, 255, 255, 0.04), transparent 70%);
 }
 
 .dark .site-atmosphere::after {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.035) 0.7px, transparent 0.7px);
-  opacity: 0.24;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 0.7px, transparent 0.7px);
+  opacity: 0.22;
 }
 
+/* ══════════════════════════════════════════════════════════════════════════════
+   REUSABLE UTILITY CLASSES
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Glass surface ── */
 .glass-elevated {
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+  background: var(--surface-glass);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
 
-.dark .glass-elevated {
-  background: rgba(18, 18, 18, 0.94);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.26);
+/* ── Surface card (replaces hardcoded bg-white) ── */
+.surface-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
 }
 
+/* ── Industrial cards ── */
+.industrial-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+}
+
+.industrial-panel {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-xl);
+}
+
+/* ── Interaction utilities ── */
 .interactive-control {
   transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
 }
 
-.interactive-control:hover {
-  transform: translateY(-1px);
-}
+.interactive-control:hover { transform: translateY(-1px); }
 
 .interactive-control:focus-visible {
-  border-color: rgba(229, 50, 45, 0.78);
-  box-shadow: 0 0 0 3px rgba(229, 50, 45, 0.16);
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--brand-ring);
 }
 
-.modern-shell {
-  position: relative;
+/* ── Hover lift (cards) ── */
+.hover-lift {
+  transition:
+    transform   0.32s cubic-bezier(0.2, 0.9, 0.25, 1),
+    box-shadow  0.32s cubic-bezier(0.2, 0.9, 0.25, 1),
+    border-color 0.25s ease;
 }
 
-.modern-shell::before {
-  content: '';
-  position: fixed;
-  inset: -30% -20% auto;
-  height: 50vh;
-  pointer-events: none;
-  z-index: 0;
-  background: radial-gradient(closest-side, rgba(229, 50, 45, 0.1), transparent 70%);
-  filter: blur(22px);
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
 }
 
-.dark .modern-shell::before {
-  background: radial-gradient(closest-side, rgba(229, 50, 45, 0.18), transparent 70%);
-}
-
-.surface-card {
-  background: rgba(255, 255, 255, 0.98);
-  border: 1px solid rgba(0, 0, 0, 0.09);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.04);
-}
-
-.dark .surface-card {
-  background: rgba(17, 17, 17, 0.98);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
-}
-
+/* ── CTA button shimmer ── */
 .cta-premium {
   position: relative;
   overflow: hidden;
@@ -174,31 +250,33 @@ textarea:focus {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(100deg, rgba(255, 255, 255, 0.12), transparent 50%);
+  background: linear-gradient(100deg, rgba(255, 255, 255, 0.15), transparent 50%);
   transform: translateX(-120%);
   transition: transform 0.55s cubic-bezier(0.2, 0.9, 0.25, 1);
   z-index: -1;
 }
 
-.cta-premium:hover::before {
-  transform: translateX(120%);
+.cta-premium:hover::before { transform: translateX(120%); }
+
+/* ── Page sections ── */
+.modern-shell {
+  position: relative;
+  min-height: 100svh;
 }
 
-.hover-lift {
-  transition: transform 0.32s cubic-bezier(0.2, 0.9, 0.25, 1), box-shadow 0.32s cubic-bezier(0.2, 0.9, 0.25, 1), border-color 0.25s ease;
+.modern-shell::before {
+  content: '';
+  position: fixed;
+  inset: -30% -20% auto;
+  height: 50vh;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(closest-side, rgba(229, 50, 45, 0.08), transparent 70%);
+  filter: blur(24px);
 }
 
-.hover-lift:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-}
-
-.dark .hover-lift:hover {
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.24);
-}
-
-.headline-balance {
-  text-wrap: balance;
+.dark .modern-shell::before {
+  background: radial-gradient(closest-side, rgba(229, 50, 45, 0.16), transparent 70%);
 }
 
 .page-section {
@@ -207,16 +285,18 @@ textarea:focus {
   padding: clamp(4rem, 8vw, 7rem) clamp(1rem, 2.5vw, 2.5rem);
 }
 
+/* Light sections use semantic tokens (dark mode auto-adapts) */
 .page-section--light {
-  background: #ffffff;
+  background-color: var(--surface);
 }
 
 .page-section--soft {
-  background: #f5f5f3;
+  background-color: var(--surface-alt);
 }
 
+/* Dark sections are always dark — intentional, not theme-dependent */
 .page-section--dark {
-  background: #0a0a0a;
+  background-color: #0a0a0a;
   color: #ffffff;
 }
 
@@ -224,9 +304,15 @@ textarea:focus {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 12px);
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.025) 0,
+    rgba(255, 255, 255, 0.025) 1px,
+    transparent 1px,
+    transparent 12px
+  );
   pointer-events: none;
-  opacity: 0.55;
+  opacity: 0.6;
 }
 
 .section-shell {
@@ -243,7 +329,7 @@ textarea:focus {
   font-weight: 800;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #e5322d;
+  color: var(--brand);
 }
 
 .section-title {
@@ -262,39 +348,12 @@ textarea:focus {
 .section-copy {
   font-size: clamp(1rem, 1.2vw, 1.125rem);
   line-height: 1.8;
-  color: #666666;
+  color: var(--text-secondary);
 }
 
-.dark .section-copy {
-  color: #a8a8a8;
-}
+.headline-balance { text-wrap: balance; }
 
-.industrial-card {
-  background: rgba(255, 255, 255, 0.98);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
-}
-
-.dark .industrial-card {
-  background: rgba(17, 17, 17, 0.96);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.24);
-}
-
-.industrial-panel {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.08);
-}
-
-.dark .industrial-panel {
-  border-color: rgba(255, 255, 255, 0.08);
-  background: rgba(11, 11, 11, 0.96);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
-}
-
+/* ── Hero frame ── */
 .hero-frame {
   position: relative;
   overflow: hidden;
@@ -309,6 +368,7 @@ textarea:focus {
   pointer-events: none;
 }
 
+/* ── Accent lines ── */
 .red-accent-line {
   width: 100%;
   height: 1px;
@@ -316,38 +376,60 @@ textarea:focus {
 }
 
 .content-grid-line {
-  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.08) 0, rgba(0, 0, 0, 0.08) 1px, transparent 1px, transparent 100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.07) 0,
+    rgba(0, 0, 0, 0.07) 1px,
+    transparent 1px,
+    transparent 100%
+  );
   background-size: 33.333% 100%;
 }
 
-@keyframes driftAura {
-  0% {
-    transform: scale(1) translate3d(0, 0, 0);
-    filter: saturate(1);
-  }
-  100% {
-    transform: scale(1.04) translate3d(0, -12px, 0);
-    filter: saturate(1.08);
-  }
+/* ── Image hover zoom ── */
+.img-hover-zoom {
+  overflow: hidden;
+  isolation: isolate;
 }
 
-/* ─── Page transitions ────────────────────────────────────────────────────────
-   Name: "page"  — used in both nuxt.config and <NuxtPage :transition>
-   Feel: quick fade + 18px vertical shift + soft blur
-   Duration: 320ms out / 320ms in (= 640ms total per nav)
-*/
+.img-hover-zoom img {
+  transition: transform 0.65s cubic-bezier(0.2, 0.9, 0.25, 1);
+  will-change: transform;
+}
+
+.img-hover-zoom:hover img { transform: scale(1.06); }
+
+/* ── Magnetic button ── */
+[data-magnetic] {
+  display: inline-flex;
+  will-change: transform;
+}
+
+/* ── Stagger reveal ── */
+.stagger-children > * { opacity: 0; }
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   ANIMATIONS
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes driftAura {
+  0%   { transform: scale(1) translate3d(0, 0, 0); filter: saturate(1); }
+  100% { transform: scale(1.04) translate3d(0, -12px, 0); filter: saturate(1.08); }
+}
+
+/* ── Page transitions ── */
 .page-enter-active {
   transition:
-    opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity   0.32s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 0.32s ease;
+    filter    0.32s ease;
 }
 
 .page-leave-active {
   transition:
-    opacity 0.26s cubic-bezier(0.4, 0, 1, 1),
+    opacity   0.26s cubic-bezier(0.4, 0, 1, 1),
     transform 0.26s cubic-bezier(0.4, 0, 1, 1),
-    filter 0.26s ease;
+    filter    0.26s ease;
 }
 
 .page-enter-from {
@@ -362,66 +444,15 @@ textarea:focus {
   filter: blur(3px);
 }
 
-/* Disable for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .page-enter-active,
-  .page-leave-active {
+  html[data-theme-transitioning] * { transition: none !important; }
+
+  .page-enter-active, .page-leave-active {
     transition: opacity 0.15s ease !important;
   }
 
-  .page-enter-from,
-  .page-leave-to {
+  .page-enter-from, .page-leave-to {
     transform: none !important;
     filter: none !important;
   }
-}
-
-/* ─── Custom cursor — hide native pointer on fine-pointer devices ─────────────
-   AppCursor.vue re-shows a custom cursor for those devices.
-   The cursor:none is set programmatically in AppCursor.vue to avoid hiding
-   the native cursor during SSR when the component hasn't hydrated yet.
-*/
-
-/* ─── Magnetic button — transition helper ─────────────────────────────────────
-   The magnetic transform is applied via JS in AppCursor.vue.
-   Declare will-change here so the GPU layer is promoted upfront.
-*/
-[data-magnetic] {
-  display: inline-flex;
-  will-change: transform;
-}
-
-/* ─── Image hover — zoom + parallax ──────────────────────────────────────────
-   Usage: wrap img in a container with .img-hover-zoom
-   The container clips overflow; the img scales on hover.
-*/
-.img-hover-zoom {
-  overflow: hidden;
-  isolation: isolate;
-}
-
-.img-hover-zoom img {
-  transition: transform 0.65s cubic-bezier(0.2, 0.9, 0.25, 1);
-  will-change: transform;
-}
-
-.img-hover-zoom:hover img {
-  transform: scale(1.06);
-}
-
-/* ─── Stagger-reveal helper ───────────────────────────────────────────────────
-   Apply .stagger-children on the AnimateOnScroll wrapper with stagger: true.
-   Each direct child gets opacity:0 on server — GSAP resets on client mount.
-*/
-.stagger-children > * {
-  opacity: 0;
-}
-
-/* ─── Focus visible — red accent ring ────────────────────────────────────────
-   Override browser default to match brand, while keeping full accessibility.
-*/
-:focus-visible {
-  outline: 2px solid rgba(229, 50, 45, 0.75);
-  outline-offset: 3px;
-  border-radius: 4px;
 }

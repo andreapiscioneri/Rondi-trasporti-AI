@@ -1,181 +1,288 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   DESIGN TOKEN SYSTEM — Trasporti Rondi
+   ─────────────────────────────────────────────────────────────────────────────
+   Architecture:
+     Level 1  Primitive tokens  — raw values (colors, radii)
+     Level 2  Semantic tokens   — purpose-based (bg, surface, text, border)
+     Level 3  Component tokens  — consumed by specific components
+     Level 4  Tailwind mapping  — @theme inline block exposes tokens as utilities
+
+   Dark mode strategy:
+     - class="dark" on <html> (set by @nuxtjs/color-mode + anti-FOUC script)
+     - Dark is NOT simply "inverted light": surfaces are layered greys (not black)
+     - Shadows shift from transparency-based to depth-based
+     - Red stays #E5322D (slightly brighter in dark for contrast)
+     - Typography contrast lowered slightly to reduce eye strain
+   ──────────────────────────────────────────────────────────────────────────── */
+
 @custom-variant dark (&:is(.dark *));
 
+/* ══════════════════════════════════════════════════════════════════════════════
+   LEVEL 1 — PRIMITIVE TOKENS (never use directly in components)
+   ══════════════════════════════════════════════════════════════════════════════ */
+
 :root {
-  --font-size: 16px;
-  --background: #ffffff;
-  --foreground: oklch(0.145 0 0);
-  --card: #ffffff;
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: #030213;
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.95 0.0058 264.53);
-  --secondary-foreground: #030213;
-  --muted: #ececf0;
-  --muted-foreground: #717182;
-  --accent: #e9ebef;
-  --accent-foreground: #030213;
-  --destructive: #d4183d;
-  --destructive-foreground: #ffffff;
-  --border: rgba(0, 0, 0, 0.1);
-  --input: transparent;
-  --input-background: #f3f3f5;
-  --switch-background: #cbced4;
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: #030213;
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Brand red palette */
+  --red-50:   #fff0ef;
+  --red-100:  #ffcfcd;
+  --red-200:  #ffaaa7;
+  --red-300:  #f97370;
+  --red-400:  #f05450;
+  --red-500:  #e5322d;   /* ← primary brand */
+  --red-600:  #cc2d28;
+  --red-700:  #b02522;
+  --red-800:  #8e1d1a;
+  --red-900:  #6c1512;
+
+  /* Greys (light palette) */
+  --grey-0:   #ffffff;
+  --grey-50:  #fafaf8;   /* page bg */
+  --grey-100: #f4f3f0;   /* alt section bg */
+  --grey-150: #eceae5;
+  --grey-200: #dedcd6;
+  --grey-300: #c0bdb6;
+  --grey-400: #9b9890;
+  --grey-500: #787470;
+  --grey-600: #5a5754;
+  --grey-700: #3e3c3a;
+  --grey-800: #252320;
+  --grey-900: #111110;
+  --grey-950: #080807;
+
+  /* Dark surface palette */
+  --dark-0:   #080808;   /* page bg in dark */
+  --dark-50:  #0e0e0e;   /* alt sections    */
+  --dark-100: #141414;   /* cards/panels    */
+  --dark-150: #1a1a1a;   /* elevated card   */
+  --dark-200: #222222;
+  --dark-300: #2e2e2e;   /* hover bg        */
+  --dark-400: #3a3a3a;
+  --dark-500: #484848;
+
+  /* System */
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  20px;
+  --radius-xl:  28px;
+  --radius-pill: 9999px;
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+/* ══════════════════════════════════════════════════════════════════════════════
+   LEVEL 2 — SEMANTIC TOKENS
+   Components reference these, not primitives.
+   Override in .dark to switch themes.
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Surfaces ── */
+  --bg:               var(--grey-50);          /* page background         */
+  --surface:          var(--grey-0);           /* card, panel, modal      */
+  --surface-alt:      var(--grey-100);         /* alternating sections    */
+  --surface-elevated: var(--grey-0);           /* floating elements       */
+  --surface-glass:    rgba(250,250,248,0.88);  /* navbar with blur        */
+  --surface-overlay:  rgba(0,0,0,0.45);        /* modal backdrop          */
+  --surface-hover:    rgba(0,0,0,0.04);        /* subtle hover bg         */
+  --surface-active:   rgba(0,0,0,0.07);        /* active/pressed state    */
+
+  /* ── Text ── */
+  --text-primary:     #0a0a0a;
+  --text-secondary:   #505050;
+  --text-muted:       #909090;
+  --text-placeholder: #c0c0c0;
+  --text-inverse:     #f0f0f0;    /* text on dark/brand backgrounds */
+  --text-on-brand:    #ffffff;
+
+  /* ── Borders ── */
+  --border:           rgba(0,0,0,0.08);
+  --border-strong:    rgba(0,0,0,0.15);
+  --border-brand:     rgba(229,50,45,0.40);
+  --border-focus:     rgba(229,50,45,0.60);
+
+  /* ── Brand (functional) ── */
+  --brand:         var(--red-500);    /* #E5322D */
+  --brand-hover:   var(--red-600);    /* #CC2D28 */
+  --brand-light:   var(--red-400);    /* #F05450 */
+  --brand-subtle:  var(--red-50);     /* very light bg tint */
+  --brand-ring:    rgba(229,50,45,0.22);
+
+  /* ── Shadows (depth-layered) ── */
+  --shadow-xs:  0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg:  0 16px 40px rgba(0,0,0,0.10), 0 4px 10px rgba(0,0,0,0.05);
+  --shadow-xl:  0 32px 80px rgba(0,0,0,0.14), 0 8px 20px rgba(0,0,0,0.06);
+  --shadow-brand: 0 6px 24px rgba(229,50,45,0.30);
+
+  /* ── Component tokens ── */
+  /* Header */
+  --header-bg-transparent: rgba(250,250,248,0.55);
+  --header-bg-solid:       rgba(250,250,248,0.94);
+  --header-border:         rgba(0,0,0,0.08);
+
+  /* Input */
+  --input-bg:        var(--grey-100);
+  --input-bg-focus:  var(--grey-0);
+  --input-border:    rgba(0,0,0,0.12);
+  --input-border-focus: var(--red-500);
+  --input-shadow-focus: 0 0 0 3px rgba(229,50,45,0.14);
+
+  /* Toggle */
+  --toggle-track:  rgba(0,0,0,0.12);
+  --toggle-knob:   var(--grey-0);
 }
+
+/* ── DARK MODE OVERRIDES ── */
+.dark {
+  /* Surfaces */
+  --bg:               var(--dark-0);           /* #080808 — near black    */
+  --surface:          var(--dark-100);         /* #141414 — card bg       */
+  --surface-alt:      var(--dark-50);          /* #0E0E0E — alt sections  */
+  --surface-elevated: var(--dark-150);         /* #1A1A1A — above cards   */
+  --surface-glass:    rgba(8,8,8,0.88);
+  --surface-overlay:  rgba(0,0,0,0.65);
+  --surface-hover:    rgba(255,255,255,0.05);
+  --surface-active:   rgba(255,255,255,0.09);
+
+  /* Text — slightly desaturated to reduce eye strain */
+  --text-primary:     #f0f0f0;
+  --text-secondary:   #a8a8a8;
+  --text-muted:       #646464;
+  --text-placeholder: #444444;
+  --text-inverse:     #0a0a0a;
+
+  /* Borders — more luminous than light mode (dark bg needs more definition) */
+  --border:           rgba(255,255,255,0.08);
+  --border-strong:    rgba(255,255,255,0.14);
+  --border-brand:     rgba(229,50,45,0.50);
+  --border-focus:     rgba(229,50,45,0.70);
+
+  /* Brand — slightly brighter in dark for better contrast */
+  --brand:         #e8392e;
+  --brand-hover:   #f04540;
+  --brand-light:   #ff6056;
+  --brand-subtle:  rgba(229,50,45,0.14);
+  --brand-ring:    rgba(229,50,45,0.28);
+
+  /* Shadows — dark mode uses no box-shadows (they're invisible)
+     Instead use borders for elevation definition */
+  --shadow-xs:  none;
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.40);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.50);
+  --shadow-lg:  0 16px 40px rgba(0,0,0,0.60);
+  --shadow-xl:  0 32px 80px rgba(0,0,0,0.70);
+  --shadow-brand: 0 6px 24px rgba(229,50,45,0.40);
+
+  /* Component tokens */
+  --header-bg-transparent: rgba(8,8,8,0.60);
+  --header-bg-solid:       rgba(8,8,8,0.94);
+  --header-border:         rgba(255,255,255,0.08);
+
+  --input-bg:        var(--dark-150);
+  --input-bg-focus:  var(--dark-200);
+  --input-border:    rgba(255,255,255,0.10);
+  --input-border-focus: var(--brand);
+  --input-shadow-focus: 0 0 0 3px rgba(229,50,45,0.20);
+
+  --toggle-track:  rgba(255,255,255,0.10);
+  --toggle-knob:   var(--dark-150);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   LEVEL 4 — TAILWIND V4 MAPPING
+   Exposes semantic tokens as Tailwind utility classes.
+   Usage: bg-surface, text-text-primary, border-border, etc.
+   ══════════════════════════════════════════════════════════════════════════════ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-input-background: var(--input-background);
-  --color-switch-background: var(--switch-background);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  /* Surfaces */
+  --color-bg:               var(--bg);
+  --color-surface:          var(--surface);
+  --color-surface-alt:      var(--surface-alt);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-hover:    var(--surface-hover);
+
+  /* Text */
+  --color-text-primary:     var(--text-primary);
+  --color-text-secondary:   var(--text-secondary);
+  --color-text-muted:       var(--text-muted);
+
+  /* Borders */
+  --color-border:            var(--border);
+  --color-border-strong:     var(--border-strong);
+
+  /* Brand */
+  --color-brand:        var(--brand);
+  --color-brand-hover:  var(--brand-hover);
+  --color-brand-light:  var(--brand-light);
+  --color-brand-subtle: var(--brand-subtle);
+
+  /* Shadows */
+  --shadow-brand: var(--shadow-brand);
+
+  /* Radii */
+  --radius-sm:   var(--radius-sm);
+  --radius-md:   var(--radius-md);
+  --radius-lg:   var(--radius-lg);
+  --radius-xl:   var(--radius-xl);
+  --radius-pill: var(--radius-pill);
+
+  /* ── Keep backward compat with previous OKLCH variables ─────────────────── */
+  --color-background:           var(--bg);
+  --color-foreground:           var(--text-primary);
+  --color-card:                 var(--surface);
+  --color-card-foreground:      var(--text-primary);
+  --color-popover:              var(--surface-elevated);
+  --color-popover-foreground:   var(--text-primary);
+  --color-primary:              var(--brand);
+  --color-primary-foreground:   #ffffff;
+  --color-secondary:            var(--surface-alt);
+  --color-secondary-foreground: var(--text-secondary);
+  --color-muted:                var(--surface-alt);
+  --color-muted-foreground:     var(--text-muted);
+  --color-accent:               var(--surface-alt);
+  --color-accent-foreground:    var(--text-secondary);
+  --color-destructive:          var(--brand);
+  --color-destructive-foreground: #ffffff;
+  --color-border:               var(--border);
+  --color-input:                var(--input-bg);
+  --color-input-background:     var(--input-bg);
+  --color-ring:                 var(--border-focus);
+  --radius-sm:                  calc(var(--radius-md) - 4px);
+  --radius-md:                  var(--radius-md);
+  --radius-lg:                  var(--radius-lg);
+  --radius-xl:                  var(--radius-xl);
 }
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   BASE LAYER — default element styles using semantic tokens
+   ══════════════════════════════════════════════════════════════════════════════ */
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
 
-  body {
-    @apply bg-background text-foreground;
-  }
-
-  /**
-  * Default typography styles for HTML elements (h1-h4, p, label, button, input).
-  * These are in @layer base, so Tailwind utility classes (like text-sm, text-lg) automatically override them.
-  */
-
   html {
-    font-size: var(--font-size);
+    font-size: 16px;
+    color-scheme: light dark;
   }
 
-  h1 {
-    font-size: var(--text-2xl);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
+  body {
+    background-color: var(--bg);
+    color: var(--text-primary);
   }
 
-  h2 {
-    font-size: var(--text-xl);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-  }
+  h1 { font-size: var(--text-2xl); font-weight: 500; line-height: 1.5; }
+  h2 { font-size: var(--text-xl);  font-weight: 500; line-height: 1.5; }
+  h3 { font-size: var(--text-lg);  font-weight: 500; line-height: 1.5; }
+  h4 { font-size: var(--text-base); font-weight: 500; line-height: 1.5; }
 
-  h3 {
-    font-size: var(--text-lg);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-  }
+  label  { font-size: var(--text-base); font-weight: 500; line-height: 1.5; }
+  button { font-size: var(--text-base); font-weight: 500; line-height: 1.5; }
+  input  { font-size: var(--text-base); font-weight: 400; line-height: 1.5; }
 
-  h4 {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-  }
-
-  label {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-  }
-
-  button {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-medium);
-    line-height: 1.5;
-  }
-
-  input {
-    font-size: var(--text-base);
-    font-weight: var(--font-weight-normal);
-    line-height: 1.5;
+  ::selection {
+    background: var(--brand-subtle);
+    color: var(--text-primary);
   }
 }

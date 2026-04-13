@@ -1,12 +1,11 @@
 <script setup lang="ts">
-const route = useRoute()
+const route   = useRoute()
 const nuxtApp = useNuxtApp()
 
 watch(
   () => route.fullPath,
   () => {
     if (!import.meta.client) return
-    // Use Lenis scroll-to when available (smooth + instant jump on route change)
     const lenis = (nuxtApp as any).$lenis
     if (lenis) {
       lenis.scrollTo(0, { immediate: true })
@@ -18,17 +17,22 @@ watch(
 </script>
 
 <template>
+  <!--
+    Root element uses CSS variables from theme.css so the dark/light switch
+    is handled entirely by the class="dark" on <html>.
+    No hardcoded light/dark colour pairs needed here.
+  -->
   <div
-    class="modern-shell min-h-screen flex flex-col bg-[#F6F5F2] dark:bg-[#050505] text-[#333333] dark:text-white transition-colors duration-300"
-    style="font-family: 'DM Sans', sans-serif"
+    class="modern-shell min-h-screen flex flex-col"
+    style="font-family: 'DM Sans', sans-serif; background-color: var(--bg); color: var(--text-primary);"
   >
-    <!-- Ambient background gradient -->
-    <div class="site-atmosphere" />
+    <!-- Ambient background gradient (stays in fixed position, pointer-events: none) -->
+    <div class="site-atmosphere" aria-hidden="true" />
 
-    <!-- Custom cursor (pointer devices only — hides itself on touch) -->
+    <!-- Custom cursor (only on fine-pointer/mouse devices) -->
     <AppCursor />
 
-    <!-- First-visit loader -->
+    <!-- First-visit loading screen -->
     <AppLoader />
 
     <AppHeader />
