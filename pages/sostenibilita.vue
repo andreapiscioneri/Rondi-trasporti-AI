@@ -14,9 +14,9 @@ const { t } = useLang()
 const pg = computed(() => t.value.sostenibilitaPage)
 
 const SECTION_IMAGES = [
-  'https://images.unsplash.com/photo-1655300256620-680cb0f1cec3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900',
-  'https://images.unsplash.com/photo-1638636206910-49cdd0af6d3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900',
-  'https://images.unsplash.com/photo-1768323555231-5497afb0b6ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900',
+  'https://images.pexels.com/photos/29206500/pexels-photo-29206500.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
+  'https://images.pexels.com/photos/35691079/pexels-photo-35691079.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
+  'https://images.pexels.com/photos/8783541/pexels-photo-8783541.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
 ]
 </script>
 
@@ -24,7 +24,7 @@ const SECTION_IMAGES = [
   <div>
     <section class="relative overflow-hidden page-section page-section--dark" style="min-height:480px">
       <div class="absolute inset-0">
-        <img src="https://images.unsplash.com/photo-1655300256620-680cb0f1cec3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920" alt="" class="w-full h-full object-cover opacity-25 scale-105">
+        <img src="https://images.pexels.com/photos/29206500/pexels-photo-29206500.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=2200" alt="" class="w-full h-full object-cover opacity-25 scale-105">
         <div class="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/72 to-transparent" />
       </div>
       <div class="absolute left-0 top-0 bottom-0 w-1" :style="{ background: RED }" />

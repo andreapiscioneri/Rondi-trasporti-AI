@@ -22,8 +22,8 @@ useSeo({
 })
 const pg = computed(() => t.value.lavoraPage)
 
-const HERO_IMG = 'https://images.unsplash.com/photo-1768554058655-ffc14e476826?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920'
-const OFFICE_IMG = 'https://images.unsplash.com/photo-1768796372362-05c256e61d8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900'
+const HERO_IMG = 'https://images.pexels.com/photos/7019213/pexels-photo-7019213.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=2200'
+const OFFICE_IMG = 'https://images.pexels.com/photos/4481256/pexels-photo-4481256.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1400'
 
 const TEAM_STATS = [
   { label: 'Posizioni aperte', value: '12+' },

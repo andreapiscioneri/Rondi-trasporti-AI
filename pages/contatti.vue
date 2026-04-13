@@ -12,11 +12,11 @@ useSeo({
   jsonLd: buildBreadcrumbSchema([{ name: 'Home', href: '/' }, { name: 'Contatti', href: '/contatti' }]),
 })
 
-const HQ_IMG = 'https://images.unsplash.com/photo-1762344682624-176d89eb3bfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900'
+const HQ_IMG = 'https://images.pexels.com/photos/12418935/pexels-photo-12418935.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1400'
 const OFFICE_MAPS = [
-  'https://images.unsplash.com/photo-1638636206910-49cdd0af6d3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-  'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-  'https://images.unsplash.com/photo-1762344682624-176d89eb3bfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+  'https://images.pexels.com/photos/35691079/pexels-photo-35691079.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=900',
+  'https://images.pexels.com/photos/5860937/pexels-photo-5860937.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=900',
+  'https://images.pexels.com/photos/12418935/pexels-photo-12418935.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=900',
 ]
 
 const trustItems = [
@@ -26,7 +26,7 @@ const trustItems = [
 ]
 
 const heroData = computed(() => ({
-  image: 'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2400',
+  image: 'https://images.pexels.com/photos/30341205/pexels-photo-30341205.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=2200',
   alt: pg.value.hero.title,
   tag: pg.value.hero.tag,
   title: pg.value.hero.title,

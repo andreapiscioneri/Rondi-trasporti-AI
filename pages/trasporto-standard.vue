@@ -35,22 +35,22 @@ const relatedServices = [
   {
     title: 'Trasporto Internazionale',
     href: '/trasporto-internazionale',
-    image: 'https://images.unsplash.com/photo-1772959785247-e0904e476455?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+    image: 'https://images.pexels.com/photos/28520996/pexels-photo-28520996.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
   },
   {
     title: 'Trasporto Eccezionale',
     href: '/trasporto-eccezionale',
-    image: 'https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+    image: 'https://images.pexels.com/photos/28264507/pexels-photo-28264507.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
   },
   {
     title: 'Gru e Movimentazioni',
     href: '/gru-e-movimentazioni',
-    image: 'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+    image: 'https://images.pexels.com/photos/31310062/pexels-photo-31310062.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
   },
   {
     title: 'Logistica',
     href: '/soluzioni-logistiche',
-    image: 'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+    image: 'https://images.pexels.com/photos/18982315/pexels-photo-18982315.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
   },
 ]
 
@@ -81,7 +81,7 @@ useSeo({
       'Siamo specializzati nel trasporto su gomma di merci industriali con una flotta proprietaria ampia e modulabile.',
       'Pianifichiamo ogni spedizione per offrire la soluzione piu efficiente in termini di tempi, saturazione mezzo e sicurezza del carico.',
     ]"
-    intro-image="https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1800"
+    intro-image="https://images.pexels.com/photos/31723807/pexels-photo-31723807.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1800"
     :tabs="tabs"
     cta-label="Richiedi una quotazione"
     cta-href="/preventivo"

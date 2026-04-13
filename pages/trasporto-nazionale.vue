@@ -23,22 +23,22 @@ const relatedServices = computed(() => [
   {
     title: copy.value.related[0],
     href: localePath('/trasporto-internazionale'),
-    image: 'https://images.unsplash.com/photo-1772959785247-e0904e476455?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+    image: 'https://images.pexels.com/photos/34646235/pexels-photo-34646235.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
   },
   {
     title: copy.value.related[1],
     href: localePath('/trasporto-eccezionale'),
-    image: 'https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+    image: 'https://images.pexels.com/photos/12756876/pexels-photo-12756876.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
   },
   {
     title: copy.value.related[2],
     href: localePath('/gru-e-movimentazioni'),
-    image: 'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+    image: 'https://images.pexels.com/photos/29399463/pexels-photo-29399463.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
   },
   {
     title: copy.value.related[3],
     href: localePath('/soluzioni-logistiche'),
-    image: 'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+    image: 'https://images.pexels.com/photos/36878025/pexels-photo-36878025.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
   },
 ])
 
@@ -65,7 +65,7 @@ useSeo({
     :intro-title="copy.introTitle"
     :intro-subtitle="copy.introSubtitle"
     :intro-paragraphs="copy.introParagraphs"
-    intro-image="https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1800"
+    intro-image="https://images.pexels.com/photos/31723807/pexels-photo-31723807.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1800"
     :tabs="copy.tabs"
     :cta-label="copy.ctaLabel"
     :cta-href="localePath('/preventivo')"

@@ -12,10 +12,10 @@ useSeo({
 })
 const pg = computed(() => t.value.storiaPage)
 
-const STORIA_IMG_1 = 'https://images.unsplash.com/photo-1614571272828-2d8289ff8fc0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600'
-const STORIA_IMG_2 = 'https://images.unsplash.com/photo-1638636206910-49cdd0af6d3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600'
-const STORIA_IMG_3 = 'https://images.unsplash.com/photo-1668532070017-1956f52f097f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200'
-const STORIA_IMG_4 = 'https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600'
+const STORIA_IMG_1 = 'https://images.pexels.com/photos/35501717/pexels-photo-35501717.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=900'
+const STORIA_IMG_2 = 'https://images.pexels.com/photos/18468412/pexels-photo-18468412.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=900'
+const STORIA_IMG_3 = 'https://images.pexels.com/photos/30037629/pexels-photo-30037629.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1700'
+const STORIA_IMG_4 = 'https://images.pexels.com/photos/13961751/pexels-photo-13961751.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=900'
 
 const STORIA_GALLERY = [
   { src: STORIA_IMG_3, alt: '25 anni di crescita operativa' },
@@ -27,18 +27,18 @@ const STORIA_GALLERY = [
 const selectedStoryImage = ref(0)
 
 const TIMELINE_IMAGES = [
-  'https://images.unsplash.com/photo-1668532070017-1956f52f097f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
-  'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
-  'https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
-  'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
-  'https://images.unsplash.com/photo-1655300256620-680cb0f1cec3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
-  'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
-  'https://images.unsplash.com/photo-1638636206910-49cdd0af6d3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
-  'https://images.unsplash.com/photo-1614571272828-2d8289ff8fc0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400',
+  'https://images.pexels.com/photos/30037629/pexels-photo-30037629.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=900',
+  'https://images.pexels.com/photos/31723807/pexels-photo-31723807.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=900',
+  'https://images.pexels.com/photos/13961751/pexels-photo-13961751.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=900',
+  'https://images.pexels.com/photos/31049388/pexels-photo-31049388.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=900',
+  'https://images.pexels.com/photos/29206500/pexels-photo-29206500.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=900',
+  'https://images.pexels.com/photos/30341205/pexels-photo-30341205.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=900',
+  'https://images.pexels.com/photos/35691079/pexels-photo-35691079.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=900',
+  'https://images.pexels.com/photos/27732803/pexels-photo-27732803.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=900',
 ]
 
 const heroData = computed(() => ({
-  image: 'https://images.unsplash.com/photo-1614571272828-2d8289ff8fc0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2400',
+  image: 'https://images.pexels.com/photos/35501717/pexels-photo-35501717.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=2200',
   alt: pg.value.hero.title,
   tag: pg.value.hero.tag,
   title: pg.value.hero.title,

@@ -203,7 +203,7 @@ const pageModel = computed(() => ({
   <div>
     <PageHeroBanner
       :hero="{
-        image: 'https://images.unsplash.com/photo-1668532070017-1956f52f097f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2200',
+        image: 'https://images.pexels.com/photos/30037629/pexels-photo-30037629.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=2200',
         alt: pageModel.localTitle,
         tag: `Pagina locale · ${pageModel.cityName}`,
         title: pageModel.localTitle,

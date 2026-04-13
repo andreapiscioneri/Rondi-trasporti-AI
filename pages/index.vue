@@ -13,7 +13,7 @@ useSeo({
 
 const HERO_SLIDES_IT = [
   {
-    image: 'https://images.unsplash.com/photo-1668532070017-1956f52f097f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920',
+    image: 'https://images.pexels.com/photos/30037629/pexels-photo-30037629.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=2200',
     tag: 'Dal 1998 · Trasporto Industriale',
     title: 'La Forza del\nTrasporto.',
     subtitle: "Soluzioni logistiche nazionali, internazionali ed eccezionali per l'industria italiana.",
@@ -23,7 +23,7 @@ const HERO_SLIDES_IT = [
     ctaSecondaryHref: '/servizi',
   },
   {
-    image: 'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920',
+    image: 'https://images.pexels.com/photos/31723807/pexels-photo-31723807.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=2200',
     tag: 'Trasporti Internazionali · 30+ Paesi',
     title: 'Oltre i Confini,\ncon Precisione.',
     subtitle: 'Rotte consolidate verso oltre 30 paesi con gestione interna della documentazione doganale.',
@@ -31,7 +31,7 @@ const HERO_SLIDES_IT = [
     ctaHref: '/trasporto-internazionale',
   },
   {
-    image: 'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920',
+    image: 'https://images.pexels.com/photos/31049388/pexels-photo-31049388.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=2200',
     tag: 'Gru & Movimentazioni · fino a 1000t',
     title: 'Potenza di\nSollevamento.',
     subtitle: 'Gru fino a 1000 tonnellate, operatori certificati e pianificazione tecnica per ogni intervento.',
@@ -39,7 +39,7 @@ const HERO_SLIDES_IT = [
     ctaHref: '/gru-e-movimentazioni',
   },
   {
-    image: 'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920',
+    image: 'https://images.pexels.com/photos/30341205/pexels-photo-30341205.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=2200',
     tag: 'Logistica Integrata · Supply Chain',
     title: 'La Tua Supply\nChain, Ottimizzata.',
     subtitle: 'Magazzini certificati, distribuzione last-mile e sdoganamento completo in un unico partner.',
@@ -50,7 +50,7 @@ const HERO_SLIDES_IT = [
 
 const HERO_SLIDES_EN = [
   {
-    image: 'https://images.unsplash.com/photo-1668532070017-1956f52f097f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920',
+    image: 'https://images.pexels.com/photos/30037629/pexels-photo-30037629.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=2200',
     tag: 'Since 1998 · Industrial Transport',
     title: 'The Power of\nTransport.',
     subtitle: 'National, international and exceptional logistics for Italian industry.',
@@ -60,7 +60,7 @@ const HERO_SLIDES_EN = [
     ctaSecondaryHref: '/servizi',
   },
   {
-    image: 'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920',
+    image: 'https://images.pexels.com/photos/31723807/pexels-photo-31723807.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=2200',
     tag: 'International Transport · 30+ Countries',
     title: 'Beyond Borders,\nPrecisely.',
     subtitle: 'Established routes to 30+ countries with full in-house customs documentation.',
@@ -68,7 +68,7 @@ const HERO_SLIDES_EN = [
     ctaHref: '/trasporto-internazionale',
   },
   {
-    image: 'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920',
+    image: 'https://images.pexels.com/photos/31049388/pexels-photo-31049388.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=2200',
     tag: 'Crane & Handling · up to 1000t',
     title: 'Lifting\nPower.',
     subtitle: 'Cranes up to 1000 tonnes, certified operators and technical planning for every operation.',
@@ -76,7 +76,7 @@ const HERO_SLIDES_EN = [
     ctaHref: '/gru-e-movimentazioni',
   },
   {
-    image: 'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920',
+    image: 'https://images.pexels.com/photos/30341205/pexels-photo-30341205.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=2200',
     tag: 'Integrated Logistics · Supply Chain',
     title: 'Your Supply\nChain, Optimized.',
     subtitle: 'Certified warehouses, last-mile distribution and full customs clearance. One partner.',
@@ -89,17 +89,17 @@ const RED = '#E5322D'
 const serviceIcons = [Truck, Globe, Maximize2, Wrench, Package]
 
 const SERVICE_IMAGES = [
-  'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1772959785247-e0904e476455?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
-  'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800',
+  'https://images.pexels.com/photos/31723807/pexels-photo-31723807.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
+  'https://images.pexels.com/photos/30824313/pexels-photo-30824313.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
+  'https://images.pexels.com/photos/13961751/pexels-photo-13961751.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
+  'https://images.pexels.com/photos/29399463/pexels-photo-29399463.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
+  'https://images.pexels.com/photos/12706241/pexels-photo-12706241.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
 ]
 
-const SUSTAIN_IMG = 'https://images.unsplash.com/photo-1638636206910-49cdd0af6d3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900'
-const SUSTAIN_SOLAR = 'https://images.unsplash.com/photo-1655300256620-680cb0f1cec3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400'
-const SUSTAIN_ROAD = 'https://images.unsplash.com/photo-1768323555231-5497afb0b6ec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400'
-const SUSTAIN_PORT = 'https://images.unsplash.com/photo-1614571272828-2d8289ff8fc0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400'
+const SUSTAIN_IMG = 'https://images.pexels.com/photos/35691079/pexels-photo-35691079.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1700'
+const SUSTAIN_SOLAR = 'https://images.pexels.com/photos/29206500/pexels-photo-29206500.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=900'
+const SUSTAIN_ROAD = 'https://images.pexels.com/photos/5410923/pexels-photo-5410923.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=900'
+const SUSTAIN_PORT = 'https://images.pexels.com/photos/8783541/pexels-photo-8783541.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=900'
 const SUSTAIN_GALLERY = [
   { src: SUSTAIN_IMG, alt: 'Green Fleet' },
   { src: SUSTAIN_SOLAR, alt: 'Impianto fotovoltaico' },
@@ -302,7 +302,7 @@ onMounted(() => {
     <section ref="statsSectionRef" class="page-section page-section--dark relative overflow-hidden">
       <div class="absolute inset-0 pointer-events-none overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2200"
+          src="https://images.pexels.com/photos/31723807/pexels-photo-31723807.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=2200"
           alt=""
           class="h-full w-full object-cover"
           :style="{ transform: `translate3d(0, ${statsParallaxY}px, 0) scale(1.14)`, filter: 'brightness(0.28)' }"
@@ -324,7 +324,7 @@ onMounted(() => {
 
     <section class="relative page-section overflow-hidden">
       <div class="absolute inset-0">
-        <img src="https://images.unsplash.com/photo-1668532070017-1956f52f097f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920" alt="" class="w-full h-full object-cover" style="filter:brightness(0.2)">
+        <img src="https://images.pexels.com/photos/30037629/pexels-photo-30037629.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=2200" alt="" class="w-full h-full object-cover" style="filter:brightness(0.2)">
       </div>
       <div class="absolute inset-0" style="background:linear-gradient(135deg,rgba(229,50,45,0.85) 0%, rgba(0,0,0,0.7) 100%)" />
       <AnimateOnScroll variant="fadeUp" class="relative z-10 section-shell flex flex-col lg:flex-row items-center justify-between gap-8">

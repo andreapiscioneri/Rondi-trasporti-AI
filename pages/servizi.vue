@@ -37,11 +37,11 @@ if (isServiziRoot.value) {
 const serviceIcons = [Truck, Globe, Maximize2, Wrench, Package]
 
 const SERVICE_IMAGES = [
-  'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900',
-  'https://images.unsplash.com/photo-1772959785247-e0904e476455?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900',
-  'https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900',
-  'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900',
-  'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900',
+  'https://images.pexels.com/photos/31723807/pexels-photo-31723807.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
+  'https://images.pexels.com/photos/30824313/pexels-photo-30824313.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
+  'https://images.pexels.com/photos/13961751/pexels-photo-13961751.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
+  'https://images.pexels.com/photos/29399463/pexels-photo-29399463.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
+  'https://images.pexels.com/photos/12706241/pexels-photo-12706241.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
 ]
 
 const GEO_SERVICE_SLUGS = [
@@ -70,7 +70,7 @@ function geoServicePathByIndex(index: number, citySlug: string) {
 }
 
 const heroData = computed(() => ({
-  image: 'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2400',
+  image: 'https://images.pexels.com/photos/34646235/pexels-photo-34646235.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=2200',
   alt: t.value.serviziPage.hero.title,
   tag: t.value.serviziPage.hero.tag,
   title: t.value.serviziPage.hero.title,

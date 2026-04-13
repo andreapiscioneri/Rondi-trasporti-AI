@@ -35,22 +35,22 @@ const relatedServices = [
   {
     title: 'Trasporto Nazionale',
     href: '/trasporto-nazionale',
-    image: 'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+    image: 'https://images.pexels.com/photos/12418932/pexels-photo-12418932.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
   },
   {
     title: 'Trasporto Internazionale',
     href: '/trasporto-internazionale',
-    image: 'https://images.unsplash.com/photo-1772959785247-e0904e476455?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+    image: 'https://images.pexels.com/photos/29399463/pexels-photo-29399463.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
   },
   {
     title: 'Trasporto Eccezionale',
     href: '/trasporto-eccezionale',
-    image: 'https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+    image: 'https://images.pexels.com/photos/12756876/pexels-photo-12756876.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
   },
   {
     title: 'Logistica',
     href: '/soluzioni-logistiche',
-    image: 'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+    image: 'https://images.pexels.com/photos/12706241/pexels-photo-12706241.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200',
   },
 ]
 
@@ -81,7 +81,7 @@ useSeo({
       'La nostra flotta comprende mezzi con gru a braccio di ultima generazione disponibili per noleggio su esigenze operative diverse.',
       'Possiamo integrare operatori qualificati per condurre le operazioni in sicurezza e nel rispetto delle procedure previste.',
     ]"
-    intro-image="https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1800"
+    intro-image="https://images.pexels.com/photos/31049388/pexels-photo-31049388.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1800"
     :tabs="tabs"
     cta-label="Richiedi una quotazione"
     cta-href="/preventivo"

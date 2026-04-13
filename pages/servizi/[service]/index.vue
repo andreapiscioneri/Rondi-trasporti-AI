@@ -86,7 +86,7 @@ const model = computed(() => ({
   <div>
     <PageHeroBanner
       :hero="{
-        image: 'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2200',
+        image: 'https://images.pexels.com/photos/31049388/pexels-photo-31049388.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=2200',
         alt: model.localTitle,
         tag: 'Servizio geolocalizzato',
         title: model.localTitle,

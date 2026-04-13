@@ -46,7 +46,7 @@ useSeo({
 })
 
 const heroData = computed(() => ({
-  image: 'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2400',
+  image: 'https://images.pexels.com/photos/31723807/pexels-photo-31723807.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=2200',
   alt: pageContent.value.title,
   tag: pageContent.value.tag,
   title: pageContent.value.title,
