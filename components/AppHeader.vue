@@ -12,19 +12,19 @@ const RED = '#E5322D'
 const desktopTransportLinks = computed(() => {
   if (lang.value === 'en') {
     return [
-      { label: 'National Transport', href: '/trasporto-standard' },
+      { label: 'National Transport', href: '/trasporto-nazionale' },
       { label: 'International', href: '/trasporto-internazionale' },
       { label: 'Exceptional', href: '/trasporto-eccezionale' },
-      { label: 'Crane & Handling', href: '/noleggio-mezzi-gruati' },
+      { label: 'Crane & Handling', href: '/gru-e-movimentazioni' },
       { label: 'Logistics', href: '/soluzioni-logistiche' },
     ]
   }
 
   return [
-    { label: 'Trasporto Nazionale', href: '/trasporto-standard' },
+    { label: 'Trasporto Nazionale', href: '/trasporto-nazionale' },
     { label: 'Internazionale', href: '/trasporto-internazionale' },
     { label: 'Eccezionale', href: '/trasporto-eccezionale' },
-    { label: 'Gru e Movimentazioni', href: '/noleggio-mezzi-gruati' },
+    { label: 'Gru e Movimentazioni', href: '/gru-e-movimentazioni' },
     { label: 'Logistica', href: '/soluzioni-logistiche' },
   ]
 })

@@ -48,10 +48,10 @@ const GEO_SERVICE_SLUGS = [
 ]
 
 const SERVICE_DETAIL_PATHS = [
-  '/trasporto-standard',
+  '/trasporto-nazionale',
   '/trasporto-internazionale',
   '/trasporto-eccezionale',
-  '/noleggio-mezzi-gruati',
+  '/gru-e-movimentazioni',
   '/soluzioni-logistiche',
 ]
 

@@ -1,4 +1,60 @@
 <script setup lang="ts">
+import { FileCheck2, Globe, Route } from 'lucide-vue-next'
+
+const serviceFaq = [
+  {
+    question: 'Gestite pratiche documentali e doganali?',
+    answer: 'Si, il team supporta la gestione documentale necessaria per mantenere fluidita operativa sulle tratte internazionali.',
+  },
+  {
+    question: 'Su quali direttrici operate?',
+    answer: 'Operiamo su corridoi europei consolidati, con pianificazione in base a priorita merce e finestre di consegna.',
+  },
+  {
+    question: 'Come viene monitorata la spedizione?',
+    answer: 'Manteniamo controllo continuo dello stato trasporto e coordinamento operativo fino alla consegna.',
+  },
+]
+
+const tabs = [
+  {
+    label: 'Rotte europee',
+    title: 'Rotte europee',
+    description: 'Gestiamo tratte internazionali con network operativo affidabile e pianificazione su priorita, tempi e criticita logistiche.',
+    icon: Route,
+  },
+  {
+    label: 'Presidio documentale',
+    title: 'Presidio documentale',
+    description: 'Affianchiamo il cliente nella gestione dei documenti necessari per velocizzare i flussi e ridurre interruzioni operative.',
+    icon: FileCheck2,
+  },
+  {
+    label: 'Coordinamento continuo',
+    title: 'Coordinamento continuo',
+    description: 'Il team segue l\'intero ciclo spedizione con controllo stato e supporto nelle fasi piu sensibili del trasporto cross-border.',
+    icon: Globe,
+  },
+]
+
+const relatedServices = [
+  {
+    title: 'Trasporto Standard',
+    href: '/trasporto-standard',
+    image: 'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+  },
+  {
+    title: 'Trasporto Eccezionale',
+    href: '/trasporto-eccezionale',
+    image: 'https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+  },
+  {
+    title: 'Soluzioni Logistiche',
+    href: '/soluzioni-logistiche',
+    image: 'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+  },
+]
+
 useSeo({
   title: 'Trasporto Internazionale',
   description: 'Trasporto internazionale su rotte consolidate europee con supporto doganale e coordinamento operativo.',
@@ -12,19 +68,32 @@ useSeo({
       url: 'https://www.trasportirondi.it/trasporto-internazionale',
       areaServed: ['Italia', 'Europa'],
     }),
+    buildFaqSchema(serviceFaq),
   ],
 })
 </script>
 
 <template>
-  <div>
-    <PageHeroBanner :hero="{ image: 'https://images.unsplash.com/photo-1772959785247-e0904e476455?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2200', alt: 'Trasporto Internazionale', tag: 'Servizio dedicato', title: 'Trasporto Internazionale', subtitle: 'Rotte europee affidabili con presidio documentale e doganale.' }" />
-    <section class="page-section page-section--light">
-      <div class="section-shell max-w-4xl">
-        <h2 class="mb-4 text-[#111111] dark:text-white headline-balance" style="font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800">Oltre confine, con controllo totale</h2>
-        <p class="mb-8 text-[#666666] dark:text-[#999999]" style="line-height:1.78">Coordiniamo spedizioni internazionali con partner selezionati e gestione completa delle pratiche per ridurre tempi e criticita operative.</p>
-        <NuxtLink to="/preventivo" class="cta-premium inline-flex items-center rounded-full px-6 py-3 text-white" style="background:#E5322D;font-size:0.82rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">Richiedi preventivo</NuxtLink>
-      </div>
-    </section>
-  </div>
+  <SectionsServiceDetailShowcase
+    intro-title="Trasporto internazionale"
+    intro-subtitle="Rotte affidabili verso mercati esteri con coordinamento documentale e operativo."
+    :intro-paragraphs="[
+      'Pianifichiamo spedizioni internazionali con un approccio strutturato su tempi, tratte e priorita del cliente.',
+      'Il presidio documentale e il controllo operativo continuo riducono criticita e aumentano affidabilita lungo tutta la catena di trasporto.',
+    ]"
+    intro-image="https://images.unsplash.com/photo-1772959785247-e0904e476455?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1800"
+    :tabs="tabs"
+    cta-label="Richiedi una quotazione"
+    cta-href="/preventivo"
+    why-title="Cosa ci differenzia"
+    why-text="Metodo operativo, rete affidabile e presidio documentale ci permettono di garantire continuita anche su tratte internazionali complesse."
+    :checklist="[
+      'Assistenza continuativa',
+      'Supporto documentale',
+      'Flessibilita di servizio',
+      'Coordinamento operativo dedicato',
+      'Copertura internazionale su direttrici consolidate',
+    ]"
+    :related-services="relatedServices"
+  />
 </template>

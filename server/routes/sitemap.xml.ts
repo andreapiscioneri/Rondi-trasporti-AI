@@ -10,9 +10,11 @@ const BASE_URL = 'https://www.trasportirondi.it'
 const PAGES = [
   { path: '/',               priority: '1.0', freq: 'weekly'  },
   { path: '/servizi',        priority: '0.9', freq: 'monthly' },
+  { path: '/trasporto-nazionale', priority: '0.86', freq: 'monthly' },
   { path: '/trasporto-standard', priority: '0.86', freq: 'monthly' },
   { path: '/trasporto-internazionale', priority: '0.86', freq: 'monthly' },
   { path: '/trasporto-eccezionale', priority: '0.86', freq: 'monthly' },
+  { path: '/gru-e-movimentazioni', priority: '0.84', freq: 'monthly' },
   { path: '/soluzioni-logistiche', priority: '0.84', freq: 'monthly' },
   { path: '/noleggio-mezzi-gruati', priority: '0.84', freq: 'monthly' },
   { path: '/preventivo',     priority: '0.9', freq: 'monthly' },
