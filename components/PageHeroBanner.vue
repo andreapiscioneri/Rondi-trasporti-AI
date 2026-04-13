@@ -52,7 +52,7 @@ defineProps<{
 
         <p
           class="max-w-xl text-white/72"
-          style="font-size:clamp(1rem,1.45vw,1.13rem);font-weight:500;line-height:1.72"
+          style="font-size:clamp(1rem,1.45vw,1.13rem);font-weight:500;line-height:1.72;text-decoration-line:underline;text-decoration-color:#E5322D;text-decoration-thickness:2px;text-underline-offset:0.22em;text-decoration-skip-ink:auto"
         >
           {{ hero.subtitle }}
         </p>

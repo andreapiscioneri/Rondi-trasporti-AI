@@ -40,7 +40,12 @@ const relatedGridClass = computed(() => (
       <div class="section-shell grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         <div>
           <h1 class="mb-3 text-[#17171C] dark:text-white headline-balance" style="font-size:clamp(2.1rem,5vw,4rem);font-weight:800;line-height:1.02">{{ introTitle }}</h1>
-          <p class="mb-6 text-[#222228] dark:text-white/90" style="font-size:clamp(1.1rem,1.6vw,1.9rem);font-weight:700;line-height:1.2">{{ introSubtitle }}</p>
+          <p
+            class="mb-6 text-[#222228] dark:text-white/90"
+            style="font-size:clamp(1.1rem,1.6vw,1.9rem);font-weight:700;line-height:1.2;text-decoration-line:underline;text-decoration-color:#E5322D;text-decoration-thickness:2px;text-underline-offset:0.22em;text-decoration-skip-ink:auto"
+          >
+            {{ introSubtitle }}
+          </p>
           <div class="space-y-5">
             <p v-for="line in introParagraphs" :key="line" class="text-[#5E5E66] dark:text-[#AAAAAA]" style="font-size:clamp(1rem,1.2vw,1.08rem);line-height:1.7">{{ line }}</p>
           </div>
