@@ -3,6 +3,13 @@ import { ArrowLeft, ArrowRight } from 'lucide-vue-next'
 
 const RED = '#E5322D'
 const { t } = useLang()
+
+useSeo({
+  title: 'La Nostra Storia — Dal 1998',
+  description: 'Oltre 25 anni di trasporto industriale. Scopri la storia di Trasporti Rondi: dalle origini fino a diventare leader nella logistica eccezionale italiana.',
+  path: '/storia',
+  jsonLd: buildBreadcrumbSchema([{ name: 'Home', href: '/' }, { name: 'Storia', href: '/storia' }]),
+})
 const pg = computed(() => t.value.storiaPage)
 
 const STORIA_IMG_1 = 'https://images.unsplash.com/photo-1614571272828-2d8289ff8fc0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600'

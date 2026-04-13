@@ -3,6 +3,13 @@ import { ArrowRight, Globe, Maximize2, Package, Truck, Wrench } from 'lucide-vue
 
 const { lang, t } = useLang()
 
+useSeo({
+  title: 'Trasporti Rondi — Logistica Industriale dal 1998',
+  description: 'Trasporti Rondi: soluzioni logistiche nazionali, internazionali ed eccezionali per l\'industria italiana. Gru fino a 1000t, ADR, ISO 9001.',
+  path: '/',
+  jsonLd: buildOrganizationSchema(),
+})
+
 const HERO_SLIDES_IT = [
   {
     image: 'https://images.unsplash.com/photo-1668532070017-1956f52f097f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920',

@@ -3,6 +3,23 @@ import { ArrowRight, BriefcaseBusiness, ChevronDown, MapPin, Rocket, Star, Users
 
 const RED = '#E5322D'
 const { t } = useLang()
+
+useSeo({
+  title: 'Lavora con Noi — Carriere nel Trasporto',
+  description: 'Entra nel team Trasporti Rondi. Posizioni aperte per autisti, logisti, tecnici e operatori di gru. Brescia e tutta Italia.',
+  path: '/lavora-con-noi',
+  jsonLd: [
+    buildBreadcrumbSchema([{ name: 'Home', href: '/' }, { name: 'Lavora con Noi', href: '/lavora-con-noi' }]),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'JobPosting',
+      title: 'Autista di Trasporti Industriali',
+      hiringOrganization: { '@type': 'Organization', name: 'Trasporti Rondi', sameAs: 'https://www.trasportirondi.it' },
+      jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: 'Brescia', addressCountry: 'IT' } },
+      employmentType: 'FULL_TIME',
+    },
+  ],
+})
 const pg = computed(() => t.value.lavoraPage)
 
 const HERO_IMG = 'https://images.unsplash.com/photo-1768554058655-ffc14e476826?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920'

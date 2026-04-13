@@ -3,6 +3,17 @@ import { ArrowRight, CheckCircle2, Globe, Maximize2, Package, Truck, Wrench } fr
 
 const { t } = useLang()
 
+useSeo({
+  title: 'Servizi di Trasporto e Logistica',
+  description: 'Trasporto nazionale e internazionale, carichi eccezionali, gru fino a 1000t e logistica integrata. Scopri tutti i servizi Trasporti Rondi.',
+  path: '/servizi',
+  jsonLd: [
+    buildServiceSchema('Trasporto Nazionale', 'Servizi di trasporto merci su tutto il territorio italiano con flotta moderna e tracciamento in tempo reale.'),
+    buildServiceSchema('Trasporto Internazionale', 'Rotte consolidate verso 30+ paesi europei con gestione interna della documentazione doganale.'),
+    buildBreadcrumbSchema([{ name: 'Home', href: '/' }, { name: 'Servizi', href: '/servizi' }]),
+  ],
+})
+
 const serviceIcons = [Truck, Globe, Maximize2, Wrench, Package]
 
 const SERVICE_IMAGES = [

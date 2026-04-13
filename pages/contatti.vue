@@ -1,11 +1,17 @@
 <script setup lang="ts">
-import { ArrowRight, Clock, Mail, MapPin, MessageSquareText, Phone, Truck } from 'lucide-vue-next'
+import { Clock, Mail, MapPin, MessageSquareText, Phone, Truck } from 'lucide-vue-next'
 
 const RED = '#E5322D'
 const { t } = useLang()
 const pg = computed(() => t.value.contattiPage)
 
-const submitted = ref(false)
+useSeo({
+  title: 'Contatti e Richiesta Preventivo',
+  description: 'Richiedi un preventivo per trasporti industriali, nazionali o internazionali. Risposta garantita entro 24h. Tre sedi operative in Italia.',
+  path: '/contatti',
+  jsonLd: buildBreadcrumbSchema([{ name: 'Home', href: '/' }, { name: 'Contatti', href: '/contatti' }]),
+})
+
 const HQ_IMG = 'https://images.unsplash.com/photo-1762344682624-176d89eb3bfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=900'
 const OFFICE_MAPS = [
   'https://images.unsplash.com/photo-1638636206910-49cdd0af6d3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
@@ -13,10 +19,6 @@ const OFFICE_MAPS = [
   'https://images.unsplash.com/photo-1762344682624-176d89eb3bfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
 ]
 
-const onSubmit = (e: Event) => {
-  e.preventDefault()
-  submitted.value = true
-}
 </script>
 
 <template>
@@ -58,48 +60,47 @@ const onSubmit = (e: Event) => {
       </div>
     </section>
 
+    <!-- ── Multi-step quote form ── -->
     <section class="page-section page-section--light">
-      <div class="section-shell grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-        <AnimateOnScroll variant="fadeLeft">
-          <span class="block mb-4" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#E5322D">{{ pg.form.title }}</span>
-          <h2 class="text-[#111111] dark:text-white mb-6 headline-balance" style="font-size:clamp(1.75rem,3vw,2.35rem);font-weight:800">{{ pg.form.title }}</h2>
-          <div class="flex items-start gap-3 p-4 rounded-2xl surface-card mb-8">
-            <div class="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-full" :style="{ background: RED }"><Clock :size="14" class="text-white" /></div>
-            <div>
-              <p class="text-[#333333] dark:text-[#CCCCCC]" style="font-size:0.875rem;font-weight:700">Risposta garantita entro 24h</p>
-              <p class="text-[#666666] dark:text-[#999999]" style="font-size:0.8125rem">Per i preventivi urgenti contattaci telefonicamente</p>
-            </div>
-          </div>
-          <div class="overflow-hidden rounded-[2rem]" style="aspect-ratio:16/9"><img :src="HQ_IMG" alt="HQ" class="w-full h-full object-cover"></div>
-        </AnimateOnScroll>
+      <div class="section-shell grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
-        <AnimateOnScroll variant="fadeRight" :delay="0.1">
-          <div v-if="submitted" class="flex flex-col items-start gap-4 py-12">
-            <div class="w-12 h-12 flex items-center justify-center rounded-full" :style="{ background: RED }"><Mail :size="24" class="text-white" /></div>
-            <h3 class="text-[#111111] dark:text-white" style="font-size:1.5rem;font-weight:800">Messaggio inviato!</h3>
-            <p class="text-[#666666] dark:text-[#999999]">Ti risponderemo entro 24 ore lavorative.</p>
-          </div>
-          <form v-else class="surface-card rounded-[2rem] p-6 sm:p-8 flex flex-col gap-5" @submit="onSubmit">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div v-for="field in ['name', 'company', 'email', 'phone']" :key="field" class="flex flex-col gap-1.5">
-                <label class="text-[#333333] dark:text-[#CCCCCC]" style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">{{ pg.form[field as keyof typeof pg.form] }}</label>
-                <input :type="field === 'email' ? 'email' : field === 'phone' ? 'tel' : 'text'" :required="field === 'name' || field === 'email'" class="px-4 py-3 bg-[#F5F5F5] dark:bg-[#1A1A1A] border border-black/10 dark:border-white/10 focus:outline-none focus:border-[#E5322D]">
+        <!-- Left: context + image -->
+        <AnimateOnScroll variant="fadeLeft">
+          <span class="block mb-3" style="font-size:0.75rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#E5322D">Richiedi Preventivo</span>
+          <h2 class="text-[#111111] dark:text-white mb-4 headline-balance" style="font-size:clamp(1.75rem,3vw,2.35rem);font-weight:800;line-height:1.08">
+            Parliamo del tuo progetto di trasporto.
+          </h2>
+          <p class="text-[#666] dark:text-[#999] mb-7" style="font-size:0.9375rem;line-height:1.75">
+            Compila il form in 3 semplici passi e riceverai un preventivo personalizzato entro 24 ore lavorative.
+          </p>
+
+          <!-- Trust signals -->
+          <div class="flex flex-col gap-3 mb-8">
+            <div
+              v-for="item in [
+                { icon: '⏱', title: 'Risposta in 24h', desc: 'Tempi certi, nessuna attesa' },
+                { icon: '🔒', title: 'Dati al sicuro', desc: 'Privacy garantita, nessuno spam' },
+                { icon: '📞', title: 'Urgente?', desc: 'Chiama +39 030 123 4567' },
+              ]"
+              :key="item.title"
+              class="flex items-start gap-3"
+            >
+              <span class="text-lg leading-none mt-0.5">{{ item.icon }}</span>
+              <div>
+                <p class="text-[#111] dark:text-white" style="font-size:0.875rem;font-weight:700">{{ item.title }}</p>
+                <p class="text-[#888] dark:text-[#aaa]" style="font-size:0.8125rem">{{ item.desc }}</p>
               </div>
             </div>
-            <div class="flex flex-col gap-1.5">
-              <label class="text-[#333333] dark:text-[#CCCCCC]" style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">{{ pg.form.subject }}</label>
-              <select required class="px-4 py-3 bg-[#F5F5F5] dark:bg-[#1A1A1A] border border-black/10 dark:border-white/10 focus:outline-none focus:border-[#E5322D]">
-                <option value="">-</option>
-                <option v-for="s in pg.form.subjects" :key="s" :value="s">{{ s }}</option>
-              </select>
-            </div>
-            <div class="flex flex-col gap-1.5">
-              <label class="text-[#333333] dark:text-[#CCCCCC]" style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase">{{ pg.form.message }}</label>
-              <textarea rows="5" required class="px-4 py-3 bg-[#F5F5F5] dark:bg-[#1A1A1A] border border-black/10 dark:border-white/10 focus:outline-none focus:border-[#E5322D] resize-none" />
-            </div>
-            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" required class="mt-1 accent-[#E5322D]"><span class="text-[#666666] dark:text-[#999999]" style="font-size:0.8125rem">{{ pg.form.privacy }}</span></label>
-            <button type="submit" class="cta-premium inline-flex items-center gap-2 px-6 py-3.5 text-white self-start rounded-full" :style="{ background: RED, fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }">{{ pg.form.submit }} <ArrowRight :size="16" /></button>
-          </form>
+          </div>
+
+          <div class="overflow-hidden rounded-[2rem] img-hover-zoom" style="aspect-ratio:16/9">
+            <img :src="HQ_IMG" alt="Sede Trasporti Rondi" class="w-full h-full object-cover">
+          </div>
+        </AnimateOnScroll>
+
+        <!-- Right: multi-step form -->
+        <AnimateOnScroll variant="fadeRight" :delay="0.12">
+          <SectionsQuoteForm />
         </AnimateOnScroll>
       </div>
     </section>

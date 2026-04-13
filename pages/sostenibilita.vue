@@ -2,6 +2,13 @@
 import { ArrowRight, BarChart3, Leaf, ShieldCheck, Zap } from 'lucide-vue-next'
 
 const RED = '#E5322D'
+
+useSeo({
+  title: 'Sostenibilità e Certificazioni ISO',
+  description: 'Trasporti Rondi investe in flotte a basse emissioni e processi certificati ISO 9001, ISO 14001, ADR. Logistica industriale sostenibile.',
+  path: '/sostenibilita',
+  jsonLd: buildBreadcrumbSchema([{ name: 'Home', href: '/' }, { name: 'Sostenibilità', href: '/sostenibilita' }]),
+})
 const sectionIcons = [Zap, Leaf, BarChart3]
 const { t } = useLang()
 const pg = computed(() => t.value.sostenibilitaPage)

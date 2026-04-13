@@ -1,146 +1,140 @@
 <script setup lang="ts">
 /**
- * AppCursor — premium custom cursor for pointer devices only.
+ * AppCursor — premium custom cursor for pointer devices.
+ *
+ * Fixes vs v1:
+ *  - dot was missing an opacity transition → disappeared instantly
+ *  - hide is now debounced 160ms so tiny mouseleave blips don't flash
+ *  - text-mode centering corrected (uses element-specific offsets)
+ *  - ring opacity transition extended to 0.4s for a softer fade
  *
  * Architecture:
- * - dot  : 8px solid circle, follows mouse with zero lag (direct style mutation).
- * - ring : 40px outline circle, lags behind via lerp in RAF loop.
+ *  dot   8px solid circle  — zero-lag, direct style.transform
+ *  ring  40px outline ring — smooth lerp (t=0.10) in RAF loop
  *
- * States:
- * - hover   : ring grows + fills red when over links / buttons / [data-cursor-hover].
- * - text    : ring morphs into a thin vertical bar over text nodes.
- * - hidden  : both elements invisible when mouse leaves the viewport.
- * - clicking: slight scale-down pulse on mousedown.
- *
- * Magnetic effect:
- * - Elements with [data-magnetic] attract the cursor and the element itself
- *   follows the mouse with a dampened offset, snapping back on leave.
+ * States:  default | hover (links/buttons) | text | hidden | clicking
+ * Magnetic: elements with [data-magnetic] follow the cursor with damping
  */
 
-const dot = ref<HTMLElement | null>(null)
+const dot  = ref<HTMLElement | null>(null)
 const ring = ref<HTMLElement | null>(null)
 
-// Only render on devices with a fine pointer (mouse / stylus)
 const isPointerFine = ref(false)
 
-// Internal state — kept outside Vue reactivity for max perf
-let mouseX = 0
-let mouseY = 0
-let ringX = 0
-let ringY = 0
+// Raw values — never reactive, updated in event handlers + RAF only
+let mX = 0, mY = 0         // mouse position
+let rX = 0, rY = 0         // ring lerp position
 let rafId = 0
-let isHovering = false
-let isTextCursor = false
-let isHidden = true
-let isClicking = false
+let hideTimer = 0           // debounce timer for hiding
 
-// Active magnetic element & its original transform
-let magneticEl: HTMLElement | null = null
+// State flags (class toggling is done directly on DOM refs for perf)
+let hovering = false
+let textMode = false
+let hidden   = true
+let clicking = false
 
-// ─── RAF animation loop ───────────────────────────────────────────────────────
+// ─── RAF loop ─────────────────────────────────────────────────────────────────
 function tick() {
-  // Lerp ring toward cursor — 0.10 feels premium (not sluggish, not instant)
-  ringX += (mouseX - ringX) * 0.1
-  ringY += (mouseY - ringY) * 0.1
+  rX += (mX - rX) * 0.1
+  rY += (mY - rY) * 0.1
 
   if (ring.value) {
-    const scale = isClicking ? 0.82 : isHovering ? 1.55 : isTextCursor ? 0.35 : 1
-    ring.value.style.transform = `translate(${ringX - 20}px, ${ringY - 20}px) scale(${scale})`
+    // Center offsets:
+    //  default/hover mode → element is 40×40 → offset -20,-20
+    //  text mode          → element is 2×28  → offset -1,-14
+    const ox = textMode ? 1  : 20
+    const oy = textMode ? 14 : 20
+    const sc = clicking ? 0.8 : hovering ? 1.55 : textMode ? 1 : 1
+
+    ring.value.style.transform =
+      `translate(${rX - ox}px, ${rY - oy}px) scale(${sc})`
   }
 
   rafId = requestAnimationFrame(tick)
 }
 
-// ─── Mouse handlers ───────────────────────────────────────────────────────────
+// ─── Event handlers ───────────────────────────────────────────────────────────
 function onMouseMove(e: MouseEvent) {
-  mouseX = e.clientX
-  mouseY = e.clientY
+  mX = e.clientX
+  mY = e.clientY
 
-  // Dot follows instantly — no lerp
+  // Instant dot
   if (dot.value) {
-    dot.value.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`
+    dot.value.style.transform = `translate(${mX - 4}px, ${mY - 4}px)`
   }
 
-  if (isHidden) {
-    isHidden = false
+  // Cancel any pending hide
+  if (hidden) {
+    clearTimeout(hideTimer)
+    hidden = false
     dot.value?.classList.remove('is-hidden')
     ring.value?.classList.remove('is-hidden')
   }
 
-  // Detect what's under the cursor
+  // Detect interactive vs text elements under cursor
   const target = e.target as HTMLElement
-  const isInteractive = !!target.closest(
-    'a, button, [data-cursor-hover], label, [role="button"]',
-  )
-  const isText =
-    !isInteractive &&
-    !!(target.closest('p, h1, h2, h3, h4, h5, h6, span, li, blockquote'))
+  const nextHover = !!target.closest('a, button, [data-cursor-hover], label, [role="button"], [data-magnetic]')
+  const nextText  = !nextHover && !!target.closest('p, h1, h2, h3, h4, h5, h6, span, li, blockquote, em, strong')
 
-  if (isInteractive !== isHovering) {
-    isHovering = isInteractive
-    dot.value?.classList.toggle('is-hovering', isHovering)
-    ring.value?.classList.toggle('is-hovering', isHovering)
+  if (nextHover !== hovering) {
+    hovering = nextHover
+    dot.value?.classList.toggle('is-hovering', hovering)
+    ring.value?.classList.toggle('is-hovering', hovering)
   }
 
-  if (isText !== isTextCursor) {
-    isTextCursor = isText
-    ring.value?.classList.toggle('is-text', isTextCursor)
+  if (nextText !== textMode) {
+    textMode = nextText
+    ring.value?.classList.toggle('is-text', textMode)
   }
 }
 
-function onMouseLeave() {
-  isHidden = true
-  dot.value?.classList.add('is-hidden')
-  ring.value?.classList.add('is-hidden')
-}
-
-function onMouseEnter() {
-  isHidden = false
-  dot.value?.classList.remove('is-hidden')
-  ring.value?.classList.remove('is-hidden')
+function scheduleHide() {
+  // 160ms debounce — prevents flash on iframe borders / devtools
+  clearTimeout(hideTimer)
+  hideTimer = window.setTimeout(() => {
+    hidden = true
+    dot.value?.classList.add('is-hidden')
+    ring.value?.classList.add('is-hidden')
+  }, 160)
 }
 
 function onMouseDown() {
-  isClicking = true
+  clicking = true
   dot.value?.classList.add('is-clicking')
 }
 
 function onMouseUp() {
-  isClicking = false
+  clicking = false
   dot.value?.classList.remove('is-clicking')
 }
 
 // ─── Magnetic effect ──────────────────────────────────────────────────────────
-function onMagneticMove(e: MouseEvent) {
-  const el = (e.currentTarget as HTMLElement)
+function onMagMove(e: MouseEvent) {
+  const el   = e.currentTarget as HTMLElement
   const rect = el.getBoundingClientRect()
-  const cx = rect.left + rect.width / 2
-  const cy = rect.top + rect.height / 2
-  const dx = (e.clientX - cx) * 0.38
-  const dy = (e.clientY - cy) * 0.38
-  el.style.transition = 'transform 0.15s cubic-bezier(0.2, 1, 0.3, 1)'
-  el.style.transform = `translate(${dx}px, ${dy}px)`
-  magneticEl = el
+  const dx   = (e.clientX - (rect.left + rect.width  / 2)) * 0.36
+  const dy   = (e.clientY - (rect.top  + rect.height / 2)) * 0.36
+  el.style.transition = 'transform 0.12s cubic-bezier(0.2, 1, 0.3, 1)'
+  el.style.transform  = `translate(${dx}px, ${dy}px)`
 }
 
-function onMagneticLeave(e: MouseEvent) {
+function onMagLeave(e: MouseEvent) {
   const el = e.currentTarget as HTMLElement
   el.style.transition = 'transform 0.65s cubic-bezier(0.2, 1, 0.3, 1)'
-  el.style.transform = ''
-  magneticEl = null
+  el.style.transform  = ''
 }
 
 function setupMagnetic() {
   document.querySelectorAll<HTMLElement>('[data-magnetic]').forEach((el) => {
-    el.addEventListener('mousemove', onMagneticMove)
-    el.addEventListener('mouseleave', onMagneticLeave)
+    el.addEventListener('mousemove',  onMagMove)
+    el.addEventListener('mouseleave', onMagLeave)
   })
 }
 
 function teardownMagnetic() {
   document.querySelectorAll<HTMLElement>('[data-magnetic]').forEach((el) => {
-    el.removeEventListener('mousemove', onMagneticMove)
-    el.removeEventListener('mouseleave', onMagneticLeave)
+    el.removeEventListener('mousemove',  onMagMove)
+    el.removeEventListener('mouseleave', onMagLeave)
   })
 }
 
@@ -149,14 +143,13 @@ onMounted(() => {
   isPointerFine.value = window.matchMedia('(pointer: fine)').matches
   if (!isPointerFine.value) return
 
-  // Hide the native cursor globally
   document.documentElement.style.cursor = 'none'
 
-  document.addEventListener('mousemove', onMouseMove, { passive: true })
-  document.addEventListener('mouseleave', onMouseLeave)
-  document.addEventListener('mouseenter', onMouseEnter)
-  document.addEventListener('mousedown', onMouseDown)
-  document.addEventListener('mouseup', onMouseUp)
+  document.addEventListener('mousemove',  onMouseMove, { passive: true })
+  document.addEventListener('mouseleave', scheduleHide)
+  document.addEventListener('mouseenter', () => clearTimeout(hideTimer))
+  document.addEventListener('mousedown',  onMouseDown)
+  document.addEventListener('mouseup',    onMouseUp)
 
   tick()
   setupMagnetic()
@@ -164,11 +157,11 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   document.documentElement.style.cursor = ''
-  document.removeEventListener('mousemove', onMouseMove)
-  document.removeEventListener('mouseleave', onMouseLeave)
-  document.removeEventListener('mouseenter', onMouseEnter)
-  document.removeEventListener('mousedown', onMouseDown)
-  document.removeEventListener('mouseup', onMouseUp)
+  document.removeEventListener('mousemove',  onMouseMove)
+  document.removeEventListener('mouseleave', scheduleHide)
+  document.removeEventListener('mousedown',  onMouseDown)
+  document.removeEventListener('mouseup',    onMouseUp)
+  clearTimeout(hideTimer)
   cancelAnimationFrame(rafId)
   teardownMagnetic()
 })
@@ -176,10 +169,8 @@ onBeforeUnmount(() => {
 
 <template>
   <Teleport to="body">
-    <div v-if="isPointerFine" aria-hidden="true" class="cursor-root">
-      <!-- Dot: instant response, no lag -->
-      <div ref="dot" class="cursor-dot is-hidden" />
-      <!-- Ring: smooth lag via lerp, morphs on state -->
+    <div v-if="isPointerFine" class="cursor-root" aria-hidden="true">
+      <div ref="dot"  class="cursor-dot  is-hidden" />
       <div ref="ring" class="cursor-ring is-hidden" />
     </div>
   </Teleport>
@@ -193,76 +184,58 @@ onBeforeUnmount(() => {
   z-index: 9999;
 }
 
-/* ── Dot ── */
+/* ── Dot ─────────────────────────────────────────────────────────────────── */
 .cursor-dot {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 8px;
-  height: 8px;
+  top: 0; left: 0;
+  width: 8px; height: 8px;
   border-radius: 50%;
   background: #e5322d;
   will-change: transform;
-  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
+  /* opacity must be in the transition list — was the v1 bug */
+  transition: width .2s ease, height .2s ease, background .2s ease, opacity .35s ease;
 }
 
-.cursor-dot.is-hidden {
-  opacity: 0;
-}
+.cursor-dot.is-hidden   { opacity: 0; }
+.cursor-dot.is-hovering { width: 5px; height: 5px; background: #fff; }
+.cursor-dot.is-clicking { opacity: .7; }
 
-.cursor-dot.is-hovering {
-  width: 4px;
-  height: 4px;
-  background: #ffffff;
-}
-
-.cursor-dot.is-clicking {
-  transform: scale(0.7) !important;
-}
-
-/* ── Ring ── */
+/* ── Ring ────────────────────────────────────────────────────────────────── */
 .cursor-ring {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 40px;
-  height: 40px;
+  top: 0; left: 0;
+  width: 40px; height: 40px;
   border-radius: 50%;
-  border: 1.5px solid rgba(229, 50, 45, 0.7);
+  border: 1.5px solid rgba(229, 50, 45, .65);
   will-change: transform;
+  /* Longer transition = softer state changes */
   transition:
-    opacity 0.25s ease,
-    border-color 0.25s ease,
-    border-width 0.25s ease,
-    background 0.25s ease,
-    border-radius 0.3s ease,
-    width 0.3s ease,
-    height 0.3s ease;
+    opacity      .4s  ease,
+    border-color .25s ease,
+    border-width .25s ease,
+    background   .25s ease,
+    border-radius .3s ease,
+    width         .3s cubic-bezier(.2, 1, .3, 1),
+    height        .3s cubic-bezier(.2, 1, .3, 1);
 }
 
-.cursor-ring.is-hidden {
-  opacity: 0;
-}
+.cursor-ring.is-hidden  { opacity: 0; }
 
 .cursor-ring.is-hovering {
-  border-color: rgba(229, 50, 45, 0.9);
-  background: rgba(229, 50, 45, 0.08);
+  border-color: rgba(229, 50, 45, .9);
+  background:   rgba(229, 50, 45, .07);
   border-width: 2px;
 }
 
-/* Text cursor: thin vertical bar */
+/* Thin vertical bar over readable text */
 .cursor-ring.is-text {
-  width: 2px;
-  height: 28px;
+  width: 2px; height: 28px;
   border-radius: 2px;
-  border-color: rgba(229, 50, 45, 0.6);
-  background: rgba(229, 50, 45, 0.15);
+  border-color: rgba(229, 50, 45, .55);
+  background:   rgba(229, 50, 45, .12);
 }
 
-/* Respect reduced motion — kill custom cursor, fall back to native */
 @media (prefers-reduced-motion: reduce) {
-  .cursor-root {
-    display: none;
-  }
+  .cursor-root { display: none; }
 }
 </style>
