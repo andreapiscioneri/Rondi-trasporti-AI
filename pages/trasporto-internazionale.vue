@@ -80,8 +80,8 @@ useSeo({
 
 <template>
   <SectionsServiceDetailShowcase
-    intro-title="Trasporto internazionale"
-    intro-subtitle="Rotte affidabili verso mercati esteri con coordinamento documentale e operativo."
+    intro-title="Trasporto internazionale, con regia totale"
+    intro-subtitle="Rotte europee, documentazione e coordinamento: gestiamo ogni passaggio per farti arrivare puntuale oltre confine."
     :intro-paragraphs="[
       'Pianifichiamo spedizioni internazionali con un approccio strutturato su tempi, tratte e priorita del cliente.',
       'Il presidio documentale e il controllo operativo continuo riducono criticita e aumentano affidabilita lungo tutta la catena di trasporto.',

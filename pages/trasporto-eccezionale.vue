@@ -80,8 +80,8 @@ useSeo({
 
 <template>
   <SectionsServiceDetailShowcase
-    intro-title="Trasporto eccezionale"
-    intro-subtitle="Trasporto pesante, sagomato e macchinari con pianificazione tecnica dedicata."
+    intro-title="Trasporto eccezionale che porta oltre i limiti"
+    intro-subtitle="Carichi fuori sagoma, fuori massa e progetti complessi: li studiamo, li autorizziamo e li facciamo viaggiare con precisione."
     :intro-paragraphs="[
       'La gestione della complessita e centrale: per ogni commessa sviluppiamo analisi preventiva, fattibilita percorso e approccio operativo su misura.',
       'Affianchiamo il cliente nella componente documentale e nella preparazione delle fasi critiche per garantire sicurezza e continuita del servizio.',

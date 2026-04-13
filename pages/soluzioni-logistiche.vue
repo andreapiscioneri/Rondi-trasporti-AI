@@ -74,8 +74,8 @@ useSeo({
 
 <template>
   <SectionsServiceDetailShowcase
-    intro-title="Soluzioni logistiche"
-    intro-subtitle="Stoccaggio e movimentazione merce presso cliente con regia operativa unica."
+    intro-title="Logistica che semplifica la filiera"
+    intro-subtitle="Stoccaggio, flussi e distribuzione coordinati in un unico sistema operativo."
     :intro-paragraphs="[
       'Affidare la gestione logistica a un partner strutturato permette di ridurre inefficienze, tempi morti e costi operativi indiretti.',
       'Configuriamo servizi di stoccaggio e ridistribuzione in funzione dei volumi reali, migliorando continuita di approvvigionamento e servizio.',

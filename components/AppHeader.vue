@@ -42,6 +42,14 @@ const isActive = (href: string) => {
   return cleanHref === '/' ? route.path === '/' : route.path.startsWith(cleanHref)
 }
 
+function handleNavClick(href: string) {
+  if (!import.meta.client) return
+  const cleanHref = href.split('#')[0] || href
+  if (route.path === cleanHref) {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+}
+
 // Close drawer on route change
 watch(() => route.path, () => { mobileOpen.value = false })
 
@@ -114,6 +122,7 @@ onMounted(() => {
             v-for="link in desktopTransportLinks"
             :key="link.href"
             :to="link.href"
+            @click="handleNavClick(link.href)"
             class="relative rounded-full px-4 py-2 text-[0.73rem] font-semibold tracking-[0.1em] uppercase transition-all duration-200"
             :class="isActive(link.href)
               ? 'text-white bg-[#E5322D]'
@@ -188,6 +197,7 @@ onMounted(() => {
           v-for="link in mobileMenuLinks"
           :key="link.href"
           :to="link.href"
+          @click="handleNavClick(link.href)"
           class="py-3.5 border-b border-white/8 text-[0.95rem] transition-colors duration-200"
           :class="isActive(link.href)
             ? 'font-bold text-[#E5322D]'

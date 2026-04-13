@@ -434,11 +434,11 @@ export const translations = {
         {
           title: "Servizi",
           links: [
-            { label: "Trasporti Nazionali", href: "/servizi#nazionali" },
-            { label: "Trasporti Internazionali", href: "/servizi#internazionali" },
-            { label: "Trasporti Eccezionali", href: "/servizi#eccezionali" },
-            { label: "Gru e Movimentazioni", href: "/servizi#gru" },
-            { label: "Logistica e Dogana", href: "/servizi#logistica" },
+            { label: "Trasporti Nazionali", href: "/trasporto-nazionale" },
+            { label: "Trasporti Internazionali", href: "/trasporto-internazionale" },
+            { label: "Trasporti Eccezionali", href: "/trasporto-eccezionale" },
+            { label: "Gru e Movimentazioni", href: "/gru-e-movimentazioni" },
+            { label: "Logistica e Dogana", href: "/soluzioni-logistiche" },
           ],
         },
         {
@@ -907,11 +907,11 @@ export const translations = {
         {
           title: "Services",
           links: [
-            { label: "National Transport", href: "/servizi#nazionali" },
-            { label: "International Transport", href: "/servizi#internazionali" },
-            { label: "Exceptional Transport", href: "/servizi#eccezionali" },
-            { label: "Crane & Handling", href: "/servizi#gru" },
-            { label: "Logistics & Customs", href: "/servizi#logistica" },
+            { label: "National Transport", href: "/trasporto-nazionale" },
+            { label: "International Transport", href: "/trasporto-internazionale" },
+            { label: "Exceptional Transport", href: "/trasporto-eccezionale" },
+            { label: "Crane & Handling", href: "/gru-e-movimentazioni" },
+            { label: "Logistics & Customs", href: "/soluzioni-logistiche" },
           ],
         },
         {

@@ -27,7 +27,7 @@ const HERO_SLIDES_IT = [
     title: 'Oltre i Confini,\ncon Precisione.',
     subtitle: 'Rotte consolidate verso oltre 30 paesi con gestione interna della documentazione doganale.',
     cta: 'Scopri il Servizio',
-    ctaHref: '/servizi#internazionali',
+    ctaHref: '/trasporto-internazionale',
   },
   {
     image: 'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920',
@@ -35,7 +35,7 @@ const HERO_SLIDES_IT = [
     title: 'Potenza di\nSollevamento.',
     subtitle: 'Gru fino a 1000 tonnellate, operatori certificati e pianificazione tecnica per ogni intervento.',
     cta: 'Scopri il Servizio',
-    ctaHref: '/servizi#gru',
+    ctaHref: '/gru-e-movimentazioni',
   },
   {
     image: 'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920',
@@ -43,7 +43,7 @@ const HERO_SLIDES_IT = [
     title: 'La Tua Supply\nChain, Ottimizzata.',
     subtitle: 'Magazzini certificati, distribuzione last-mile e sdoganamento completo in un unico partner.',
     cta: 'Scopri il Servizio',
-    ctaHref: '/servizi#logistica',
+    ctaHref: '/soluzioni-logistiche',
   },
 ]
 
@@ -64,7 +64,7 @@ const HERO_SLIDES_EN = [
     title: 'Beyond Borders,\nPrecisely.',
     subtitle: 'Established routes to 30+ countries with full in-house customs documentation.',
     cta: 'Discover',
-    ctaHref: '/servizi#internazionali',
+    ctaHref: '/trasporto-internazionale',
   },
   {
     image: 'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920',
@@ -72,7 +72,7 @@ const HERO_SLIDES_EN = [
     title: 'Lifting\nPower.',
     subtitle: 'Cranes up to 1000 tonnes, certified operators and technical planning for every operation.',
     cta: 'Discover',
-    ctaHref: '/servizi#gru',
+    ctaHref: '/gru-e-movimentazioni',
   },
   {
     image: 'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920',
@@ -80,7 +80,7 @@ const HERO_SLIDES_EN = [
     title: 'Your Supply\nChain, Optimized.',
     subtitle: 'Certified warehouses, last-mile distribution and full customs clearance. One partner.',
     cta: 'Discover',
-    ctaHref: '/servizi#logistica',
+    ctaHref: '/soluzioni-logistiche',
   },
 ]
 

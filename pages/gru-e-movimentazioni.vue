@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Crane, ShieldCheck } from 'lucide-vue-next'
+import { Forklift, ShieldCheck } from 'lucide-vue-next'
 
 const serviceFaq = [
   {
@@ -21,7 +21,7 @@ const tabs = [
     label: 'Movimentazione merce',
     title: 'Movimentazione merce',
     description: 'Il noleggio di mezzi gruati consente operazioni di carico/scarico e movimentazione pesante con ampia flessibilita operativa su sito cliente o cantiere.',
-    icon: Crane,
+    icon: Forklift,
   },
   {
     label: 'Operatori qualificati',
@@ -74,8 +74,8 @@ useSeo({
 
 <template>
   <SectionsServiceDetailShowcase
-    intro-title="Gru e movimentazioni"
-    intro-subtitle="Movimenta la tua merce con mezzi specializzati e supporto tecnico dedicato."
+    intro-title="Gru e movimentazioni per lavori pesanti"
+    intro-subtitle="Sollevamenti, posizionamenti e interventi tecnici gestiti con mezzi speciali e operatori qualificati."
     :intro-paragraphs="[
       'La nostra flotta comprende mezzi con gru a braccio di ultima generazione disponibili per noleggio su esigenze operative diverse.',
       'Possiamo integrare operatori qualificati per condurre le operazioni in sicurezza e nel rispetto delle procedure previste.',

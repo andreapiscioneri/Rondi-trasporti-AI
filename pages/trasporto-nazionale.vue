@@ -74,8 +74,8 @@ useSeo({
 
 <template>
   <SectionsServiceDetailShowcase
-    intro-title="Trasporto nazionale"
-    intro-subtitle="Trasporto conto terzi a pieno carico, a carico parziale e su esigenze programmate."
+    intro-title="Trasporto nazionale senza margini di errore"
+    intro-subtitle="Dalla raccolta alla consegna, ogni tratta e pianificata per mantenere tempi, controllo e continuita operativa."
     :intro-paragraphs="[
       'Siamo specializzati nel trasporto su gomma di merci industriali con una flotta proprietaria ampia e modulabile.',
       'Pianifichiamo ogni spedizione per offrire la soluzione piu efficiente in termini di tempi, saturazione mezzo e sicurezza del carico.',
