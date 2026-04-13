@@ -29,6 +29,9 @@ const props = defineProps<{
 
 const activeTab = ref(0)
 const currentTab = computed(() => props.tabs[activeTab.value] || props.tabs[0])
+const relatedGridClass = computed(() => (
+  props.relatedServices.length >= 4 ? 'md:grid-cols-2 xl:grid-cols-4' : 'md:grid-cols-3'
+))
 </script>
 
 <template>
@@ -105,7 +108,7 @@ const currentTab = computed(() => props.tabs[activeTab.value] || props.tabs[0])
 
     <section class="page-section bg-white dark:bg-[#0A0A0A]" style="padding-top:0">
       <div class="section-shell">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-0 overflow-hidden rounded-[1.25rem] border border-black/12 dark:border-white/12">
+        <div class="grid grid-cols-1 gap-0 overflow-hidden rounded-[1.25rem] border border-black/12 dark:border-white/12" :class="relatedGridClass">
           <NuxtLink
             v-for="service in relatedServices"
             :key="service.href"

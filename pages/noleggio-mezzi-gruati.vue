@@ -33,9 +33,14 @@ const tabs = [
 
 const relatedServices = [
   {
-    title: 'Trasporto Standard',
-    href: '/trasporto-standard',
+    title: 'Trasporto Nazionale',
+    href: '/trasporto-nazionale',
     image: 'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+  },
+  {
+    title: 'Trasporto Internazionale',
+    href: '/trasporto-internazionale',
+    image: 'https://images.unsplash.com/photo-1772959785247-e0904e476455?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
   {
     title: 'Trasporto Eccezionale',

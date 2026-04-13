@@ -33,13 +33,18 @@ const tabs = [
 
 const relatedServices = [
   {
+    title: 'Trasporto Internazionale',
+    href: '/trasporto-internazionale',
+    image: 'https://images.unsplash.com/photo-1772959785247-e0904e476455?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+  },
+  {
     title: 'Trasporto Eccezionale',
     href: '/trasporto-eccezionale',
     image: 'https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
   {
-    title: 'Noleggio Mezzi Gruati',
-    href: '/noleggio-mezzi-gruati',
+    title: 'Gru e Movimentazioni',
+    href: '/gru-e-movimentazioni',
     image: 'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
   {

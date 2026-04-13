@@ -39,8 +39,8 @@ const tabs = [
 
 const relatedServices = [
   {
-    title: 'Trasporto Standard',
-    href: '/trasporto-standard',
+    title: 'Trasporto Nazionale',
+    href: '/trasporto-nazionale',
     image: 'https://images.unsplash.com/photo-1622103358651-97d6cb0df332?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
   {
@@ -49,7 +49,12 @@ const relatedServices = [
     image: 'https://images.unsplash.com/photo-1716512060259-d114cfba13e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
   {
-    title: 'Soluzioni Logistiche',
+    title: 'Gru e Movimentazioni',
+    href: '/gru-e-movimentazioni',
+    image: 'https://images.unsplash.com/photo-1763824391332-60f6df9b92e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
+  },
+  {
+    title: 'Logistica',
     href: '/soluzioni-logistiche',
     image: 'https://images.unsplash.com/photo-1768796372610-f844d490a734?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200',
   },
