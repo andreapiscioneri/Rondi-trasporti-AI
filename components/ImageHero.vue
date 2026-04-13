@@ -80,7 +80,7 @@ onMounted(() => {
         <h1 class="headline-balance mb-5 text-white" style="font-size:clamp(2.5rem,7vw,6rem);font-weight:800;line-height:1.01;letter-spacing:-0.03em">
           {{ media.title }}
         </h1>
-        <p v-if="media.subtitle" class="max-w-xl text-white/78" style="font-size:clamp(1rem,1.4vw,1.2rem);line-height:1.75">
+        <p v-if="media.subtitle" class="max-w-xl text-white/78" style="font-size:clamp(1rem,1.4vw,1.2rem);line-height:1.75;text-decoration-line:underline;text-decoration-color:#E5322D;text-decoration-thickness:2px;text-underline-offset:0.2em;text-decoration-skip-ink:auto">
           {{ media.subtitle }}
         </p>
         <NuxtLink

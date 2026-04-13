@@ -34,6 +34,7 @@ const mobileMenuLinks = computed(() => [
   { label: t.value.nav.servizi,       href: '/servizi' },
   { label: t.value.nav.sostenibilita, href: '/sostenibilita' },
   { label: t.value.nav.storia,        href: '/storia' },
+  { label: t.value.nav.media,         href: '/media' },
   { label: t.value.nav.lavora,        href: '/lavora-con-noi' },
   { label: t.value.nav.contatti,      href: '/contatti' },
 ])
@@ -151,9 +152,7 @@ onMounted(() => {
           <!-- CTA -->
           <NuxtLink
             to="/preventivo"
-            data-magnetic
-            class="cta-premium hidden lg:inline-flex items-center gap-2 px-5 py-3 text-white text-[0.72rem] font-bold tracking-[0.1em] uppercase hover:opacity-92 transition-all duration-200 rounded-sm"
-            :style="{ background: RED }"
+            class="cta-premium hidden lg:inline-flex items-center gap-2 rounded-sm border border-transparent bg-[#E5322D] px-5 py-3 text-[0.72rem] font-bold tracking-[0.1em] uppercase text-white transition-colors duration-200 hover:border-[#E5322D] hover:bg-black hover:text-[#E5322D]"
           >
             <Plus :size="14" />
             {{ lang === 'it' ? 'Richiedi quotazione' : 'Request Quote' }}

@@ -60,7 +60,7 @@ const onSubmit = (e: Event) => {
               {{ pg.hero.tag }}
             </span>
             <h1 class="text-white mb-4 sm:mb-5 max-w-4xl headline-balance" style="font-size:clamp(2.5rem,5vw,4.2rem);font-weight:800;line-height:1.04">{{ pg.hero.title }}</h1>
-            <p class="text-white/62 max-w-xl" style="font-size:clamp(1rem,1.5vw,1.125rem);line-height:1.72">{{ pg.hero.subtitle }}</p>
+            <p class="text-white/62 max-w-xl" style="font-size:clamp(1rem,1.5vw,1.125rem);line-height:1.72;text-decoration-line:underline;text-decoration-color:#E5322D;text-decoration-thickness:2px;text-underline-offset:0.2em;text-decoration-skip-ink:auto">{{ pg.hero.subtitle }}</p>
           </AnimateOnScroll>
           <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-3xl">
             <AnimateOnScroll v-for="(stat, i) in TEAM_STATS" :key="stat.label" variant="fadeUp" :delay="i * 0.08">

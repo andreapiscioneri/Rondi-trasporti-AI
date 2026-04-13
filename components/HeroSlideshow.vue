@@ -249,7 +249,7 @@ onBeforeUnmount(() => {
         <p
           ref="subtitleRef"
           class="text-white/72 mb-6 sm:mb-8 max-w-xl"
-          style="font-size:clamp(0.95rem,1.45vw,1.13rem);font-weight:500;line-height:1.72;opacity:0"
+          style="font-size:clamp(0.95rem,1.45vw,1.13rem);font-weight:500;line-height:1.72;opacity:0;text-decoration-line:underline;text-decoration-color:#E5322D;text-decoration-thickness:2px;text-underline-offset:0.2em;text-decoration-skip-ink:auto"
         >
           {{ currentSlide.subtitle }}
         </p>

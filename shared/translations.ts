@@ -5,6 +5,7 @@ export const translations = {
       servizi: "Servizi",
       sostenibilita: "Sostenibilità",
       storia: "Storia",
+      media: "Media",
       lavora: "Lavora con Noi",
       whistleblowing: "Whistleblowing",
       contatti: "Contatti",
@@ -439,6 +440,91 @@ export const translations = {
       ],
       cta: "Entra nella nostra storia",
     },
+    mediaPage: {
+      hero: {
+        tag: "Media",
+        title: "Rondi in immagini e progetti già presenti nel sito.",
+        subtitle:
+          "Una raccolta delle immagini che vedi nelle pagine del sito: home, sostenibilità, storia e servizi, riordinate in un unico spazio.",
+      },
+      intro: {
+        title: "Dentro il sito, non fuori dal sito",
+        desc: "Qui trovi le stesse immagini usate nelle pagine pubbliche: hero, sezioni e timeline. La Media page serve a vedere il materiale del sito in un unico archivio visivo.",
+      },
+      highlights: [
+        "Immagini già presenti nelle pagine",
+        "Hero, servizi, sostenibilità e storia",
+        "Archivio visivo unico del sito",
+      ],
+      gallery: [
+        {
+          title: "Hero home",
+          alt: "Hero principale home Trasporti Rondi",
+          desc: "L'immagine di apertura della home, usata per raccontare il trasporto industriale dal primo impatto.",
+          image: "https://images.pexels.com/photos/30037629/pexels-photo-30037629.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1800",
+          ratio: "cinema",
+        },
+        {
+          title: "Servizi internazionali",
+          alt: "Hero trasporto internazionale",
+          desc: "Una delle immagini usate nelle pagine servizi per raccontare le tratte internazionali.",
+          image: "https://images.pexels.com/photos/31723807/pexels-photo-31723807.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1400",
+          ratio: "landscape",
+        },
+        {
+          title: "Sostenibilità",
+          alt: "Immagine sostenibilità e impianto fotovoltaico",
+          desc: "L'immagine usata nella sezione sostenibilità della home.",
+          image: "https://images.pexels.com/photos/35691079/pexels-photo-35691079.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200",
+          ratio: "portrait",
+        },
+        {
+          title: "Servizi logistica",
+          alt: "Hero logistica integrata",
+          desc: "Una delle immagini già impiegate nelle pagine dei servizi.",
+          image: "https://images.pexels.com/photos/30341205/pexels-photo-30341205.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1400",
+          ratio: "landscape",
+        },
+        {
+          title: "Storia",
+          alt: "Immagine usata nella pagina storia",
+          desc: "Uno degli scatti usati per raccontare la crescita dell'azienda nel tempo.",
+          image: "https://images.pexels.com/photos/35501717/pexels-photo-35501717.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200",
+          ratio: "square",
+        },
+        {
+          title: "Servizi speciali",
+          alt: "Hero trasporto eccezionale",
+          desc: "Una delle immagini più riconoscibili usate nelle pagine dei servizi speciali.",
+          image: "https://images.pexels.com/photos/31049388/pexels-photo-31049388.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1800",
+          ratio: "cinema",
+        },
+      ],
+    },
+    accountPage: {
+      hero: {
+        tag: "Area Riservata",
+        title: "Account, media e controllo accessi.",
+        subtitle: "Accesso per amministrazione, gestione immagini e funzioni riservate del sito.",
+      },
+      login: {
+        title: "Accedi",
+        email: "Email",
+        password: "Password",
+        remember: "Ricordami",
+        submit: "Entra",
+        forgot: "Hai dimenticato la password?",
+      },
+      reset: {
+        title: "Reset password",
+        desc: "Inserisci la tua email per ricevere il link di reset.",
+        submit: "Invia link",
+      },
+      access: {
+        title: "Funzioni account",
+        items: ["Media library", "Utenti e ruoli", "Reset password", "Sostituzione immagini sito"],
+      },
+    },
     lavoraPage: {
       hero: {
         tag: "Lavora con Noi",
@@ -626,6 +712,8 @@ export const translations = {
           title: "Azienda",
           links: [
             { label: "La Nostra Storia", href: "/storia" },
+            { label: "Media", href: "/media" },
+            { label: "Area Riservata", href: "/account" },
             { label: "Sostenibilità", href: "/sostenibilita" },
             { label: "Lavora con Noi", href: "/lavora-con-noi" },
             { label: "Whistleblowing", href: "/whistleblowing" },
@@ -661,6 +749,7 @@ export const translations = {
       servizi: "Services",
       sostenibilita: "Sustainability",
       storia: "Our History",
+      media: "Media",
       lavora: "Careers",
       whistleblowing: "Whistleblowing",
       contatti: "Contact",
@@ -1094,6 +1183,91 @@ export const translations = {
       ],
       cta: "Join the story",
     },
+    mediaPage: {
+      hero: {
+        tag: "Media",
+        title: "Rondi through images already used across the site.",
+        subtitle:
+          "A single archive of the visuals you see on the public site: home, sustainability, history and services.",
+      },
+      intro: {
+        title: "Inside the site, not outside it",
+        desc: "This page gathers the same images used in the public pages, reorganized as a visual archive.",
+      },
+      highlights: [
+        "Images already used in the pages",
+        "Home, services, sustainability and history",
+        "Single visual archive for the site",
+      ],
+      gallery: [
+        {
+          title: "Home hero",
+          alt: "Main hero of the Trasporti Rondi home page",
+          desc: "The opening image used to introduce industrial transport from the first screen.",
+          image: "https://images.pexels.com/photos/30037629/pexels-photo-30037629.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1800",
+          ratio: "cinema",
+        },
+        {
+          title: "International services",
+          alt: "International transport hero",
+          desc: "One of the visuals used in the services pages to tell the international route story.",
+          image: "https://images.pexels.com/photos/31723807/pexels-photo-31723807.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1400",
+          ratio: "landscape",
+        },
+        {
+          title: "Sustainability",
+          alt: "Sustainability and photovoltaic system image",
+          desc: "The image used in the sustainability section of the home page.",
+          image: "https://images.pexels.com/photos/35691079/pexels-photo-35691079.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200",
+          ratio: "portrait",
+        },
+        {
+          title: "Logistics services",
+          alt: "Integrated logistics hero",
+          desc: "One of the visuals already used in the service pages.",
+          image: "https://images.pexels.com/photos/30341205/pexels-photo-30341205.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1400",
+          ratio: "landscape",
+        },
+        {
+          title: "History",
+          alt: "Image used on the history page",
+          desc: "One of the shots used to narrate the company growth over time.",
+          image: "https://images.pexels.com/photos/35501717/pexels-photo-35501717.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1200",
+          ratio: "square",
+        },
+        {
+          title: "Special services",
+          alt: "Exceptional transport hero",
+          desc: "One of the most recognizable visuals used in the special services pages.",
+          image: "https://images.pexels.com/photos/31049388/pexels-photo-31049388.jpeg?auto=compress&cs=tinysrgb&fit=crop&dpr=2&q=82&w=1800",
+          ratio: "cinema",
+        },
+      ],
+    },
+    accountPage: {
+      hero: {
+        tag: "Reserved Area",
+        title: "Account, media and access control.",
+        subtitle: "Access for administration, image management and reserved site functions.",
+      },
+      login: {
+        title: "Sign in",
+        email: "Email",
+        password: "Password",
+        remember: "Remember me",
+        submit: "Enter",
+        forgot: "Forgot your password?",
+      },
+      reset: {
+        title: "Reset password",
+        desc: "Enter your email to receive the reset link.",
+        submit: "Send link",
+      },
+      access: {
+        title: "Account functions",
+        items: ["Media library", "Users and roles", "Password reset", "Site image replacement"],
+      },
+    },
     lavoraPage: {
       hero: {
         tag: "Careers",
@@ -1280,6 +1454,8 @@ export const translations = {
           title: "Company",
           links: [
             { label: "Our History", href: "/storia" },
+            { label: "Media", href: "/media" },
+            { label: "Reserved Area", href: "/account" },
             { label: "Sustainability", href: "/sostenibilita" },
             { label: "Careers", href: "/lavora-con-noi" },
             { label: "Whistleblowing", href: "/whistleblowing" },

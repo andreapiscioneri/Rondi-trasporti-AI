@@ -36,7 +36,7 @@ const SECTION_IMAGES = [
               {{ pg.hero.tag }}
             </span>
             <h1 class="text-white mb-4 sm:mb-5 max-w-4xl headline-balance" style="font-size:clamp(2.5rem,5vw,4.2rem);font-weight:800;line-height:1.04;letter-spacing:-0.03em">{{ pg.hero.title }}</h1>
-            <p class="text-white/62 max-w-xl" style="font-size:clamp(1rem,1.5vw,1.125rem);line-height:1.72">{{ pg.hero.subtitle }}</p>
+            <p class="text-white/62 max-w-xl" style="font-size:clamp(1rem,1.5vw,1.125rem);line-height:1.72;text-decoration-line:underline;text-decoration-color:#E5322D;text-decoration-thickness:2px;text-underline-offset:0.2em;text-decoration-skip-ink:auto">{{ pg.hero.subtitle }}</p>
           </AnimateOnScroll>
         </div>
       </div>
