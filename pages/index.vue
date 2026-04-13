@@ -7,7 +7,7 @@ useSeo({
   title: 'Trasporti Rondi — Logistica Industriale dal 1998',
   description: 'Trasporti Rondi: soluzioni logistiche nazionali, internazionali ed eccezionali per l\'industria italiana. Gru fino a 1000t, ADR, ISO 9001.',
   path: '/',
-  jsonLd: buildOrganizationSchema(),
+  jsonLd: [buildOrganizationSchema(), buildWebSiteSchema()],
 })
 
 const HERO_SLIDES_IT = [

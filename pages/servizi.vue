@@ -22,7 +22,7 @@ useSeo({
       },
       {
         question: 'Come posso richiedere un preventivo?',
-        answer: 'Puoi contattarci dalla pagina Contatti: il team commerciale prende in carico la richiesta con piano operativo dedicato.',
+        answer: 'Puoi usare la pagina Preventivo: il team commerciale prende in carico la richiesta con piano operativo dedicato.',
       },
     ]),
     buildBreadcrumbSchema([{ name: 'Home', href: '/' }, { name: 'Servizi', href: '/servizi' }]),
@@ -83,7 +83,7 @@ const pageFaqItems = [
   },
   {
     question: 'Come posso richiedere un preventivo?',
-    answer: 'Puoi contattarci dalla pagina Contatti: il team commerciale prende in carico la richiesta con piano operativo dedicato.',
+    answer: 'Puoi usare la pagina Preventivo: il team commerciale prende in carico la richiesta con piano operativo dedicato.',
   },
 ]
 </script>

@@ -23,7 +23,6 @@ const PAGES = [
   { path: '/privacy-policy', priority: '0.4', freq: 'yearly'  },
   { path: '/cookie-policy',  priority: '0.4', freq: 'yearly'  },
   { path: '/trattamento-dati', priority: '0.4', freq: 'yearly' },
-  { path: '/whistleblowing', priority: '0.4', freq: 'yearly'  },
 ]
 
 const LOCAL_PAGES = GEO_LOCAL_PATHS.map(path => ({

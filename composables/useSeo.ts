@@ -294,13 +294,15 @@ export function buildServiceSchema(
     areaServed?: string[]
   },
 ) {
+  const serviceUrl = options?.url ?? `${SEO_BASE_URL}/servizi`
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    '@id': `${SEO_BASE_URL}/servizi#${name.toLowerCase().replace(/\s+/g, '-')}`,
+    '@id': `${serviceUrl}#service`,
     name,
     description,
-    url: options?.url ?? `${SEO_BASE_URL}/servizi`,
+    url: serviceUrl,
     image: options?.image,
     provider: {
       '@type': 'Organization',
