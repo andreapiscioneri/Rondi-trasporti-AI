@@ -206,23 +206,26 @@ onMounted(() => {
 
       <!-- Drawer nav -->
       <nav class="flex-1 overflow-y-auto p-6 flex flex-col">
-        <p class="mb-2 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-white/45">
-          {{ lang === 'it' ? 'Trasporti' : 'Transport' }}
-        </p>
-        <NuxtLink
-          v-for="link in mobileTransportLinks"
-          :key="`m-transport-${link.href}`"
-          :to="localePath(link.href)"
-          @click="handleNavClick(link.href)"
-          class="py-3.5 border-b border-white/8 text-[0.95rem] transition-colors duration-200"
-          :class="isActive(link.href)
-            ? 'font-bold text-[#E5322D]'
-            : 'text-white/78 hover:text-white'"
-        >
-          {{ link.label }}
-        </NuxtLink>
+        <div class="lg:hidden flex flex-col">
+          <p class="mb-2 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-white/45">
+            {{ lang === 'it' ? 'Trasporti' : 'Transport' }}
+          </p>
+          <NuxtLink
+            v-for="link in mobileTransportLinks"
+            :key="`m-transport-${link.href}`"
+            :to="localePath(link.href)"
+            @click="handleNavClick(link.href)"
+            class="py-3.5 border-b border-white/8 text-[0.95rem] transition-colors duration-200"
+            :class="isActive(link.href)
+              ? 'font-bold text-[#E5322D]'
+              : 'text-white/78 hover:text-white'"
+          >
+            {{ link.label }}
+          </NuxtLink>
 
-        <div class="mt-4 mb-2 h-px w-full bg-white/10" />
+          <div class="mt-4 mb-2 h-px w-full bg-white/10" />
+        </div>
+
         <p class="mb-2 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-white/45">
           {{ lang === 'it' ? 'Menu' : 'Menu' }}
         </p>

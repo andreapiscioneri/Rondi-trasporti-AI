@@ -35,11 +35,12 @@ const cookieTypes = [
 
 <template>
   <div>
-    <section class="page-section page-section--soft">
-      <div class="section-shell max-w-5xl">
+    <section class="page-section page-section--dark relative overflow-hidden">
+      <div class="absolute inset-0" style="background:linear-gradient(145deg,rgba(8,8,8,0.96) 0%, rgba(18,18,18,0.9) 48%, rgba(229,50,45,0.26) 100%)" />
+      <div class="section-shell relative z-10">
         <p class="mb-3 text-[0.74rem] font-bold uppercase tracking-[0.2em] text-[#E5322D]">Trasparenza cookie</p>
-        <h1 class="mb-4 text-[#111111] dark:text-white headline-balance" style="font-size:clamp(2rem,4vw,3.4rem);font-weight:800;line-height:1.04">Cookie Policy</h1>
-        <p class="max-w-3xl text-[#666666] dark:text-[#999999]" style="line-height:1.78">Questa informativa spiega come usiamo i cookie, quali dati raccolgono e come puoi gestire il consenso in qualsiasi momento.</p>
+        <h1 class="mb-4 max-w-3xl text-white headline-balance" style="font-size:clamp(2rem,4.4vw,3.6rem);font-weight:800;line-height:1.04">Cookie Policy</h1>
+        <p class="max-w-3xl text-white/72" style="font-size:1rem;line-height:1.78">Questa informativa spiega come usiamo i cookie, quali dati raccolgono e come puoi gestire il consenso in qualsiasi momento.</p>
       </div>
     </section>
 
