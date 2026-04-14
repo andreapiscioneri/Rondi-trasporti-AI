@@ -1,0 +1,129 @@
+{
+  "baseUrl": "http://localhost:3002",
+  "generatedAt": "2026-04-14T08:44:59.196Z",
+  "figmaModeQuery": "figma=1",
+  "routes": [
+    "/",
+    "/servizi",
+    "/trasporto-nazionale",
+    "/trasporto-internazionale",
+    "/trasporto-eccezionale",
+    "/gru-e-movimentazioni",
+    "/soluzioni-logistiche",
+    "/trasporto-standard",
+    "/noleggio-mezzi-gruati",
+    "/sostenibilita",
+    "/storia",
+    "/media",
+    "/account",
+    "/contatti",
+    "/preventivo",
+    "/lavora-con-noi",
+    "/privacy-policy",
+    "/cookie-policy",
+    "/trattamento-dati",
+    "/whistleblowing"
+  ],
+  "outputs": [
+    {
+      "viewport": "desktop",
+      "route": "/",
+      "file": "figma-export/desktop/home.png"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/servizi",
+      "file": "figma-export/desktop/servizi.png"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/trasporto-nazionale",
+      "file": "figma-export/desktop/trasporto-nazionale.png"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/trasporto-internazionale",
+      "file": "figma-export/desktop/trasporto-internazionale.png"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/trasporto-eccezionale",
+      "file": "figma-export/desktop/trasporto-eccezionale.png"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/gru-e-movimentazioni",
+      "file": "figma-export/desktop/gru-e-movimentazioni.png"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/soluzioni-logistiche",
+      "file": "figma-export/desktop/soluzioni-logistiche.png"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/trasporto-standard",
+      "file": "figma-export/desktop/trasporto-standard.png"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/noleggio-mezzi-gruati",
+      "file": "figma-export/desktop/noleggio-mezzi-gruati.png"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/sostenibilita",
+      "file": "figma-export/desktop/sostenibilita.png"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/storia",
+      "file": "figma-export/desktop/storia.png"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/media",
+      "file": "figma-export/desktop/media.png"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/account",
+      "file": "figma-export/desktop/account.png"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/contatti",
+      "file": "figma-export/desktop/contatti.png"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/preventivo",
+      "file": "figma-export/desktop/preventivo.png"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/lavora-con-noi",
+      "file": "figma-export/desktop/lavora-con-noi.png"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/privacy-policy",
+      "file": "figma-export/desktop/privacy-policy.png"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/cookie-policy",
+      "file": "figma-export/desktop/cookie-policy.png"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/trattamento-dati",
+      "file": "figma-export/desktop/trattamento-dati.png"
+    },
+    {
+      "viewport": "desktop",
+      "route": "/whistleblowing",
+      "file": "figma-export/desktop/whistleblowing.png"
+    }
+  ]
+}

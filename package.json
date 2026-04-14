@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "figma:export": "node scripts/figma/export-pages.mjs"
   },
   "dependencies": {
     "@nuxt/image": "^1.10.0",
@@ -25,6 +26,7 @@
     "@tailwindcss/vite": "4.1.12",
     "@types/bcryptjs": "^2.4.6",
     "@types/better-sqlite3": "^7.6.13",
+    "playwright": "^1.59.1",
     "tailwindcss": "4.1.12"
   }
 }

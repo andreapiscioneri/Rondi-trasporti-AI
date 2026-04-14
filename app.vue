@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const route   = useRoute()
 const nuxtApp = useNuxtApp()
+const isFigmaExport = computed(() => route.query.figma === '1' || route.query.export === 'figma')
 
 // Carica sessione CMS da localStorage al mount — disponibile su ogni pagina
 onMounted(() => useCms().init())
@@ -32,11 +33,11 @@ watch(
     <!-- Ambient background gradient (stays in fixed position, pointer-events: none) -->
     <div class="site-atmosphere" aria-hidden="true" />
 
-    <!-- Custom cursor (only on fine-pointer/mouse devices) -->
-    <AppCursor />
+    <!-- Custom cursor (disabled in figma export mode) -->
+    <AppCursor v-if="!isFigmaExport" />
 
-    <!-- First-visit loading screen -->
-    <AppLoader />
+    <!-- First-visit loading screen (disabled in figma export mode) -->
+    <AppLoader v-if="!isFigmaExport" />
 
     <AppHeader />
 
@@ -45,7 +46,7 @@ watch(
     </main>
 
     <ScrollTopButton />
-    <CookieBanner />
+    <CookieBanner v-if="!isFigmaExport" />
 
     <AppFooter />
   </div>
