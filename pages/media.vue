@@ -7,8 +7,8 @@ const localePath = useLocalePath()
 const pg = computed(() => t.value.mediaPage)
 
 useSeo({
-  title: 'Media',
-  description: 'Archivio immagini del sito Trasporti Rondi: tutte le immagini già usate nelle pagine pubbliche, raccolte in un unico spazio senza vuoti.',
+  title: pg.value.seo.title,
+  description: pg.value.seo.description,
   path: '/media',
   jsonLd: buildBreadcrumbSchema([{ name: 'Home', href: '/' }, { name: 'Media', href: '/media' }]),
 })
@@ -102,7 +102,7 @@ const { activeIndex, open } = useLightbox()
 
         <AnimateOnScroll variant="fadeLeft" class="lg:col-span-4">
           <div class="rounded-[1.5rem] bg-[#FAFAFA] dark:bg-[#111111] p-6">
-            <p class="text-[#111111] dark:text-white mb-4" style="font-size:0.74rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase">Focus</p>
+            <p class="text-[#111111] dark:text-white mb-4" style="font-size:0.74rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase">{{ pg.focusLabel }}</p>
             <ul class="space-y-3">
               <li v-for="item in pg.highlights" :key="item" class="flex items-start gap-2 text-[#555555] dark:text-[#B5B5B5]" style="font-size:0.9rem;line-height:1.6">
                 <CheckCircle2 :size="16" class="mt-0.5 flex-shrink-0" :style="{ color: RED }" />
@@ -114,15 +114,18 @@ const { activeIndex, open } = useLightbox()
       </div>
     </section>
 
-    <section class="px-4 sm:px-6 lg:px-10 pb-16">
+    <section class="mt-10 px-4 pb-16 pt-4 sm:mt-10 sm:px-6 sm:pt-6 lg:px-10">
       <div class="mx-auto w-full max-w-[1600px]">
-        <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <p class="text-[#E5322D]" style="font-size:0.72rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase">Archive</p>
-            <h3 class="headline-balance text-[#111111] dark:text-white" style="font-size:clamp(1.4rem,2.6vw,2rem);font-weight:800">Tutte le immagini già presenti nel sito</h3>
+        <div class="mb-8 flex flex-wrap items-end justify-between gap-6">
+          <div class="max-w-3xl space-y-4">
+            <p class="inline-flex items-center gap-2 text-[#E5322D]" style="font-size:0.72rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase">
+              <span class="h-px w-7 bg-[#E5322D]" />
+              {{ pg.archive.eyebrow }}
+            </p>
+            <h3 class="headline-balance text-[#111111] dark:text-white" style="font-size:clamp(1.4rem,2.6vw,2rem);font-weight:800">{{ pg.archive.title }}</h3>
           </div>
           <NuxtLink :to="localePath('/account')" class="inline-flex items-center gap-2 rounded-full border border-[#E5322D]/25 px-5 py-2.5 text-[#E5322D] transition-colors hover:bg-[#E5322D] hover:text-white" style="font-size:0.78rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase">
-            Area riservata
+            {{ pg.archive.cta }}
             <ArrowRight :size="14" />
           </NuxtLink>
         </div>
@@ -155,10 +158,10 @@ const { activeIndex, open } = useLightbox()
       <AnimateOnScroll variant="fadeUp" class="section-shell flex flex-col lg:flex-row items-center justify-between gap-8">
         <div>
           <h2 class="text-[#111111] dark:text-white mb-2 headline-balance" style="font-size:clamp(1.75rem,3vw,2.3rem);font-weight:800">
-            Raccontaci il tuo prossimo progetto
+            {{ pg.closing.title }}
           </h2>
           <p class="text-[#666666] dark:text-[#999999]" style="font-size:1rem;line-height:1.75">
-            Il team Rondi e pronto a costruire una soluzione operativa su misura.
+            {{ pg.closing.desc }}
           </p>
         </div>
         <NuxtLink
@@ -166,7 +169,7 @@ const { activeIndex, open } = useLightbox()
           class="cta-premium inline-flex items-center gap-2 px-8 py-4 text-white rounded-full"
           :style="{ background: RED, fontSize: '0.82rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }"
         >
-          Contattaci
+          {{ pg.closing.cta }}
           <ArrowRight :size="16" />
         </NuxtLink>
       </AnimateOnScroll>

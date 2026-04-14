@@ -6,9 +6,18 @@ const { lang, t, toggleLang } = useLang()
 const localePath = useLocalePath()
 const route = useRoute()
 
+// ── CMS auth ──────────────────────────────────────────────────────────────────
+const cms          = useCms()
+const cmsLoggedIn  = computed(() => cms.isLoggedIn.value)
+const cmsSession   = computed(() => cms.session.value)
+
+function cmsLogout() {
+  cms.logout()
+  mobileOpen.value = false
+}
+
 const mobileOpen = ref(false)
 const scrolled    = ref(false)
-const RED = '#E5322D'
 
 const desktopTransportLinks = computed(() => {
   if (lang.value === 'en') {
@@ -39,6 +48,8 @@ const mobileMenuLinks = computed(() => [
   { label: t.value.nav.lavora,        href: '/lavora-con-noi' },
   { label: t.value.nav.contatti,      href: '/contatti' },
 ])
+
+const mobileTransportLinks = computed(() => desktopTransportLinks.value)
 
 const isActive = (href: string) => {
   const cleanHref = href.split('#')[0] || href
@@ -195,6 +206,26 @@ onMounted(() => {
 
       <!-- Drawer nav -->
       <nav class="flex-1 overflow-y-auto p-6 flex flex-col">
+        <p class="mb-2 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-white/45">
+          {{ lang === 'it' ? 'Trasporti' : 'Transport' }}
+        </p>
+        <NuxtLink
+          v-for="link in mobileTransportLinks"
+          :key="`m-transport-${link.href}`"
+          :to="localePath(link.href)"
+          @click="handleNavClick(link.href)"
+          class="py-3.5 border-b border-white/8 text-[0.95rem] transition-colors duration-200"
+          :class="isActive(link.href)
+            ? 'font-bold text-[#E5322D]'
+            : 'text-white/78 hover:text-white'"
+        >
+          {{ link.label }}
+        </NuxtLink>
+
+        <div class="mt-4 mb-2 h-px w-full bg-white/10" />
+        <p class="mb-2 text-[0.68rem] font-bold uppercase tracking-[0.12em] text-white/45">
+          {{ lang === 'it' ? 'Menu' : 'Menu' }}
+        </p>
         <NuxtLink
           v-for="link in mobileMenuLinks"
           :key="link.href"
@@ -211,14 +242,51 @@ onMounted(() => {
 
       <!-- Drawer footer: lang + theme -->
       <div class="p-6 border-t border-white/10 flex flex-col gap-3 flex-shrink-0">
-        <NuxtLink
-          :to="localePath('/account')"
-          @click="handleNavClick('/account')"
-          class="inline-flex items-center justify-center gap-2 rounded-sm border border-[#E5322D]/35 bg-white/5 px-4 py-3 text-[0.72rem] font-bold tracking-[0.08em] uppercase text-white transition-colors hover:bg-[#E5322D] hover:text-white"
-        >
-          <UserRound :size="14" />
-          {{ t.nav.account }}
-        </NuxtLink>
+
+        <!-- Utente loggato -->
+        <ClientOnly>
+          <template #default>
+            <!-- Loggato: nome + logout -->
+            <div v-if="cmsLoggedIn" class="flex items-center justify-between gap-3 rounded-sm border border-white/15 bg-white/5 px-4 py-3">
+              <NuxtLink
+                :to="localePath('/account')"
+                class="flex min-w-0 items-center gap-2"
+                @click="handleNavClick('/account')"
+              >
+                <UserRound :size="14" class="shrink-0 text-white/70" />
+                <span class="truncate text-[0.78rem] font-bold text-white">{{ cmsSession?.name }}</span>
+              </NuxtLink>
+              <button
+                @click="cmsLogout"
+                class="shrink-0 text-[0.68rem] font-bold uppercase tracking-wider text-white/45 transition hover:text-white"
+              >
+                {{ t.cms.logout }}
+              </button>
+            </div>
+
+            <!-- Non loggato: link area riservata -->
+            <NuxtLink
+              v-else
+              :to="localePath('/account')"
+              @click="handleNavClick('/account')"
+              class="inline-flex items-center justify-center gap-2 rounded-sm border border-[#E5322D]/35 bg-white/5 px-4 py-3 text-[0.72rem] font-bold tracking-[0.08em] uppercase text-white transition-colors hover:bg-[#E5322D] hover:text-white"
+            >
+              <UserRound :size="14" />
+              {{ t.nav.account }}
+            </NuxtLink>
+          </template>
+
+          <!-- Fallback SSR -->
+          <template #fallback>
+            <NuxtLink
+              :to="localePath('/account')"
+              class="inline-flex items-center justify-center gap-2 rounded-sm border border-[#E5322D]/35 bg-white/5 px-4 py-3 text-[0.72rem] font-bold tracking-[0.08em] uppercase text-white transition-colors hover:bg-[#E5322D] hover:text-white"
+            >
+              <UserRound :size="14" />
+              {{ t.nav.account }}
+            </NuxtLink>
+          </template>
+        </ClientOnly>
 
         <div class="flex items-center justify-between gap-3">
           <button

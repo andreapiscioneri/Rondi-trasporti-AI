@@ -78,8 +78,8 @@ const legalLinks = computed(() => {
           >
             <h4 class="text-sm font-bold mb-3 uppercase tracking-[0.08em] text-white">{{ office.name }}</h4>
             <p class="text-white/70 text-sm leading-6 whitespace-pre-line break-words mb-3 inline-flex items-start gap-2"><MapPin :size="14" class="mt-1 text-[#E5322D]" />{{ office.address }}</p>
-            <a :href="`tel:${office.phone.replace(/\s/g, '')}`" class="block text-white/85 text-sm mb-2 hover:text-white inline-flex items-center gap-2 break-words"><Phone :size="13" class="text-[#E5322D]" />{{ office.phone }}</a>
-            <a :href="`mailto:${office.email}`" class="inline-flex items-center gap-2 block max-w-full break-all pt-1 text-[0.8rem] leading-none text-white/85 hover:text-white"><Mail :size="13" class="text-[#E5322D]" />{{ office.email }}</a>
+            <a :href="`tel:${office.phone.replace(/\s/g, '')}`" class="mb-2 flex w-full items-center gap-2 break-words text-sm text-white/85 hover:text-white sm:w-auto sm:inline-flex"><Phone :size="13" class="text-[#E5322D]" />{{ office.phone }}</a>
+            <a :href="`mailto:${office.email}`" class="flex w-full max-w-full items-center gap-2 break-all pt-1 text-[0.8rem] leading-none text-white/85 hover:text-white sm:w-auto sm:inline-flex"><Mail :size="13" class="text-[#E5322D]" />{{ office.email }}</a>
           </div>
         </div>
 

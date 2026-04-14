@@ -2,6 +2,9 @@
 const route   = useRoute()
 const nuxtApp = useNuxtApp()
 
+// Carica sessione CMS da localStorage al mount — disponibile su ogni pagina
+onMounted(() => useCms().init())
+
 watch(
   () => route.fullPath,
   () => {
